@@ -2234,17 +2234,12 @@
     "ageRestricted": false,
     "videos": [
       {
-        "label": "Part I",
-        "id": "oQ8B-tbsmk4",
-        "duration": "7:21:50"
-      },
-      {
-        "label": "Part I",
-        "id": "CWw7A7gS8IY",
-        "duration": "7:21:09"
+        "label": "Full Walkthrough",
+        "id": "Ax8N85NvHP4",
+        "duration": ""
       }
     ],
-    "guide": "The Last of Us Part I Remastered is Naughty Dog's PS5 ground-up remake of the 2013 PlayStation classic, with rebuilt assets, modern lighting, and updated AI. Smuggler Joel escorts immune teenager Ellie across a fungus-infested post-pandemic America in search of the Fireflies' research lab. The walkthrough captures the full main campaign across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary, presented as a continuous cinematic playthrough.",
+    "guide": "The Last of Us Part I Remastered is Naughty Dog's PS5 ground-up remake of the 2013 PlayStation classic, with rebuilt assets, modern lighting, and updated AI. Smuggler Joel escorts immune teenager Ellie across a fungus-infested post-pandemic America in search of the Fireflies' research lab. The walkthrough captures the full main campaign on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary, presented as a continuous cinematic playthrough.",
     "chapters": [
       {
         "name": "1. Hometown",
@@ -2318,22 +2313,12 @@
     "ageRestricted": false,
     "videos": [
       {
-        "label": "Part II",
-        "id": "IZpFOzOPDzU",
-        "duration": "8:07:43"
-      },
-      {
-        "label": "Part II",
-        "id": "hzLLkDZ94JY",
-        "duration": "8:07:43"
-      },
-      {
-        "label": "Part II",
-        "id": "bKQ6ixJGqAA",
-        "duration": "8:08:05"
+        "label": "Full Walkthrough",
+        "id": "R4f_ml9Prmg",
+        "duration": ""
       }
     ],
-    "guide": "The Last of Us Part II Remastered is Naughty Dog's PS5 remaster of the 2020 sequel, adding the No Return roguelite mode, Lost Levels, and rebuilt rendering pipeline. The story follows Ellie pursuing revenge across post-apocalyptic Seattle, with the controversial mid-game switch to antagonist Abby's perspective. The walkthrough captures the full main campaign across three parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary.",
+    "guide": "The Last of Us Part II Remastered is Naughty Dog's PS5 remaster of the 2020 sequel, adding the No Return roguelite mode, Lost Levels, and rebuilt rendering pipeline. The story follows Ellie pursuing revenge across post-apocalyptic Seattle, with the controversial mid-game switch to antagonist Abby's perspective. The walkthrough captures the full main campaign on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary.",
     "chapters": [
       {
         "name": "1. The Farm — Jackson",
@@ -2394,128 +2379,6 @@
       {
         "name": "15. The Farm — Epilogue",
         "summary": "The campaign's final chapter is a return to the Wyoming farm. The chapter is structured as a single sustained walk through the empty house. Dina is gone. JJ is gone. The dishes are still in the sink. The chapter ends with Ellie picking up Joel's guitar — the same guitar Joel gave her at the campaign's domestic opening — and discovering that the partial fingertip she lost in the beach fight has cost her the ability to play it. She places the guitar on Joel's bed and leaves.\n\nThe campaign's final image is Ellie walking down the farm road, alone, with everything she has spent two games building lost in the pursuit of a revenge she eventually chose not to take. The credits roll over the original cover of the franchise's signature score. The story refuses comfort, refuses redemption, and refuses to tell the audience what happens next."
-      }
-    ]
-  },
-  {
-    "slug": "uncharted-legacy-of-thieves",
-    "title": "Uncharted: Legacy of Thieves Collection",
-    "year": 2022,
-    "developer": "Naughty Dog",
-    "publisher": "Sony Interactive Entertainment",
-    "series": null,
-    "genre": [
-      "Action-Adventure"
-    ],
-    "tags": [
-      "Naughty Dog",
-      "Sony",
-      "Nathan Drake",
-      "Chloe Frazer",
-      "PlayStation Exclusive"
-    ],
-    "ageRestricted": false,
-    "videos": [
-      {
-        "label": "Part I",
-        "id": "TzNZ53Zmhwg",
-        "duration": "11:58:13"
-      },
-      {
-        "label": "Part II",
-        "id": "P-pf3eanllA",
-        "duration": "11:58:13"
-      }
-    ],
-    "guide": "Uncharted: Legacy of Thieves Collection bundles Uncharted 4: A Thief's End and Uncharted: The Lost Legacy in PS5-native form, featuring the full Drake-and-Sam-Drake adventure plus the Chloe Frazer-Nadine Ross spin-off. The walkthrough captures both games across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary. Naughty Dog's cinematic set-piece direction is rendered at maximum PS5 Pro fidelity.",
-    "chapters": [
-      {
-        "name": "1. The Lure of Adventure — Settled Life",
-        "summary": "The campaign opens with **Nathan Drake**, three years after the events of *Uncharted 3*, living a settled domestic life with his wife **Elena Fisher** in a modest suburban home. Nathan works at a marine-salvage firm doing legal, ostensibly safe deep-water recoveries. Elena reports for a magazine and is visibly trying to bring Nathan back into investigative journalism work alongside her. The opening sequence is structured as a sustained domestic scene that grounds the entire campaign's central emotional question: **what does Nathan Drake do when he is not adventuring?**\n\nThe chapter dwells on the franchise's quiet character work. Nathan and Elena's relationship is rendered with significantly more domestic detail than the prior installments — their kitchen, their bedroom, their slowly accumulated suburban routines. The chapter introduces the campaign's central tension: Nathan, presented with photo evidence that his presumed-dead brother **Sam Drake** is alive, is preparing to lie to Elena about resuming the kind of high-risk treasure-hunting work the marriage was supposed to leave behind.\n\nThe chapter ends with Nathan agreeing to meet Sam in Panama, the campaign's central deception established, and the franchise's signature adventure pulse fully re-active."
-      },
-      {
-        "name": "2. Infernal Place — The Panama Flashback",
-        "summary": "A sustained flashback chapter set in a Panamanian prison fifteen years before the campaign's present. **Sam Drake** and Nathan are imprisoned together, working a long-running treasure-hunt scheme involving Spanish pirate captain **Henry Avery**'s lost treasure. The chapter is structured as a multi-stage prison-break sequence with sustained stealth combat, environmental traversal, and the franchise's signature setpiece climbing sequences.\n\nThe chapter introduces **Hector Alcázar** — a Panamanian drug lord who has invested in Sam and Nathan's research and demands the Avery treasure as his price for their release. The chapter dwells on the campaign's central character history. Sam, the elder Drake brother, has spent his life involving Nathan in increasingly dangerous schemes; Nathan, the younger, has spent his life trusting Sam past the point where it was wise.\n\nThe chapter ends with Sam apparently shot and killed during the prison escape, Nathan barely surviving, and the campaign's central premise — that Sam returned to his life fifteen years later — committed."
-      },
-      {
-        "name": "3. Sam Returns — The Job Offer",
-        "summary": "The campaign's present-day setup chapter. **Sam Drake** arrives at Nathan's home unannounced and explains his survival. He has spent the intervening fifteen years in a Panamanian prison, only recently escaping with the assistance of an unnamed benefactor. Hector Alcázar — Sam's former captor — is now demanding the Avery treasure within three months or Sam will be killed.\n\nThe chapter is structured as a sustained character reunion sequence. Nathan, faced with the choice between Elena's stability and Sam's life, chooses Sam. The chapter dwells on Nathan's deception — he tells Elena he has been offered a routine salvage job in Malaysia and intends to take it. The chapter ends with Nathan departing for Italy in pursuit of Avery's auction-house lead, the campaign's central deception fully committed."
-      },
-      {
-        "name": "4. The Italian Auction",
-        "summary": "The campaign's first major action set-piece. Nathan and Sam infiltrate a private auction in Italy where a piece of pirate captain Avery's hidden cross is being sold. The chapter is structured as a sustained stealth-and-combat infiltration of the auction house's upper galleries, with the franchise's signature traversal across rooftops, balconies, and exterior facades.\n\nThe chapter introduces **Rafe Adler** — a wealthy adventurer who has spent years funding Sam's prison expenses precisely to manipulate Sam into pursuing Avery on his behalf, and **Nadine Ross** — the head of **Shoreline**, a South African private military contractor working as Rafe's enforcement arm. Both antagonists are introduced with significantly more characterization than the franchise's prior villains, with Nadine's combat capability foregrounded as genuinely dangerous.\n\nThe chapter ends with the Avery cross fragment in Drake hands, Rafe and Nadine in active pursuit, and the campaign's central pursuit dynamic fully established."
-      },
-      {
-        "name": "5. Scotland — Avery's Grave",
-        "summary": "The campaign's first sustained exterior exploration chapter. Nathan and Sam travel to **Scotland's island archipelago** in pursuit of **Henry Avery's grave**, hidden inside a cathedral on a remote island. The chapter is structured as a sustained climbing and puzzle-solving sequence, with the franchise's signature aesthetic — ancient ruins overgrown with centuries of moss and ivy — rendered with the campaign's most acclaimed environmental detail.\n\nThe chapter dwells on Sam's deteriorating ethics. Sam, increasingly desperate as the Alcázar deadline approaches, is willing to take risks Nathan would have refused a decade earlier. The chapter's central character beat is a quiet rooftop conversation between the brothers about what they have become.\n\nThe chapter ends with the next Avery clue recovered — pointing to **Madagascar** — and Rafe and Nadine's Shoreline forces arriving at the cathedral moments after the Drakes' escape."
-      },
-      {
-        "name": "6. King's Bay — Madagascar",
-        "summary": "The campaign's largest open-zone chapter. **Madagascar's King's Bay** region is rendered as the franchise's most expansive single environment, with sustained vehicle traversal across the planet's grasslands, hillsides, and inland fortress complexes. The chapter is structured as a multi-stage exploration sequence with the franchise's most acclaimed driving sequences and the introduction of multiple optional environmental investigations.\n\nThe chapter introduces **Sully** — Victor Sullivan, Nathan's lifelong mentor and the franchise's most consistent supporting character — for the first time in the present-day campaign. Sully's arrival in Madagascar is staged with deliberate warmth, with the chapter dwelling on his relationship with both Drake brothers across the campaign's three-generation friendship.\n\nThe chapter ends with the Avery clue trail leading the trio toward **King's Bay's** hidden harbor, the campaign's mid-game open-zone exploration committed, and the franchise's signature jeep traversal sequences introduced."
-      },
-      {
-        "name": "7. Following Avery's Trail — The Twelve Towers",
-        "summary": "A mid-act chapter dedicated to following Avery's elaborate clue trail across the Madagascar coast. The chapter weaves the franchise's signature climbing and puzzle-solving sequences with sustained combat against Shoreline's pursuit teams. The chapter dwells on the campaign's character work — Nathan's growing concern about Sam's risk tolerance, Elena's mounting suspicions back home in suburban America, and Sully's quiet observation of the entire situation.\n\nThe chapter's central event is **Elena's arrival** in Madagascar. The chapter's most acclaimed cutscene is staged at the local hotel where Elena confronts Nathan with photographic evidence of his deception. The chapter is the franchise's most emotionally weighted single dialogue sequence, with Naughty Dog's signature voice performances anchoring the campaign's central character tension.\n\nThe chapter ends with Elena formally rejoining the expedition under her own terms, the campaign's central character resolution positioned, and the broader Avery investigation committed."
-      },
-      {
-        "name": "8. At Sea — The Island Approach",
-        "summary": "The campaign's nautical traversal chapter. The Drakes, Sully, and Elena cross the open ocean to **Libertalia** — a pirate utopia city founded by Henry Avery and other Golden Age pirates as a post-piracy sanctuary. The chapter is structured as a sustained boat-based exploration sequence with the franchise's most acclaimed open-water visual rendering and the introduction of the campaign's central archaeological location.\n\nThe chapter dwells on the franchise's signature sense of historical wonder. Libertalia is rendered as the franchise's most architecturally ambitious environment — a multi-tier colonial city overgrown with centuries of jungle reclamation, with the pirate captains' individual mansions visible across the city's exterior. The chapter ends with the team's arrival at Libertalia, the city's exploration committed, and the campaign's third-act setting fully established."
-      },
-      {
-        "name": "9. Libertalia — The Founder's Mansions",
-        "summary": "The campaign's largest sustained interior-exterior exploration chapter. The team splits between Libertalia's surviving pirate-captain mansions in pursuit of the founders' individual treasure caches and the central archive that points toward Avery's hidden vault. The chapter weaves combat with sustained environmental investigation, with each pirate-captain mansion staging a distinct architectural set-piece — the Spaniard's Old World fortress, the Englishman's Tudor manor, the Frenchman's Versailles-inspired pavilion.\n\nThe chapter dwells on Libertalia's central reveal. The colonial-era pirate utopia was not the paradise its founders advertised. The chapter's environmental detail reveals systematic exploitation of indentured labor, slow descent into open civil war among the founding captains, and Avery's eventual betrayal of his fellow pirates for the treasure's sole ownership.\n\nThe chapter ends with the central archive recovered, Avery's vault location confirmed, and the campaign's final assault committed."
-      },
-      {
-        "name": "10. New Devon — Avery's Manor",
-        "summary": "The campaign's mid-third-act spectacle chapter. **New Devon** is Libertalia's central colonial-era settlement, abandoned for three centuries but rendered with the franchise's most acclaimed environmental detail. The chapter is structured as a sustained multi-zone exploration sequence with the campaign's hardest sustained combat encounters against Shoreline's full mercenary force.\n\nThe chapter's central reveal is **Avery's poisoning of his fellow founders**. The colonial archives reveal that Avery, having grown paranoid about his fellow captains' ambitions, systematically poisoned them at a unifying banquet — an event the chapter stages through environmental detail in the abandoned dining hall.\n\nThe chapter ends with the path to Avery's central vault opened, Rafe and Nadine's forces converging on the team's position, and the campaign's climactic confrontation imminent."
-      },
-      {
-        "name": "11. Avery's Descent — The Vault",
-        "summary": "The campaign's climactic spectacle chapter. **Henry Avery's central vault** is staged inside the New Devon harbor cave system, with the chapter weaving sustained combat against Shoreline forces with the franchise's signature treasure-vault exploration. The vault itself is rendered with the campaign's most acclaimed environmental design — vast cathedrals of stacked treasure, ancient pirate-galleon wreckage, and the franchise's signature traversal across precarious wooden walkways.\n\nThe chapter's pivot is **Rafe's confrontation** in the vault's central chamber. Rafe, having pursued Avery's treasure for years as a personal obsession, has lost interest in the wealth itself — what he wants is to be the one who found it. The chapter's central reveal is that **Sam has been working with Rafe** across the previous several chapters, in an arrangement Rafe has used to manipulate both brothers throughout the campaign.\n\nThe chapter ends with Sam's true situation exposed, Rafe pulling a weapon on the Drake brothers, and the campaign's final boss confrontation committed."
-      },
-      {
-        "name": "12. A Thief's End — The Final Duel",
-        "summary": "The campaign's climactic chapter. **Rafe Adler** and **Nathan Drake** confront each other in a sustained duel inside Avery's central vault, with the chapter's signature combat sequence staged as a sword fight inside the collapsing pirate galleon. The duel is the franchise's most acclaimed final boss encounter, with Rafe's combat capability matched against Nathan's improvisational fighting style.\n\nThe fight ends with Rafe's death by the collapsing treasure pile he has spent his life pursuing — a thematically loaded ending the campaign refuses to soften. Nathan and Sam escape the vault as it floods, Elena and Sully extract the surviving Drakes via boat, and the chapter ends with the campaign's emotional resolution staged on the ocean as Libertalia recedes into the distance."
-      },
-      {
-        "name": "13. The Brothers Drake — Epilogue",
-        "summary": "The campaign's epilogue is set years after the campaign's events. **Cassie Drake** — Nathan and Elena's daughter, a teenager in the epilogue's framing — is exploring her family's coastal beach house and discovering the artifacts her parents have spent decades collecting. The chapter is structured as a single sustained playable sequence as Cassie, with no combat and minimal scripted dialogue.\n\nThe chapter dwells on the franchise's quiet generational closing. Cassie's discovery of her parents' treasure-hunting past — the journals, the photographs, the recovered artifacts — is staged as the franchise's formal handoff to a new generation. The chapter's final scene shows Nathan and Elena's adult conversation with Cassie, with the campaign's central question — whether Nathan can leave adventuring behind — answered through the quiet domestic life he has built across the years since Libertalia. The credits roll over the family's beach house at sunset."
-      },
-      {
-        "name": "1. The Insurgency — Western India",
-        "summary": "The campaign opens with **Chloe Frazer** — a recurring supporting character from the *Uncharted 2* and *Uncharted 3* installments — operating alone in a war-torn region of western India. The opening sequence is structured as a sustained urban-infiltration tutorial, with Chloe navigating the chapter's central city under the control of **Asav**, a guerrilla insurgent leader whose forces have seized political power across the region.\n\nThe chapter dwells on Chloe's character. Where the franchise's prior installments treated her as Nathan Drake's supporting partner, *The Lost Legacy* foregrounds her as a fully realized lead. Her Indian-South African heritage, her complicated family history (her father's death pursuing the same artifact she is hunting), and her established working relationships with both Nathan and **Sully** all anchor the campaign's character foundation.\n\nThe chapter ends with Chloe's first sustained combat encounter, the central artifact — the **Tusk of Ganesh** — confirmed as her target, and the campaign's central premise (an artifact hunt across the conflict-torn Indian countryside) fully established."
-      },
-      {
-        "name": "2. Infiltration — Asav's Compound",
-        "summary": "The campaign's first sustained combat chapter. Chloe infiltrates Asav's central command compound to recover the **Hoysala disc**, a key fragment of the larger Tusk investigation. The chapter is structured as a sustained stealth-and-combat infiltration with the franchise's signature climbing sequences and the introduction of the campaign's reworked combat fundamentals.\n\nThe chapter introduces **Nadine Ross** — the antagonist from *Uncharted 4*, now operating as a freelance contractor after Shoreline's dissolution in the prior campaign's events. Nadine has been hired by Chloe as her professional partner for the Tusk expedition, a working relationship established offscreen between the campaigns. The chapter dwells on their slow, prickly partnership — Chloe is improvisational and verbally aggressive; Nadine is disciplined and quietly contemptuous of Chloe's methods.\n\nThe chapter ends with the Hoysala disc recovered, the Tusk's location pointing toward the **Western Ghats** mountain range, and Asav's forces in active pursuit."
-      },
-      {
-        "name": "3. Homecoming — Chloe's Past",
-        "summary": "A character-focused chapter set briefly in Chloe's childhood home in **Mumbai**. The chapter is structured as a quiet exploration sequence with no combat, dedicated entirely to establishing Chloe's relationship with her father and his death years earlier in pursuit of the same Hoysala artifacts.\n\nThe chapter dwells on the campaign's emotional foundation. Chloe's father — a respected academic obsessed with the lost Hoysala dynasty — died in a research expedition that Chloe blames herself for not preventing. The chapter's central character beat is Chloe's quiet examination of her father's preserved study, with the franchise's signature environmental storytelling carrying the emotional weight.\n\nThe chapter ends with Chloe's resolve to complete her father's research, Nadine's quiet observation of the entire visit, and the campaign's central character thread fully committed."
-      },
-      {
-        "name": "4. The Western Ghats — Open Hub",
-        "summary": "The campaign's largest open-zone chapter and one of the franchise's most acclaimed environmental designs. **The Western Ghats** is a sprawling mountain region containing multiple Hoysala-era archaeological sites, with Chloe and Nadine conducting parallel investigations across several optional sub-zones. The chapter is structured as a multi-stage exploration sequence, with the franchise's signature jeep traversal expanded into an open-zone driving format.\n\nThe chapter weaves combat with sustained environmental investigation. Each Hoysala site provides historical context for the Tusk's broader pre-colonial significance, with the franchise's signature signature treasure-hunting puzzles staged across multiple optional locations. The chapter dwells on Chloe and Nadine's developing partnership through quiet jeep conversations during travel.\n\nThe chapter ends with the central Hoysala temple complex located, the path to the Great Battle site opened, and Asav's pursuit forces converging."
-      },
-      {
-        "name": "5. The Great Battle — Hoysala Temple",
-        "summary": "The campaign's mid-game spectacle chapter. The **Great Battle of Talakad** — the legendary 14th-century clash between Hoysala forces and invading enemies — is the central archaeological setting. The chapter is structured as a sustained interior exploration of the temple complex, with the franchise's signature treasure-hunting puzzles staged across the temple's multiple chambers.\n\nThe chapter weaves combat against Asav's pursuing forces with sustained environmental investigation. The chapter's environmental detail is one of the franchise's most acclaimed achievements — the Hoysala carvings, the temple's central battle frieze, and the campaign's most detailed archaeological storytelling. The chapter ends with the next clue recovered, the path to the deeper Hoysala vaults opened, and the campaign's third-act setup committed."
-      },
-      {
-        "name": "6. Hidden in the Mountains — The Vault System",
-        "summary": "The campaign's most acclaimed puzzle chapter. The deeper Hoysala vaults are accessible via a multi-stage puzzle system requiring Chloe to combine recovered Hoysala discs into a central activation mechanism. The chapter is structured as a sustained vertical exploration sequence weaving combat with the campaign's hardest sustained puzzle sequences.\n\nThe chapter dwells on Chloe's growing investment in the historical significance of what she is doing. The franchise's earlier installments treated treasure-hunting primarily as adventure-comedy with personal stakes; *The Lost Legacy* foregrounds the colonial-era erasure of Hoysala history and Chloe's quiet commitment to its preservation. The chapter's environmental texture is the franchise's most thematically loaded.\n\nThe chapter ends with the deeper vault accessed, the Tusk's true location confirmed, and the campaign's pivot toward the central confrontation positioned."
-      },
-      {
-        "name": "7. The Persistence of Memory — Sam Drake Returns",
-        "summary": "The campaign's perspective-pivot chapter. **Sam Drake** — Nathan's brother from *Uncharted 4* — has been pursuing Chloe across the campaign as a parallel treasure-hunter under Asav's contract. The chapter is structured as a sustained character encounter weaving sustained combat with the franchise's signature character-driven dialogue.\n\nThe chapter dwells on Sam's character resolution. Sam, having survived the events of *A Thief's End* but never quite returned to the brotherly relationship with Nathan, has been operating as a freelance contractor with deteriorating ethical filters. His pursuit of Chloe is not personal — it is professional — but his methods have escalated to violence Nathan would not have approved.\n\nThe chapter ends with Sam's growing recognition that Asav's plans for the Tusk extend beyond simple personal enrichment, Sam's defection from Asav's contract, and the campaign's central character realignment committed."
-      },
-      {
-        "name": "8. Partners — Nadine's Training",
-        "summary": "A character-focused chapter dedicated to **Nadine Ross**'s training of Chloe in advanced close-quarters combat techniques. The chapter is structured as a sustained character-development sequence with reduced combat density, dedicated entirely to Chloe and Nadine's working relationship.\n\nThe chapter dwells on Nadine's growth. Where her *Uncharted 4* appearance staged her as a coldly competent antagonist, *The Lost Legacy* renders her as a partner with significant character interiority. Her quiet revelation of her family history, her commitment to professional ethics over financial pursuit, and her growing genuine respect for Chloe's improvisational instincts all anchor the campaign's emotional foundation.\n\nThe chapter ends with Chloe and Nadine's partnership formally committed, the campaign's final assault on Asav's forces positioned, and the climactic train sequence staged."
-      },
-      {
-        "name": "9. End of the Line — The Train",
-        "summary": "The campaign's climactic chapter. **Asav** has loaded the **Tusk of Ganesh** onto a military train traveling across the Indian countryside, with the explicit intent of using the artifact's symbolic power to ignite full-scale civil war across the region. The chapter is structured as a sustained train-set-piece sequence, with the campaign's hardest sustained combat encounters and the franchise's most acclaimed mobile action design.\n\nThe chapter's combat highlights include the campaign's most demanding traversal sequences — Chloe moving between train cars at high speed, fighting Asav's reinforcements on the train roof, and the franchise's signature improvised-physics combat. The chapter's mid-section stages **Asav's final confrontation**, with the antagonist's central plan exposed and the train's cargo confirmed as a weaponized improvised explosive device intended for civilian-target deployment.\n\nThe chapter ends with Asav defeated, the Tusk recovered, the train's catastrophic explosion prevented, and Chloe's quiet decision to return the Tusk to Indian authorities for proper museum preservation rather than private sale. The campaign's emotional resolution lands the franchise's most thematically loaded single ending — the artifact has been preserved, the colonial-era exploitation of South Asian history has been resisted in a small but genuine way, and Chloe has emerged from her father's shadow into her own legacy.\n\nThe credits roll over Chloe and Nadine's quiet departure from India, with the franchise's signature musical cue scoring the campaign's emotional closure."
       }
     ]
   },
@@ -2591,6 +2454,522 @@
       {
         "name": "Chapter 10 — Dawn",
         "summary": "The campaign's epilogue. The surviving characters — anywhere from zero to eight of the original cast — give post-event interviews to police investigators on the mountain. The chapter is structured as a series of one-on-one interrogations, with each surviving character's testimony shaped by their specific experiences across the previous chapters. The deceased characters' testimonies are absent.\n\nThe chapter's final moments stage the campaign's central twist for any audience unfamiliar with the franchise: the police's quiet acknowledgment that the Wendigo population on Blackwood Mountain remains active. The campaign's central question — whether to call the events a \"victory\" — is left explicitly open. The credits roll over the surviving cast departing the mountain, with the franchise's broader anthology directly seeded."
+      }
+    ]
+  },
+  {
+    "slug": "uncharted-2",
+    "title": "Uncharted 2: Among Thieves",
+    "year": 2009,
+    "developer": "Naughty Dog",
+    "publisher": "Sony Interactive Entertainment",
+    "series": "Uncharted",
+    "genre": [
+      "Action-Adventure"
+    ],
+    "tags": [
+      "Naughty Dog",
+      "Sony",
+      "Nathan Drake",
+      "Treasure Hunter",
+      "PlayStation Exclusive"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "iE1qerxP4Kc",
+        "duration": ""
+      }
+    ],
+    "guide": "Uncharted 2: Among Thieves is Naughty Dog's 2009 PS3 sequel — widely regarded as the title that defined the modern cinematic action-adventure genre. Nathan Drake, joined by Chloe Frazer and Elena Fisher, pursues the lost Cintamani Stone of Marco Polo's vanished fleet across Istanbul, Borneo, Nepal, and the Himalayan valley of Shambhala, hunted by the Serbian war criminal Zoran Lazarevic. The walkthrough captures the full campaign on PS5 Pro via backwards compatibility, with the franchise's signature globe-trotting set-piece direction at maximum visual fidelity, no commentary.",
+    "chapters": [
+      {
+        "name": "1. A Rock and a Hard Place",
+        "summary": "The campaign opens in medias res with Drake bleeding out in a derailed train carriage hanging off a Tibetan cliff face. The opening sequence stages one of the franchise's most iconic introductions — the player learning the basic traversal mechanics while climbing through a vertically-suspended train interior. The chapter ends with Drake reaching solid ground in the Himalayan snowfall, the campaign's structural frame established as a sustained flashback."
+      },
+      {
+        "name": "2. Borneo Expedition",
+        "summary": "A flashback chapter staged in the Borneo jungle. Drake reunites with old partner Harry Flynn and meets Chloe Frazer on a museum-heist preparation. The chapter introduces the campaign's central artifact hunt: Marco Polo's lost fleet and the Cintamani Stone. The chapter dwells on the franchise's signature treasure-hunting fundamentals — environmental investigation, light combat, and the establishment of Drake's three-way working relationship with Flynn and Chloe."
+      },
+      {
+        "name": "3. The Istanbul Museum Heist",
+        "summary": "The campaign's first major action set-piece. Drake and Flynn infiltrate the Topkapi Palace museum in Istanbul to recover Marco Polo's oil lamp, the next clue in the Cintamani trail. The chapter weaves the franchise's signature climbing, stealth, and combat fundamentals into a sustained nighttime heist sequence. The chapter ends with Flynn's betrayal — Drake is left for the Turkish authorities, beginning a three-month prison sentence the campaign elides via cut to the Nepal arc."
+      },
+      {
+        "name": "4. Nepal — Urban Warfare",
+        "summary": "Drake, freed by Chloe and accompanied by reporter Elena Fisher and her cameraman Jeff, arrives in a war-torn Nepalese city occupied by Zoran Lazarevic's mercenary forces. The chapter introduces the campaign's most acclaimed combat environment — a partially destroyed city block where Drake fights through Lazarevic's troops while pursuing the next Cintamani clue. The chapter ends with the team escaping the city via a hotel rooftop sequence that has become canonical to the franchise's set-piece reputation."
+      },
+      {
+        "name": "5. The Train",
+        "summary": "The campaign's signature mid-game sequence. Drake infiltrates a Lazarevic supply train moving through Nepalese mountain country at high speed, fighting through carriages with the franchise's most acclaimed mobile combat design. The chapter dwells on the train's interior — cargo cars, troop carriers, and the central armored carriage where Lazarevic himself is staged. The chapter ends in the derailment sequence the campaign's opening flashed forward to, closing the structural loop."
+      },
+      {
+        "name": "6. The Himalayan Village",
+        "summary": "Drake, rescued from the train wreck by Tibetan villagers, recovers in a remote mountain village under the care of village elder Tenzin. The chapter is structured as a quiet exploration sequence with no combat, dedicated to character work and the village's relationship with the unnatural cold seeping down from the mountains above. The chapter ends with Drake and Tenzin departing for the higher slopes to investigate the source of the village's growing supernatural concerns."
+      },
+      {
+        "name": "7. The Monastery",
+        "summary": "A sustained exploration chapter set in an abandoned mountain monastery containing the next Cintamani clue. The chapter weaves combat against the Tibetan Yeti — the campaign's first sustained supernatural enemy — with the franchise's signature puzzle-solving and environmental investigation. The chapter ends with the path to Shambhala confirmed, the supernatural element of the Cintamani trail fully established."
+      },
+      {
+        "name": "8. Shambhala — The Hidden Valley",
+        "summary": "The campaign's third-act spectacle chapter. The hidden valley of Shambhala is revealed as a real architectural site — a tree-grown ancient city protected by the Tibetan Guardians. The chapter weaves combat against Lazarevic's mercenary forces with the franchise's signature treasure-hunting exploration, with the Guardians introduced as a third faction. The chapter ends with the Tree of Life — the source of the Cintamani Stone's power — confirmed, and Lazarevic's plan to drink its sap fully exposed."
+      },
+      {
+        "name": "9. The Tree of Life — Final Confrontation",
+        "summary": "The campaign's climax. Drake confronts Lazarevic, who has consumed the Tree of Life's sap and become functionally invulnerable to conventional weapons. The fight is staged inside the central Shambhala temple, weaving sustained combat against Lazarevic with the chapter's collapsing architectural design. The chapter ends with Lazarevic killed by the Tibetan Guardians' poison, the Tree of Life destroyed, and Shambhala sealed permanently behind the surviving party."
+      },
+      {
+        "name": "10. Epilogue — Tibetan Village",
+        "summary": "The campaign's epilogue is set in the surviving Tibetan village. Elena recovers from her injuries; Chloe departs alone; Drake and Elena's quiet conversation on a village rooftop closes the campaign on a note of unresolved romantic continuity. The credits roll over the franchise's signature musical cue, with the campaign's central character relationship positioned for the franchise's continuation."
+      }
+    ]
+  },
+  {
+    "slug": "uncharted-3",
+    "title": "Uncharted 3: Drake's Deception",
+    "year": 2011,
+    "developer": "Naughty Dog",
+    "publisher": "Sony Interactive Entertainment",
+    "series": "Uncharted",
+    "genre": [
+      "Action-Adventure"
+    ],
+    "tags": [
+      "Naughty Dog",
+      "Sony",
+      "Nathan Drake",
+      "Sully",
+      "Treasure Hunter",
+      "PlayStation Exclusive"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "jiX-Zj7jeqg",
+        "duration": ""
+      }
+    ],
+    "guide": "Uncharted 3: Drake's Deception is Naughty Dog's 2011 PS3 third installment, the campaign that fully foregrounded Nathan Drake's friendship with Victor Sullivan and the franchise's central character question — who is Drake outside of his adventuring. The story follows Drake and Sully across Cartagena, London, Yemen, Syria, and the lost city of Iram of the Pillars beneath the Rub' al Khali desert, hunted by Katherine Marlowe's secret society. The walkthrough captures the full campaign on PS5 Pro via backwards compatibility, no commentary.",
+    "chapters": [
+      {
+        "name": "1. Another Round — Cartagena Pub",
+        "summary": "The campaign opens in a Cartagena pub where Drake and Sully are negotiating the sale of Sir Francis Drake's ring — Nathan's most personal artifact — to a buyer working for the antagonist Katherine Marlowe. The opening sequence is staged as a sustained pub brawl, with the franchise's signature improvised combat introduced through the cramped interior. The chapter ends with Marlowe's organization in active pursuit and the campaign's central artifact — Sir Francis Drake's lost expedition logbook — confirmed as the antagonists' goal."
+      },
+      {
+        "name": "2. London — Marlowe's Library",
+        "summary": "Drake and Sully travel to London to investigate Marlowe's secret-society headquarters, hidden beneath an unassuming city library. The chapter is structured as a sustained stealth infiltration, with the franchise's signature climbing sequences staged across London's historic rooftops. The chapter ends with the next clue recovered, pointing to the lost Atlantis of the Sands — the legendary city of Iram of the Pillars."
+      },
+      {
+        "name": "3. The Yemen Souk",
+        "summary": "An open-zone chapter set in a Yemeni city marketplace, with Drake pursuing the next Iram clue through a dense urban environment. The chapter weaves the franchise's signature traversal across rooftops and souk stalls with sustained combat against Marlowe's pursuing forces. The chapter dwells on the campaign's character work — Sully's deepening protective instincts toward Drake and the franchise's first sustained look at their working friendship."
+      },
+      {
+        "name": "4. The Cruise Ship",
+        "summary": "The campaign's most acclaimed mid-game set-piece. Drake, captured by Marlowe's forces, is held aboard a cruise ship in a Mediterranean harbor. The chapter is structured as a sustained ship infiltration, with the ship's hull taking progressive flood damage during the campaign's climactic battle. The chapter's central sequence — Drake fighting through a sinking ship's interior as the entire environment rotates ninety degrees and floods — has become canonical to the franchise's reputation."
+      },
+      {
+        "name": "5. Syria — The Citadel",
+        "summary": "Drake and Sully travel to Syria to investigate a Crusader-era citadel containing the next Iram clue. The chapter is structured as a sustained exploration sequence with the franchise's signature climbing and puzzle-solving fundamentals. The chapter ends with the next clue confirmed and the path to the Rub' al Khali desert committed."
+      },
+      {
+        "name": "6. The Plane Crash",
+        "summary": "The campaign's most iconic single sequence. Drake, infiltrating a cargo plane mid-flight, fights through the plane's interior as the aircraft suffers catastrophic damage and breaks apart in mid-air. The sequence ends with Drake parachuting alone into the Rub' al Khali desert, isolated from Sully and the rest of the supporting cast. The chapter has become canonical to the franchise's reputation for staging impossible action in real-time playable form."
+      },
+      {
+        "name": "7. Desert — Walking Sequence",
+        "summary": "The campaign's most acclaimed character chapter. Drake, alone in the Rub' al Khali desert, walks toward the rumored location of Iram with no combat, no music, and progressive heat-stroke hallucinations. The chapter is one of the franchise's most studied design decisions — replacing the conventional combat-heavy mid-game pacing with a sustained character-survival sequence. The chapter ends with Drake collapsing in the dunes as a Bedouin caravan finds him."
+      },
+      {
+        "name": "8. The Bedouin Caravan",
+        "summary": "Drake, rescued by a local Bedouin tribe led by Salim, recovers from his desert ordeal and rejoins the central investigation. Salim's tribe has its own historical investment in Iram of the Pillars — the lost city is the site of an ancient massacre that Salim's people remember in oral history. The chapter ends with Drake, Salim, and a Bedouin war party riding for Iram in pursuit of Sully and Marlowe."
+      },
+      {
+        "name": "9. Iram of the Pillars — The Lost City",
+        "summary": "The campaign's third-act spectacle chapter. The lost city of Iram, hidden beneath the Rub' al Khali sands, is rendered as one of the franchise's most architecturally ambitious environments. The chapter weaves combat against Marlowe's forces with the franchise's signature treasure-hunting exploration, with the city's central reveal — that Iram's curse is a hallucinogenic vapor from the city's well — driving the campaign's final act."
+      },
+      {
+        "name": "10. The Brass Vessel — Climax",
+        "summary": "The campaign's climax. Drake confronts Marlowe and her enforcer Talbot in Iram's central chamber, fighting through hallucinogenic visions as the city's seismic instability collapses around the party. The chapter ends with Marlowe killed by the city's quicksand, Talbot defeated, and Drake and Sully's escape staged with the city sinking into the desert behind them. The credits roll on the franchise's most personal character resolution between Drake and Sully."
+      }
+    ]
+  },
+  {
+    "slug": "uncharted-4",
+    "title": "Uncharted 4: A Thief's End",
+    "year": 2016,
+    "developer": "Naughty Dog",
+    "publisher": "Sony Interactive Entertainment",
+    "series": "Uncharted",
+    "genre": [
+      "Action-Adventure"
+    ],
+    "tags": [
+      "Naughty Dog",
+      "Sony",
+      "Nathan Drake",
+      "Sam Drake",
+      "Elena Fisher",
+      "PlayStation Exclusive"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "8ujf9UUEF90",
+        "duration": ""
+      }
+    ],
+    "guide": "Uncharted 4: A Thief's End is Naughty Dog's 2016 PS4 conclusion to Nathan Drake's saga. Three years after Uncharted 3, a settled, retired Drake is pulled back into adventuring by his presumed-dead brother Sam, in pursuit of pirate captain Henry Avery's lost treasure and the colonial-era pirate utopia of Libertalia. The walkthrough captures the full campaign on PS5 Pro via the Legacy of Thieves Collection, at 4K HDR 60FPS with PSSR upscaling, no commentary.",
+    "chapters": [
+      {
+        "name": "1. The Lure of Adventure — Settled Life",
+        "summary": "The campaign opens with **Nathan Drake**, three years after the events of *Uncharted 3*, living a settled domestic life with his wife **Elena Fisher** in a modest suburban home. Nathan works at a marine-salvage firm doing legal, ostensibly safe deep-water recoveries. Elena reports for a magazine and is visibly trying to bring Nathan back into investigative journalism work alongside her. The opening sequence is structured as a sustained domestic scene that grounds the entire campaign's central emotional question: **what does Nathan Drake do when he is not adventuring?**\n\nThe chapter dwells on the franchise's quiet character work. Nathan and Elena's relationship is rendered with significantly more domestic detail than the prior installments — their kitchen, their bedroom, their slowly accumulated suburban routines. The chapter introduces the campaign's central tension: Nathan, presented with photo evidence that his presumed-dead brother **Sam Drake** is alive, is preparing to lie to Elena about resuming the kind of high-risk treasure-hunting work the marriage was supposed to leave behind.\n\nThe chapter ends with Nathan agreeing to meet Sam in Panama, the campaign's central deception established, and the franchise's signature adventure pulse fully re-active."
+      },
+      {
+        "name": "2. Infernal Place — The Panama Flashback",
+        "summary": "A sustained flashback chapter set in a Panamanian prison fifteen years before the campaign's present. **Sam Drake** and Nathan are imprisoned together, working a long-running treasure-hunt scheme involving Spanish pirate captain **Henry Avery**'s lost treasure. The chapter is structured as a multi-stage prison-break sequence with sustained stealth combat, environmental traversal, and the franchise's signature setpiece climbing sequences.\n\nThe chapter introduces **Hector Alcázar** — a Panamanian drug lord who has invested in Sam and Nathan's research and demands the Avery treasure as his price for their release. The chapter dwells on the campaign's central character history. Sam, the elder Drake brother, has spent his life involving Nathan in increasingly dangerous schemes; Nathan, the younger, has spent his life trusting Sam past the point where it was wise.\n\nThe chapter ends with Sam apparently shot and killed during the prison escape, Nathan barely surviving, and the campaign's central premise — that Sam returned to his life fifteen years later — committed."
+      },
+      {
+        "name": "3. Sam Returns — The Job Offer",
+        "summary": "The campaign's present-day setup chapter. **Sam Drake** arrives at Nathan's home unannounced and explains his survival. He has spent the intervening fifteen years in a Panamanian prison, only recently escaping with the assistance of an unnamed benefactor. Hector Alcázar — Sam's former captor — is now demanding the Avery treasure within three months or Sam will be killed.\n\nThe chapter is structured as a sustained character reunion sequence. Nathan, faced with the choice between Elena's stability and Sam's life, chooses Sam. The chapter dwells on Nathan's deception — he tells Elena he has been offered a routine salvage job in Malaysia and intends to take it. The chapter ends with Nathan departing for Italy in pursuit of Avery's auction-house lead, the campaign's central deception fully committed."
+      },
+      {
+        "name": "4. The Italian Auction",
+        "summary": "The campaign's first major action set-piece. Nathan and Sam infiltrate a private auction in Italy where a piece of pirate captain Avery's hidden cross is being sold. The chapter is structured as a sustained stealth-and-combat infiltration of the auction house's upper galleries, with the franchise's signature traversal across rooftops, balconies, and exterior facades.\n\nThe chapter introduces **Rafe Adler** — a wealthy adventurer who has spent years funding Sam's prison expenses precisely to manipulate Sam into pursuing Avery on his behalf, and **Nadine Ross** — the head of **Shoreline**, a South African private military contractor working as Rafe's enforcement arm. Both antagonists are introduced with significantly more characterization than the franchise's prior villains, with Nadine's combat capability foregrounded as genuinely dangerous.\n\nThe chapter ends with the Avery cross fragment in Drake hands, Rafe and Nadine in active pursuit, and the campaign's central pursuit dynamic fully established."
+      },
+      {
+        "name": "5. Scotland — Avery's Grave",
+        "summary": "The campaign's first sustained exterior exploration chapter. Nathan and Sam travel to **Scotland's island archipelago** in pursuit of **Henry Avery's grave**, hidden inside a cathedral on a remote island. The chapter is structured as a sustained climbing and puzzle-solving sequence, with the franchise's signature aesthetic — ancient ruins overgrown with centuries of moss and ivy — rendered with the campaign's most acclaimed environmental detail.\n\nThe chapter dwells on Sam's deteriorating ethics. Sam, increasingly desperate as the Alcázar deadline approaches, is willing to take risks Nathan would have refused a decade earlier. The chapter's central character beat is a quiet rooftop conversation between the brothers about what they have become.\n\nThe chapter ends with the next Avery clue recovered — pointing to **Madagascar** — and Rafe and Nadine's Shoreline forces arriving at the cathedral moments after the Drakes' escape."
+      },
+      {
+        "name": "6. King's Bay — Madagascar",
+        "summary": "The campaign's largest open-zone chapter. **Madagascar's King's Bay** region is rendered as the franchise's most expansive single environment, with sustained vehicle traversal across the planet's grasslands, hillsides, and inland fortress complexes. The chapter is structured as a multi-stage exploration sequence with the franchise's most acclaimed driving sequences and the introduction of multiple optional environmental investigations.\n\nThe chapter introduces **Sully** — Victor Sullivan, Nathan's lifelong mentor and the franchise's most consistent supporting character — for the first time in the present-day campaign. Sully's arrival in Madagascar is staged with deliberate warmth, with the chapter dwelling on his relationship with both Drake brothers across the campaign's three-generation friendship.\n\nThe chapter ends with the Avery clue trail leading the trio toward **King's Bay's** hidden harbor, the campaign's mid-game open-zone exploration committed, and the franchise's signature jeep traversal sequences introduced."
+      },
+      {
+        "name": "7. Following Avery's Trail — The Twelve Towers",
+        "summary": "A mid-act chapter dedicated to following Avery's elaborate clue trail across the Madagascar coast. The chapter weaves the franchise's signature climbing and puzzle-solving sequences with sustained combat against Shoreline's pursuit teams. The chapter dwells on the campaign's character work — Nathan's growing concern about Sam's risk tolerance, Elena's mounting suspicions back home in suburban America, and Sully's quiet observation of the entire situation.\n\nThe chapter's central event is **Elena's arrival** in Madagascar. The chapter's most acclaimed cutscene is staged at the local hotel where Elena confronts Nathan with photographic evidence of his deception. The chapter is the franchise's most emotionally weighted single dialogue sequence, with Naughty Dog's signature voice performances anchoring the campaign's central character tension.\n\nThe chapter ends with Elena formally rejoining the expedition under her own terms, the campaign's central character resolution positioned, and the broader Avery investigation committed."
+      },
+      {
+        "name": "8. At Sea — The Island Approach",
+        "summary": "The campaign's nautical traversal chapter. The Drakes, Sully, and Elena cross the open ocean to **Libertalia** — a pirate utopia city founded by Henry Avery and other Golden Age pirates as a post-piracy sanctuary. The chapter is structured as a sustained boat-based exploration sequence with the franchise's most acclaimed open-water visual rendering and the introduction of the campaign's central archaeological location.\n\nThe chapter dwells on the franchise's signature sense of historical wonder. Libertalia is rendered as the franchise's most architecturally ambitious environment — a multi-tier colonial city overgrown with centuries of jungle reclamation, with the pirate captains' individual mansions visible across the city's exterior. The chapter ends with the team's arrival at Libertalia, the city's exploration committed, and the campaign's third-act setting fully established."
+      },
+      {
+        "name": "9. Libertalia — The Founder's Mansions",
+        "summary": "The campaign's largest sustained interior-exterior exploration chapter. The team splits between Libertalia's surviving pirate-captain mansions in pursuit of the founders' individual treasure caches and the central archive that points toward Avery's hidden vault. The chapter weaves combat with sustained environmental investigation, with each pirate-captain mansion staging a distinct architectural set-piece — the Spaniard's Old World fortress, the Englishman's Tudor manor, the Frenchman's Versailles-inspired pavilion.\n\nThe chapter dwells on Libertalia's central reveal. The colonial-era pirate utopia was not the paradise its founders advertised. The chapter's environmental detail reveals systematic exploitation of indentured labor, slow descent into open civil war among the founding captains, and Avery's eventual betrayal of his fellow pirates for the treasure's sole ownership.\n\nThe chapter ends with the central archive recovered, Avery's vault location confirmed, and the campaign's final assault committed."
+      },
+      {
+        "name": "10. New Devon — Avery's Manor",
+        "summary": "The campaign's mid-third-act spectacle chapter. **New Devon** is Libertalia's central colonial-era settlement, abandoned for three centuries but rendered with the franchise's most acclaimed environmental detail. The chapter is structured as a sustained multi-zone exploration sequence with the campaign's hardest sustained combat encounters against Shoreline's full mercenary force.\n\nThe chapter's central reveal is **Avery's poisoning of his fellow founders**. The colonial archives reveal that Avery, having grown paranoid about his fellow captains' ambitions, systematically poisoned them at a unifying banquet — an event the chapter stages through environmental detail in the abandoned dining hall.\n\nThe chapter ends with the path to Avery's central vault opened, Rafe and Nadine's forces converging on the team's position, and the campaign's climactic confrontation imminent."
+      },
+      {
+        "name": "11. Avery's Descent — The Vault",
+        "summary": "The campaign's climactic spectacle chapter. **Henry Avery's central vault** is staged inside the New Devon harbor cave system, with the chapter weaving sustained combat against Shoreline forces with the franchise's signature treasure-vault exploration. The vault itself is rendered with the campaign's most acclaimed environmental design — vast cathedrals of stacked treasure, ancient pirate-galleon wreckage, and the franchise's signature traversal across precarious wooden walkways.\n\nThe chapter's pivot is **Rafe's confrontation** in the vault's central chamber. Rafe, having pursued Avery's treasure for years as a personal obsession, has lost interest in the wealth itself — what he wants is to be the one who found it. The chapter's central reveal is that **Sam has been working with Rafe** across the previous several chapters, in an arrangement Rafe has used to manipulate both brothers throughout the campaign.\n\nThe chapter ends with Sam's true situation exposed, Rafe pulling a weapon on the Drake brothers, and the campaign's final boss confrontation committed."
+      },
+      {
+        "name": "12. A Thief's End — The Final Duel",
+        "summary": "The campaign's climactic chapter. **Rafe Adler** and **Nathan Drake** confront each other in a sustained duel inside Avery's central vault, with the chapter's signature combat sequence staged as a sword fight inside the collapsing pirate galleon. The duel is the franchise's most acclaimed final boss encounter, with Rafe's combat capability matched against Nathan's improvisational fighting style.\n\nThe fight ends with Rafe's death by the collapsing treasure pile he has spent his life pursuing — a thematically loaded ending the campaign refuses to soften. Nathan and Sam escape the vault as it floods, Elena and Sully extract the surviving Drakes via boat, and the chapter ends with the campaign's emotional resolution staged on the ocean as Libertalia recedes into the distance."
+      },
+      {
+        "name": "13. The Brothers Drake — Epilogue",
+        "summary": "The campaign's epilogue is set years after the campaign's events. **Cassie Drake** — Nathan and Elena's daughter, a teenager in the epilogue's framing — is exploring her family's coastal beach house and discovering the artifacts her parents have spent decades collecting. The chapter is structured as a single sustained playable sequence as Cassie, with no combat and minimal scripted dialogue.\n\nThe chapter dwells on the franchise's quiet generational closing. Cassie's discovery of her parents' treasure-hunting past — the journals, the photographs, the recovered artifacts — is staged as the franchise's formal handoff to a new generation. The chapter's final scene shows Nathan and Elena's adult conversation with Cassie, with the campaign's central question — whether Nathan can leave adventuring behind — answered through the quiet domestic life he has built across the years since Libertalia. The credits roll over the family's beach house at sunset."
+      }
+    ]
+  },
+  {
+    "slug": "uncharted-lost-legacy",
+    "title": "Uncharted: The Lost Legacy",
+    "year": 2017,
+    "developer": "Naughty Dog",
+    "publisher": "Sony Interactive Entertainment",
+    "series": "Uncharted",
+    "genre": [
+      "Action-Adventure"
+    ],
+    "tags": [
+      "Naughty Dog",
+      "Sony",
+      "Chloe Frazer",
+      "Nadine Ross",
+      "Sam Drake",
+      "PlayStation Exclusive"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "uQ7Yxo3y86k",
+        "duration": ""
+      }
+    ],
+    "guide": "Uncharted: The Lost Legacy is Naughty Dog's 2017 standalone spin-off, foregrounding fan-favorite Chloe Frazer alongside former antagonist Nadine Ross. The pair pursue the Tusk of Ganesh across India's Western Ghats, hunted by guerrilla insurgent leader Asav. The campaign is the franchise's most thematically loaded entry, with colonial-era Indian history and Chloe's family legacy at the campaign's center. The walkthrough captures the full campaign on PS5 Pro via the Legacy of Thieves Collection, at 4K HDR 60FPS with PSSR upscaling, no commentary.",
+    "chapters": [
+      {
+        "name": "1. The Insurgency — Western India",
+        "summary": "The campaign opens with **Chloe Frazer** — a recurring supporting character from the *Uncharted 2* and *Uncharted 3* installments — operating alone in a war-torn region of western India. The opening sequence is structured as a sustained urban-infiltration tutorial, with Chloe navigating the chapter's central city under the control of **Asav**, a guerrilla insurgent leader whose forces have seized political power across the region.\n\nThe chapter dwells on Chloe's character. Where the franchise's prior installments treated her as Nathan Drake's supporting partner, *The Lost Legacy* foregrounds her as a fully realized lead. Her Indian-South African heritage, her complicated family history (her father's death pursuing the same artifact she is hunting), and her established working relationships with both Nathan and **Sully** all anchor the campaign's character foundation.\n\nThe chapter ends with Chloe's first sustained combat encounter, the central artifact — the **Tusk of Ganesh** — confirmed as her target, and the campaign's central premise (an artifact hunt across the conflict-torn Indian countryside) fully established."
+      },
+      {
+        "name": "2. Infiltration — Asav's Compound",
+        "summary": "The campaign's first sustained combat chapter. Chloe infiltrates Asav's central command compound to recover the **Hoysala disc**, a key fragment of the larger Tusk investigation. The chapter is structured as a sustained stealth-and-combat infiltration with the franchise's signature climbing sequences and the introduction of the campaign's reworked combat fundamentals.\n\nThe chapter introduces **Nadine Ross** — the antagonist from *Uncharted 4*, now operating as a freelance contractor after Shoreline's dissolution in the prior campaign's events. Nadine has been hired by Chloe as her professional partner for the Tusk expedition, a working relationship established offscreen between the campaigns. The chapter dwells on their slow, prickly partnership — Chloe is improvisational and verbally aggressive; Nadine is disciplined and quietly contemptuous of Chloe's methods.\n\nThe chapter ends with the Hoysala disc recovered, the Tusk's location pointing toward the **Western Ghats** mountain range, and Asav's forces in active pursuit."
+      },
+      {
+        "name": "3. Homecoming — Chloe's Past",
+        "summary": "A character-focused chapter set briefly in Chloe's childhood home in **Mumbai**. The chapter is structured as a quiet exploration sequence with no combat, dedicated entirely to establishing Chloe's relationship with her father and his death years earlier in pursuit of the same Hoysala artifacts.\n\nThe chapter dwells on the campaign's emotional foundation. Chloe's father — a respected academic obsessed with the lost Hoysala dynasty — died in a research expedition that Chloe blames herself for not preventing. The chapter's central character beat is Chloe's quiet examination of her father's preserved study, with the franchise's signature environmental storytelling carrying the emotional weight.\n\nThe chapter ends with Chloe's resolve to complete her father's research, Nadine's quiet observation of the entire visit, and the campaign's central character thread fully committed."
+      },
+      {
+        "name": "4. The Western Ghats — Open Hub",
+        "summary": "The campaign's largest open-zone chapter and one of the franchise's most acclaimed environmental designs. **The Western Ghats** is a sprawling mountain region containing multiple Hoysala-era archaeological sites, with Chloe and Nadine conducting parallel investigations across several optional sub-zones. The chapter is structured as a multi-stage exploration sequence, with the franchise's signature jeep traversal expanded into an open-zone driving format.\n\nThe chapter weaves combat with sustained environmental investigation. Each Hoysala site provides historical context for the Tusk's broader pre-colonial significance, with the franchise's signature signature treasure-hunting puzzles staged across multiple optional locations. The chapter dwells on Chloe and Nadine's developing partnership through quiet jeep conversations during travel.\n\nThe chapter ends with the central Hoysala temple complex located, the path to the Great Battle site opened, and Asav's pursuit forces converging."
+      },
+      {
+        "name": "5. The Great Battle — Hoysala Temple",
+        "summary": "The campaign's mid-game spectacle chapter. The **Great Battle of Talakad** — the legendary 14th-century clash between Hoysala forces and invading enemies — is the central archaeological setting. The chapter is structured as a sustained interior exploration of the temple complex, with the franchise's signature treasure-hunting puzzles staged across the temple's multiple chambers.\n\nThe chapter weaves combat against Asav's pursuing forces with sustained environmental investigation. The chapter's environmental detail is one of the franchise's most acclaimed achievements — the Hoysala carvings, the temple's central battle frieze, and the campaign's most detailed archaeological storytelling. The chapter ends with the next clue recovered, the path to the deeper Hoysala vaults opened, and the campaign's third-act setup committed."
+      },
+      {
+        "name": "6. Hidden in the Mountains — The Vault System",
+        "summary": "The campaign's most acclaimed puzzle chapter. The deeper Hoysala vaults are accessible via a multi-stage puzzle system requiring Chloe to combine recovered Hoysala discs into a central activation mechanism. The chapter is structured as a sustained vertical exploration sequence weaving combat with the campaign's hardest sustained puzzle sequences.\n\nThe chapter dwells on Chloe's growing investment in the historical significance of what she is doing. The franchise's earlier installments treated treasure-hunting primarily as adventure-comedy with personal stakes; *The Lost Legacy* foregrounds the colonial-era erasure of Hoysala history and Chloe's quiet commitment to its preservation. The chapter's environmental texture is the franchise's most thematically loaded.\n\nThe chapter ends with the deeper vault accessed, the Tusk's true location confirmed, and the campaign's pivot toward the central confrontation positioned."
+      },
+      {
+        "name": "7. The Persistence of Memory — Sam Drake Returns",
+        "summary": "The campaign's perspective-pivot chapter. **Sam Drake** — Nathan's brother from *Uncharted 4* — has been pursuing Chloe across the campaign as a parallel treasure-hunter under Asav's contract. The chapter is structured as a sustained character encounter weaving sustained combat with the franchise's signature character-driven dialogue.\n\nThe chapter dwells on Sam's character resolution. Sam, having survived the events of *A Thief's End* but never quite returned to the brotherly relationship with Nathan, has been operating as a freelance contractor with deteriorating ethical filters. His pursuit of Chloe is not personal — it is professional — but his methods have escalated to violence Nathan would not have approved.\n\nThe chapter ends with Sam's growing recognition that Asav's plans for the Tusk extend beyond simple personal enrichment, Sam's defection from Asav's contract, and the campaign's central character realignment committed."
+      },
+      {
+        "name": "8. Partners — Nadine's Training",
+        "summary": "A character-focused chapter dedicated to **Nadine Ross**'s training of Chloe in advanced close-quarters combat techniques. The chapter is structured as a sustained character-development sequence with reduced combat density, dedicated entirely to Chloe and Nadine's working relationship.\n\nThe chapter dwells on Nadine's growth. Where her *Uncharted 4* appearance staged her as a coldly competent antagonist, *The Lost Legacy* renders her as a partner with significant character interiority. Her quiet revelation of her family history, her commitment to professional ethics over financial pursuit, and her growing genuine respect for Chloe's improvisational instincts all anchor the campaign's emotional foundation.\n\nThe chapter ends with Chloe and Nadine's partnership formally committed, the campaign's final assault on Asav's forces positioned, and the climactic train sequence staged."
+      },
+      {
+        "name": "9. End of the Line — The Train",
+        "summary": "The campaign's climactic chapter. **Asav** has loaded the **Tusk of Ganesh** onto a military train traveling across the Indian countryside, with the explicit intent of using the artifact's symbolic power to ignite full-scale civil war across the region. The chapter is structured as a sustained train-set-piece sequence, with the campaign's hardest sustained combat encounters and the franchise's most acclaimed mobile action design.\n\nThe chapter's combat highlights include the campaign's most demanding traversal sequences — Chloe moving between train cars at high speed, fighting Asav's reinforcements on the train roof, and the franchise's signature improvised-physics combat. The chapter's mid-section stages **Asav's final confrontation**, with the antagonist's central plan exposed and the train's cargo confirmed as a weaponized improvised explosive device intended for civilian-target deployment.\n\nThe chapter ends with Asav defeated, the Tusk recovered, the train's catastrophic explosion prevented, and Chloe's quiet decision to return the Tusk to Indian authorities for proper museum preservation rather than private sale. The campaign's emotional resolution lands the franchise's most thematically loaded single ending — the artifact has been preserved, the colonial-era exploitation of South Asian history has been resisted in a small but genuine way, and Chloe has emerged from her father's shadow into her own legacy.\n\nThe credits roll over Chloe and Nadine's quiet departure from India, with the franchise's signature musical cue scoring the campaign's emotional closure."
+      }
+    ]
+  },
+  {
+    "slug": "final-fantasy-7-remake",
+    "title": "Final Fantasy VII Remake",
+    "year": 2020,
+    "developer": "Square Enix",
+    "publisher": "Square Enix",
+    "series": "Final Fantasy VII",
+    "genre": [
+      "Action RPG",
+      "JRPG"
+    ],
+    "tags": [
+      "Square Enix",
+      "Cloud Strife",
+      "Tifa Lockhart",
+      "Aerith Gainsborough",
+      "Barret Wallace",
+      "Midgar",
+      "Shinra"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "UF784WV6IMQ",
+        "duration": ""
+      }
+    ],
+    "guide": "Final Fantasy VII Remake is Square Enix's 2020 ground-up reimagining of the iconic 1997 PlayStation classic's Midgar arc. Mercenary Cloud Strife joins the eco-terrorist group Avalanche in a campaign of sabotage against the Shinra Electric Power Company, whose mako reactors are draining the planet's life energy. The walkthrough captures the full main campaign — confined entirely to the dystopian megacity of Midgar — on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary. The reimagined real-time action-RPG combat, expanded character work, and lavishly rebuilt cutscenes are rendered at maximum visual fidelity.",
+    "chapters": [
+      {
+        "name": "1. The Destruction of Mako Reactor 1",
+        "summary": "The campaign opens with Cloud Strife, an ex-SOLDIER mercenary, hired by the eco-terrorist resistance group Avalanche for a sabotage mission against Shinra's Mako Reactor 1. The chapter introduces the campaign's real-time action-RPG combat fundamentals — the ATB gauge, the tactical pause menu, and the punishing Scorpion Sentinel boss encounter that closes the chapter. The opening sequence weaves combat tutorial with the campaign's central thematic question: whether Shinra's planetary exploitation can be stopped without harming Midgar's working-class residents."
+      },
+      {
+        "name": "2. Fateful Encounters",
+        "summary": "Cloud, separated from Avalanche during the post-bombing chaos, meets the flower seller Aerith Gainsborough in the Sector 8 plaza. Pursued by Shinra's Public Security division, the two flee through Midgar's upper-plate marketplace in the campaign's first sustained character chapter. The chapter ends with Cloud falling through a church roof in the Sector 5 undercity slums, separated from Aerith, the campaign's central character network beginning to form."
+      },
+      {
+        "name": "3. Home Sweet Slum",
+        "summary": "Cloud, returned to Avalanche's Sector 7 hideout, reunites with childhood friend Tifa Lockhart and the resistance leader Barret Wallace. The chapter dwells on the campaign's domestic texture — the slum residents' working-class lives, the Seventh Heaven bar Avalanche operates as a cover, and the relationships that ground the campaign's central political stakes. The chapter ends with Cloud accepting Avalanche's next contract: the destruction of Mako Reactor 5."
+      },
+      {
+        "name": "4. Mad Dash",
+        "summary": "A short transitional chapter staged as a motorcycle escort through the Sector 4 plate underbelly. Cloud, Tifa, and Barret traverse the city's massive structural support framework on the way to Reactor 5, with the franchise's signature mid-mission spectacle and combat against Shinra's mid-air defense forces. The chapter ends with the team's arrival at Reactor 5's exterior approach."
+      },
+      {
+        "name": "5. Dogged Pursuit",
+        "summary": "The infiltration of Mako Reactor 5. The chapter is structured as a sustained interior exploration sequence with the campaign's most demanding mid-game combat encounters. The chapter ends with the bombing successful but the team caught in a Shinra ambush — the campaign's central political reveal staged as the reactor's true defense network is unveiled."
+      },
+      {
+        "name": "6. Light the Way",
+        "summary": "A short exploration chapter set in the slums following the Reactor 5 mission. Cloud, separated from his Avalanche allies, navigates the Sector 5 streets and reunites with Aerith at her childhood home. The chapter dwells on Aerith's character — her relationship with her adoptive mother Elmyra, her quiet awareness of her Cetra heritage, and her growing concern for Cloud's deteriorating mental state."
+      },
+      {
+        "name": "7. A Trip Down Memory Lane",
+        "summary": "Cloud and Aerith, traveling back toward Sector 7, are forced to take refuge in Sector 6's Wall Market — Midgar's most notorious black-market district controlled by the crime lord Don Corneo. The chapter is one of the campaign's most acclaimed expansions of the original: the Don Corneo audition sequence, with Cloud crossdressing to infiltrate Corneo's mansion, is staged with significantly more character depth than the 1997 original. The chapter ends with Tifa, Cloud, and Aerith escaping the mansion together, with critical intelligence about Shinra's plans for Sector 7."
+      },
+      {
+        "name": "8. Just Flowers for a Friend",
+        "summary": "A short character-focused chapter as the team prepares for Shinra's imminent attack on Sector 7. The chapter weaves quiet domestic scenes with the campaign's mounting political tension. The chapter ends with Shinra's plate-drop operation initiated — Sector 7's support pillar will be destroyed, with the entire upper plate collapsing onto the undercity slums below."
+      },
+      {
+        "name": "9. The Town That Never Sleeps",
+        "summary": "The campaign's most demanding mid-game combat chapter. The team fights through Shinra's military forces in a desperate ascent of the Sector 7 support pillar, attempting to prevent the plate drop. The chapter is staged as a sustained vertical combat sequence with the franchise's most acclaimed mid-game boss encounter. The chapter ends with Avalanche's leadership (Biggs, Wedge, Jessie) killed in the operation, the plate drop unprevented, and Sector 7 destroyed."
+      },
+      {
+        "name": "10. Rough Waters",
+        "summary": "The campaign's emotional pivot chapter. Cloud, Tifa, and Barret, having failed to prevent the plate drop, escape Sector 7 through the city's drainage infrastructure. The chapter dwells on the team's grief and the campaign's reframed political stakes. The chapter ends with Aerith captured by Shinra's elite Turks unit, the team's next mission committed: infiltrate Shinra's central headquarters in the upper plate."
+      },
+      {
+        "name": "11. Haywire",
+        "summary": "The infiltration of Shinra Headquarters' lower floors. The chapter is structured as a sustained corporate-tower stealth and combat sequence, with the franchise's signature elevator-based combat encounters. The chapter dwells on Shinra's internal corporate texture — the office workers, the scientists, the executives — as the campaign's central antagonist is humanized for the first time."
+      },
+      {
+        "name": "12. Fight for Survival",
+        "summary": "The Shinra Headquarters upper floors. The chapter weaves combat with the campaign's most acclaimed exposition sequences — President Shinra's penthouse, the executive boardroom, and the introduction of the campaign's central antagonist Rufus Shinra. The chapter ends with the team's escape from Shinra Headquarters on the Sector 0 expressway, the campaign's central political conflict fully exposed."
+      },
+      {
+        "name": "13. The Day Midgar Stood Still",
+        "summary": "The campaign's climax. The team confronts Sephiroth — the campaign's central supernatural antagonist — in a sustained battle staged across multiple cinematic environments. The chapter weaves combat with the campaign's most acclaimed cutscene direction, with Cloud's deteriorating mental state and Sephiroth's manipulation of the campaign's central reality fully foregrounded. The chapter ends with the team escaping Midgar on motorcycles, the broader Final Fantasy VII narrative committed for the remake trilogy's second installment."
+      }
+    ]
+  },
+  {
+    "slug": "final-fantasy-7-rebirth",
+    "title": "Final Fantasy VII Rebirth",
+    "year": 2024,
+    "developer": "Square Enix",
+    "publisher": "Square Enix",
+    "series": "Final Fantasy VII",
+    "genre": [
+      "Action RPG",
+      "JRPG",
+      "Open World"
+    ],
+    "tags": [
+      "Square Enix",
+      "Cloud Strife",
+      "Tifa Lockhart",
+      "Aerith Gainsborough",
+      "Barret Wallace",
+      "Red XIII",
+      "Yuffie Kisaragi",
+      "Sephiroth"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Part I",
+        "id": "hpwoN8a2kB4",
+        "duration": ""
+      },
+      {
+        "label": "Part II",
+        "id": "LU8x5GNXn_w",
+        "duration": ""
+      }
+    ],
+    "guide": "Final Fantasy VII Rebirth is Square Enix's 2024 PS5-exclusive second installment of the Remake trilogy, expanding the original FFVII's overworld journey beyond Midgar into a sprawling open-world exploration of Gaia. The campaign follows Cloud's party from Kalm to the Forgotten Capital — through Junon, Costa del Sol, Corel, Gongaga, Cosmo Canyon, Nibelheim, and the Gold Saucer — pursuing Sephiroth across the planet. The walkthrough captures the full main campaign across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary.",
+    "chapters": [
+      {
+        "name": "1. The Promise of a Reunion — Nibelheim Flashback",
+        "summary": "The campaign opens with a sustained flashback to the Nibelheim incident — the central traumatic event in Cloud's backstory, where a young Sephiroth, recently learning his Jenova origins, sets fire to the village and kills most of its residents. The chapter is structured as a playable Sephiroth-and-Cloud expedition leading into the village massacre. The chapter ends with the campaign's framing question committed: how much of the Nibelheim memory is real, and how much is Cloud's reconstructed account?"
+      },
+      {
+        "name": "2. Welcome to Kalm",
+        "summary": "The party arrives in Kalm, the first major non-Midgar settlement in the campaign. Cloud delivers the Nibelheim flashback to the party at the local inn, with the chapter weaving quiet character work with the campaign's first open-world exploration zone. The chapter ends with the party departing Kalm with their next destination — Junon, on Gaia's east coast — confirmed."
+      },
+      {
+        "name": "3. The Grasslands — Open World",
+        "summary": "The campaign's first sustained open-world chapter. The Grasslands region is rendered as the franchise's most ambitious environmental design, with the Chocobo Stop system, the World Intel mini-quests, and the Chadley combat-assessment system all introduced as the campaign's open-world fundamentals. The chapter dwells on the party's character work through traversal — Cloud, Tifa, Barret, and Red XIII interacting through the franchise's signature exploration dialogue."
+      },
+      {
+        "name": "4. Junon Region — Mythril Mine",
+        "summary": "The party crosses into the Junon region via the Mythril Mine — a multi-stage interior exploration sequence that introduces the campaign's mid-tier combat encounters. The chapter is structured as a sustained dungeon traversal with the franchise's signature puzzle-solving and the introduction of Yuffie Kisaragi as a party member during the Mythril ambush sequence."
+      },
+      {
+        "name": "5. Under Junon — The Coastal Region",
+        "summary": "The party arrives at Under Junon, the working-class town beneath Shinra's massive coastal cannon installation. The chapter weaves quiet character work with the campaign's first sustained Shinra political reveal — Rufus Shinra's parade through Junon is staged with significantly expanded production values from the 1997 original. The chapter ends with the party stowing away aboard a Shinra military transport bound for the western continent."
+      },
+      {
+        "name": "6. Costa del Sol — Beach Resort",
+        "summary": "The party arrives at Costa del Sol, the franchise's signature beach resort setting. The chapter is structured as a sustained character-vacation sequence with significantly expanded mini-games, optional character interactions, and the campaign's most acclaimed Tifa-and-Aerith friendship beats. The chapter dwells on the campaign's domestic texture before the central pursuit of Sephiroth resumes."
+      },
+      {
+        "name": "7. Corel Region — Mt. Corel and North Corel",
+        "summary": "The party crosses Mt. Corel toward the wider Corel region, with the chapter weaving open-world exploration with the campaign's first sustained Barret character chapter. The chapter dwells on Barret's relationship with North Corel — the town his family came from, destroyed by Shinra in a mako-reactor incident — and the chapter's central thematic question about Avalanche's broader political legitimacy. The chapter ends with the party departing for the Gold Saucer."
+      },
+      {
+        "name": "8. The Gold Saucer — Theme Park",
+        "summary": "The campaign's most acclaimed mid-game spectacle chapter. The Gold Saucer is rendered as the franchise's most ambitious mini-game hub, with the campaign's most extensive optional content — Queen's Blood card game tournaments, theme-park rides, the Loveless musical, and the franchise's signature date-system that culminates in Cloud's evening with one of the party members. The chapter dwells on the campaign's character work through extended optional interaction."
+      },
+      {
+        "name": "9. Corel Prison — The Desert",
+        "summary": "Following the Gold Saucer arc, the party is imprisoned in Corel Prison and forced to compete in the Chocobo Square's racing tournament for their freedom. The chapter weaves the campaign's mini-game design with sustained character work around Barret's confrontation with his former Avalanche partner Dyne. The chapter ends with Dyne's death by Barret's hand, the party's freedom secured, and the next region — Cosmo Canyon — committed."
+      },
+      {
+        "name": "10. Gongaga Region — The Jungle",
+        "summary": "The party traverses the Gongaga region — the jungle environment that the original 1997 game elided but that Rebirth foregrounds as a sustained mid-game exploration zone. The chapter is structured as a sustained dungeon-and-overworld sequence with the campaign's most demanding traversal mechanics. The chapter dwells on Aerith's character beats — Gongaga is the home town of her first love Zack Fair — and the campaign's central thematic question about Aerith's awareness of her own narrative fate."
+      },
+      {
+        "name": "11. Cosmo Canyon — Red XIII's Home",
+        "summary": "The party arrives at Cosmo Canyon, the spiritual-research community where Red XIII's grandfather Bugenhagen leads the Cosmo Memory religious-scientific tradition. The chapter is structured as a sustained character chapter with significantly expanded Red XIII content — his rejection of his hero-warrior identity, his relationship with the campaign's central Lifestream theology, and his eventual acceptance of his role in the broader narrative. The chapter ends with the party departing for Nibelheim."
+      },
+      {
+        "name": "12. Nibelheim Revisited",
+        "summary": "The party arrives at Nibelheim — a town that should not exist, given Sephiroth's destruction of it five years before the campaign's present. The chapter is structured as a sustained psychological exploration sequence with the campaign's most acclaimed environmental texture. The reconstructed Nibelheim is staged as a deliberately uncanny space, with Cloud's memory of the original events systematically undermined by environmental evidence. The chapter ends with the campaign's central character question fully open."
+      },
+      {
+        "name": "13. Mt. Nibel — The Reactor",
+        "summary": "A sustained mountain-dungeon traversal chapter set on Mt. Nibel, the site of the original Nibelheim mako reactor. The chapter weaves combat with the campaign's most demanding puzzle sequences, with the reactor's interior revealed as the source of Sephiroth's Jenova-tainted genetics. The chapter dwells on the campaign's central reveal — that Cloud's memories may not be his own."
+      },
+      {
+        "name": "14. The Temple of the Ancients",
+        "summary": "The campaign's third-act spectacle chapter. The Temple of the Ancients is rendered as the franchise's most architecturally ambitious dungeon, with the chapter's central puzzle sequence requiring sustained party coordination. The chapter dwells on Aerith's deepening commitment to her Cetra heritage and the campaign's central question about the planet's Lifestream defense system. The chapter ends with the Black Materia recovered, Sephiroth's plan to summon Meteor confirmed, and the party's next destination — the Forgotten Capital — committed."
+      },
+      {
+        "name": "15. The Forgotten Capital",
+        "summary": "The campaign's climactic chapter. The party arrives at the Forgotten Capital, the lost city of the Cetra, in pursuit of Sephiroth and the Black Materia. The chapter is structured as a sustained character-and-combat sequence, with the franchise's most thematically loaded single moment — Aerith's confrontation with Sephiroth at the city's central altar — staged with significantly expanded production values from the 1997 original. The chapter's central event is one of the franchise's most studied narrative beats, with the Remake trilogy's central multiverse framing leaving the outcome deliberately ambiguous. The chapter ends with the broader campaign's third installment seeded, the credits rolling on the franchise's most emotionally loaded single chapter."
+      }
+    ]
+  },
+  {
+    "slug": "007-first-light",
+    "title": "007 First Light",
+    "year": 2026,
+    "developer": "IO Interactive",
+    "publisher": "IO Interactive",
+    "series": "James Bond",
+    "genre": [
+      "Action-Adventure",
+      "Spy Thriller"
+    ],
+    "tags": [
+      "IO Interactive",
+      "James Bond",
+      "MI6",
+      "Espionage",
+      "Origin Story"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "uz3y3WLv5Z4",
+        "duration": ""
+      }
+    ],
+    "guide": "007 First Light is IO Interactive's 2026 origin-story James Bond title, the studio's first AAA project outside the Hitman franchise. The campaign stages a younger James Bond — newly promoted to 00 status — across a globe-trotting espionage thriller that explores the character's formative early MI6 years. The walkthrough captures the full main campaign on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary. IO Interactive's signature creative-mission design — refined across three Hitman trilogies — is applied to the spy-thriller genre, with the campaign's combat, stealth, and environmental investigation mechanics rendered with the studio's hallmark sandbox approach.",
+    "chapters": [
+      {
+        "name": "1. Origin — MI6 Recruitment",
+        "summary": "The campaign opens with a young James Bond in the immediate aftermath of his Royal Navy commando service, recruited into MI6's training program under the direction of M. The opening sequence is structured as a sustained training-mission tutorial weaving the campaign's stealth, combat, and gadget fundamentals across an MI6 training facility. The chapter establishes the campaign's central tonal question: how does the character we know as 007 actually become 007?"
+      },
+      {
+        "name": "2. First Field Assignment",
+        "summary": "Bond's first sustained operational mission, staged as a sandbox-style infiltration of an enemy stronghold. The chapter introduces IO Interactive's signature creative-mission design — multiple parallel solution paths, environmental disguises, and the franchise-defining opportunities system adapted from the Hitman lineage. The chapter dwells on the campaign's character work — Bond's improvisational instincts, his discomfort with the espionage profession's moral compromises, and his first encounter with the campaign's central antagonist organization."
+      },
+      {
+        "name": "3. Field Operations",
+        "summary": "The campaign's central operational arc unfolds across multiple international settings, with each location designed as a sandbox environment in the IO Interactive tradition. The chapter weaves combat, stealth, and environmental investigation across the campaign's signature locations — luxury hotels, embassy compounds, private islands, and the campaign's most acclaimed environmental design moments. (Detailed chapter breakdown to be expanded as the walkthrough progresses on the channel.)"
+      },
+      {
+        "name": "4. The Final Assignment",
+        "summary": "The campaign's climactic chapter stages Bond's confrontation with the central antagonist organization across a sustained final-mission sequence. The chapter weaves the campaign's hardest combat encounters with the franchise's signature character beats — the moment Bond fully becomes 007, with the codename, the license to kill, and the moral commitments that will define the broader franchise narrative. The credits roll on the campaign's central character resolution, with the broader IO Interactive 007 trilogy seeded for the franchise's continuation."
       }
     ]
   }
