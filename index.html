@@ -11,7 +11,8 @@
   <meta property="og:url" content="https://gamingcinema.github.io/">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="logo.png">
-<link rel="stylesheet" href="style.css?v=20260629b">
+<link rel="stylesheet" href="style.css?v=20260629d">
+<script src="youtube-api.js?v=20260629d" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -80,6 +81,12 @@
         <p class="lead">No-commentary full-game walkthroughs captured natively on PlayStation 5 Pro at 4K HDR 60FPS with PSSR upscaling. Every cutscene, every boss, every chapter &mdash; preserved as an interactive movie.</p>
       </section>
 
+      <div class="channel-stats" id="channelStats" aria-label="Channel stats">
+        <div class="channel-stats-item"><span class="channel-stats-num" id="csVideos">&mdash;</span><span class="channel-stats-label">Walkthroughs</span></div>
+        <div class="channel-stats-item"><span class="channel-stats-num" id="csSubs">&mdash;</span><span class="channel-stats-label">Subscribers</span></div>
+        <div class="channel-stats-item"><span class="channel-stats-num" id="csViews">&mdash;</span><span class="channel-stats-label">Total Views</span></div>
+      </div>
+
       <section id="games">
         <div class="search-bar">
           <input type="search" id="searchInput" placeholder="Search game name, developer, character&hellip;" autocomplete="off">
@@ -92,6 +99,18 @@
         <div class="no-results" id="noResults" style="display:none;">
           No games match your search. Try a different keyword or category.
         </div>
+      </section>
+
+      <section class="shorts-section" id="shortsSection" style="display:none;">
+        <h2>Quick Highlights</h2>
+        <p class="lead">Cinematic moments in 60 seconds. The Shorts feed.</p>
+        <div class="shorts-grid" id="shortsGrid"></div>
+      </section>
+
+      <section class="yt-subscribe-block">
+        <h2>Don&#39;t miss the next walkthrough</h2>
+        <p>New PS5 Pro 4K HDR cinematic walkthroughs every week. No commentary. Subscribe on YouTube.</p>
+        <div class="yt-subscribe-widget" id="ytSubscribeWidget"></div>
       </section>
     </main>
   </div>
@@ -139,7 +158,7 @@
       games.forEach(g => (g.genre || []).forEach(genre => {
         counts[genre] = (counts[genre] || 0) + 1;
       }));
-      return Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      return Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
     }
 
     function getAllSeries(games) {
@@ -147,7 +166,8 @@
       games.forEach(g => {
         if (g.series) counts[g.series] = (counts[g.series] || 0) + 1;
       });
-      return Object.entries(counts).filter(([, c]) => c >= 1).sort((a, b) => b[1] - a[1]);
+      // Only show series with 2+ games (single-game "series" like James Bond don't qualify)
+      return Object.entries(counts).filter(([, c]) => c >= 2).sort((a, b) => a[0].localeCompare(b[0]));
     }
 
     function getAllDevelopers(games) {
@@ -155,7 +175,7 @@
       games.forEach(g => {
         if (g.developer) counts[g.developer] = (counts[g.developer] || 0) + 1;
       });
-      return Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+      return Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0]));
     }
 
     function renderSidebar() {
@@ -274,7 +294,7 @@
         return `
           <article class="game-card">
             <a href="${gameUrl(g)}" class="card-link">
-              <div class="thumb" style="background-image:url('${thumb}')">${ageBadge}${chapterBadge}</div>
+              <div class="thumb" style="background-image:url('${thumb}')">${ageBadge}${chapterBadge}<span class="view-count" data-vid="${g.videos[0]?.id || ''}"></span></div>
               <div class="meta">
                 <h3>${g.title}</h3>
                 <div class="submeta">${g.developer} &middot; ${g.year} &middot; ${partsLabel}</div>
@@ -286,6 +306,68 @@
       }).join('');
     }
 
+    async function loadChannelStats() {
+      if (!window.GamingCinemaYT) return;
+      try {
+        const s = await window.GamingCinemaYT.getChannelStats();
+        if (!s) return;
+        document.getElementById('csVideos').textContent = window.GamingCinemaYT.formatCount(s.videoCount);
+        document.getElementById('csSubs').textContent = window.GamingCinemaYT.formatCount(s.subscribers);
+        document.getElementById('csViews').textContent = window.GamingCinemaYT.formatCount(s.views);
+        document.getElementById('channelStats').classList.add('loaded');
+      } catch (e) { console.warn('Channel stats unavailable', e); }
+    }
+
+    async function loadViewCounts() {
+      if (!window.GamingCinemaYT) return;
+      const spans = document.querySelectorAll('.view-count[data-vid]');
+      const ids = Array.from(spans).map(s => s.dataset.vid).filter(Boolean);
+      if (!ids.length) return;
+      try {
+        const stats = await window.GamingCinemaYT.getVideoStats(ids);
+        spans.forEach(s => {
+          const v = stats[s.dataset.vid];
+          if (v && v.views) {
+            s.textContent = window.GamingCinemaYT.formatCount(v.views) + ' views';
+            s.classList.add('loaded');
+          }
+        });
+      } catch (e) { console.warn('View counts unavailable', e); }
+    }
+
+    async function loadShorts() {
+      if (!window.GamingCinemaYT) return;
+      try {
+        const shorts = await window.GamingCinemaYT.getShorts(8);
+        if (!shorts.length) return;
+        const grid = document.getElementById('shortsGrid');
+        const channelId = window.GamingCinemaYT.CHANNEL_ID;
+        grid.innerHTML = shorts.map(s => `
+          <article class="shorts-card">
+            <a href="${window.GamingCinemaYT.utmYouTubeUrl(s.videoId, 'gamingcinema_site', 'web', 'shorts_grid')}" target="_blank" rel="noopener">
+              <div class="shorts-thumb" style="background-image:url('${s.thumbnail || ''}')"></div>
+              <div class="shorts-title">${s.title}</div>
+            </a>
+          </article>
+        `).join('');
+        document.getElementById('shortsSection').style.display = 'block';
+      } catch (e) { console.warn('Shorts unavailable', e); }
+    }
+
+    function loadSubscribeWidget() {
+      if (!window.GamingCinemaYT) return;
+      const widget = document.getElementById('ytSubscribeWidget');
+      widget.innerHTML = '<div class="g-ytsubscribe" data-channelid="' + window.GamingCinemaYT.CHANNEL_ID + '" data-layout="full" data-count="default"></div>';
+      // Load Google's platform.js once
+      if (!document.querySelector('script[src*="platform.js"]')) {
+        const s = document.createElement('script');
+        s.src = 'https://apis.google.com/js/platform.js';
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', async () => {
       try {
         const res = await fetch('games.json');
@@ -293,6 +375,12 @@
         allGames.forEach((g, i) => g._idx = i);
         renderSidebar();
         renderGames();
+        // Fire YouTube enrichment in parallel (non-blocking)
+        loadChannelStats();
+        loadShorts();
+        loadSubscribeWidget();
+        // View counts run after renderGames so DOM is ready
+        setTimeout(loadViewCounts, 100);
       } catch (err) {
         document.getElementById('gamesGrid').innerHTML =
           '<div class="no-results">Could not load games. Refresh the page.</div>';
