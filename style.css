@@ -1395,3 +1395,121 @@ footer.site-footer a:hover { text-decoration: underline; }
   text-align: center;
   margin: 10px 0 0;
 }
+
+/* ============ Series Content Pages (v3) ============ */
+html { scroll-behavior: smooth; }
+
+.series-page-content { padding-top: 8px; }
+
+.series-page-hero {
+  padding: 28px 0 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 28px;
+}
+.series-page-hero h1 {
+  font-size: 2.4rem;
+  margin: 0 0 8px;
+}
+
+.series-toc {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin: 0 0 36px;
+}
+.series-toc h2 {
+  font-size: 1.15rem;
+  margin: 0 0 14px;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.series-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 8px 16px;
+}
+.series-toc li { margin: 0; }
+.series-toc a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  color: #e8e8e8;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.series-toc a:hover {
+  background: rgba(255,255,255,0.10);
+  transform: translateX(2px);
+}
+.series-toc .toc-year {
+  color: #999;
+  font-weight: 400;
+  font-size: 0.92em;
+  margin-left: 4px;
+}
+.series-toc .playlist-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #c9302c, #e74c3c);
+  color: #fff;
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.series-toc .playlist-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(231, 76, 60, 0.35);
+}
+
+/* Each game within a series page */
+.series-entry {
+  scroll-margin-top: 24px;   /* anchor jump leaves room above */
+  padding: 28px 0 32px;
+  border-top: 2px solid rgba(255,255,255,0.08);
+  margin-top: 24px;
+}
+.series-entry:first-of-type {
+  border-top: 0;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.series-entry-hero { padding-bottom: 14px; }
+.series-entry-hero h2 {
+  font-size: 1.9rem;
+  margin: 0 0 6px;
+  color: #fff;
+}
+.series-entry-hero .subtitle {
+  color: #aaa;
+  margin: 0 0 12px;
+}
+.series-entry .video-block { margin-top: 18px; }
+.series-entry .video-block h4 {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+.series-entry .story h3 {
+  font-size: 1.25rem;
+  margin: 22px 0 10px;
+  color: #f0f0f0;
+}
+.series-entry .specs { margin-top: 14px; }
+
+@media (max-width: 720px) {
+  .series-page-hero h1 { font-size: 1.7rem; }
+  .series-toc { padding: 18px 16px; }
+  .series-toc ul { grid-template-columns: 1fr; }
+  .series-entry-hero h2 { font-size: 1.5rem; }
+}

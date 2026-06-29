@@ -107,6 +107,26 @@
     let activeFilter = { type: 'all', value: 'all' };
     let activeQuery = '';
 
+    // Multi-game series → single series-content page slug. Single-game series and
+    // standalone games fall through to their own `<slug>.html` page.
+    const SERIES_TO_PAGE = {
+      "Alan Wake":           "alan-wake-series.html",
+      "Final Fantasy VII":   "final-fantasy-7-series.html",
+      "Ghost":               "ghost-series.html",
+      "God of War":          "god-of-war-series.html",
+      "Horizon":             "horizon-series.html",
+      "Marvel's Spider-Man": "spider-man-series.html",
+      "Resident Evil":       "resident-evil-series.html",
+      "Star Wars Jedi":      "star-wars-jedi-series.html",
+      "The Last of Us":      "last-of-us-series.html",
+      "Uncharted":           "uncharted-series.html"
+    };
+
+    function gameUrl(g) {
+      const seriesPage = g.series && SERIES_TO_PAGE[g.series];
+      return seriesPage ? `${seriesPage}#${g.slug}` : `${g.slug}.html`;
+    }
+
     function thumbnailUrl(game) {
       const firstVideoId = game.videos[0]?.id;
       return firstVideoId ? `https://i.ytimg.com/vi/${firstVideoId}/hqdefault.jpg` : '';
@@ -255,7 +275,7 @@
         const tags = (g.tags || []).slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('');
         return `
           <article class="game-card">
-            <a href="${g.slug}.html" class="card-link">
+            <a href="${gameUrl(g)}" class="card-link">
               <div class="thumb" style="background-image:url('${thumb}')">${ageBadge}${chapterBadge}</div>
               <div class="meta">
                 <h3>${g.title}</h3>
