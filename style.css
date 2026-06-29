@@ -1474,3 +1474,9 @@ footer.site-footer a:hover { color: var(--accent); }
   .brand-logo { height: 42px; }
   .brand .tagline { font-size: 0.62rem; display: none; }
 }
+
+/* ============ LIVE OVERLAY VISIBILITY FIX ============ */
+/* Player overlay should only show when player is in "overlayed" state (before Go Live).
+   Once startLive() removes the .overlayed class, the card must disappear. */
+.player-wrap .player-overlay { display: none; }
+.player-wrap.overlayed .player-overlay { display: flex; }
