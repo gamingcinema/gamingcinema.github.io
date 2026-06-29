@@ -1424,6 +1424,10 @@ footer.site-footer a:hover { color: var(--accent); }
   .panel-body { padding: 4px 14px 18px; }
   .panel-grid { grid-template-columns: 1fr; }
 
+  .channel-stats { grid-template-columns: repeat(3, 1fr); }
+  .channel-stats-item { padding: 18px 8px 14px; gap: 4px; }
+  .channel-stats-num { font-size: 1.5rem; }
+  .channel-stats-label { font-size: 0.6rem; letter-spacing: 0.1em; }
   /* Bigger touch targets */
   .sidebar-list a { padding-top: 11px; padding-bottom: 11px; }
   .mode-tab { padding: 12px 18px; font-size: 0.78rem; }
@@ -1480,3 +1484,249 @@ footer.site-footer a:hover { color: var(--accent); }
    Once startLive() removes the .overlayed class, the card must disappear. */
 .player-wrap .player-overlay { display: none; }
 .player-wrap.overlayed .player-overlay { display: flex; }
+
+/* ============ YOUTUBE INTEGRATION ============ */
+/* Channel stats banner — premium dashboard layout below hero */
+.channel-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0;
+  margin: -8px 0 36px;
+  background: linear-gradient(135deg, rgba(212,175,107,0.08) 0%, rgba(212,175,107,0.02) 60%, transparent 100%);
+  border: 1px solid rgba(212,175,107,0.18);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.channel-stats.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+.channel-stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 26px 22px 22px;
+  position: relative;
+  gap: 6px;
+}
+.channel-stats-item + .channel-stats-item {
+  border-left: 1px solid rgba(212,175,107,0.14);
+}
+.channel-stats-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 0 0 2px 2px;
+}
+.channel-stats-num {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-strong);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.channel-stats-label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* View count overlay on game cards */
+.view-count {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(6px);
+  color: var(--text-strong);
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.view-count.loaded { opacity: 1; }
+.view-count::before {
+  content: '\25B6';
+  margin-right: 4px;
+  color: var(--accent);
+  font-size: 0.62rem;
+}
+
+/* YouTube Subscribe button container (footer) */
+.yt-subscribe-block {
+  text-align: center;
+  padding: 36px 24px 12px;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 28px;
+}
+.yt-subscribe-block h2 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-strong);
+  margin: 0 0 8px;
+}
+.yt-subscribe-block p {
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  font-size: 0.92rem;
+}
+.yt-subscribe-widget {
+  display: inline-block;
+  min-height: 24px;
+}
+
+/* Shorts grid */
+.shorts-section {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-soft);
+}
+.shorts-section h2 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--text-strong);
+}
+.shorts-section .lead {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0 0 20px;
+}
+.shorts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 14px;
+}
+.shorts-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.shorts-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.shorts-card a {
+  display: block;
+  color: inherit;
+}
+.shorts-thumb {
+  width: 100%;
+  aspect-ratio: 9/16;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-elevated);
+  position: relative;
+}
+.shorts-thumb::after {
+  content: 'SHORTS';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--danger);
+  color: var(--text-strong);
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+}
+.shorts-title {
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* QR code overlay on video block */
+.video-block-wrap {
+  position: relative;
+}
+.qr-code {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+}
+.qr-code img {
+  width: 72px;
+  height: 72px;
+  background: #fff;
+  padding: 4px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.qr-code-info {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.qr-code-info strong {
+  display: block;
+  color: var(--text-strong);
+  font-size: 0.92rem;
+  margin-bottom: 3px;
+  font-family: var(--font-serif);
+}
+
+/* "Watch on YouTube as Playlist" button — sits next to existing Watch as Playlist */
+.yt-playlist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: var(--danger);
+  color: var(--text-strong) !important;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-left: 8px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.yt-playlist-btn:hover {
+  background: #e26060;
+  transform: translateY(-1px);
+}
+.yt-playlist-btn::before {
+  content: '\25B6';
+  font-size: 0.7rem;
+}
+
+@media (max-width: 640px) {
+  .channel-stats { gap: 14px; padding: 10px 14px; }
+  .channel-stats-num { font-size: 1rem; }
+  .shorts-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .yt-playlist-btn { display: block; margin: 8px 0 0; text-align: center; }
+}
