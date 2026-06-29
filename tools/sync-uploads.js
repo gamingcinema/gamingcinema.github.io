@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const CHANNEL_ID = 'UCqDjRtMmffcFcCWLL_sNw7Q';
+const CHANNEL_ID = 'UCFJ7QojEjNQKIW0_hAQjxng';
 const API_KEY = process.env.YT_API_KEY;
 const BASE = 'https://www.googleapis.com/youtube/v3';
 const GAMES_PATH = path.join(__dirname, '..', 'games.json');

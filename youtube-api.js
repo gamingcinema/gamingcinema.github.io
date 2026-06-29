@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   var API_KEY = 'AIzaSyA4MuyPi2LYvEq_FB2yVIqJdV7sdX3zoZc';
-  var CHANNEL_ID = 'UCqDjRtMmffcFcCWLL_sNw7Q';
+  var CHANNEL_ID = 'UCFJ7QojEjNQKIW0_hAQjxng';
   var BASE = 'https://www.googleapis.com/youtube/v3';
 
   // Cache TTLs (ms) — minimize API quota use
