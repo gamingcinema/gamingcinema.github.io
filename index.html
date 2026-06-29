@@ -303,4 +303,28 @@
       }
 
       document.getElementById('searchInput').addEventListener('input', e => {
-        activeQuery = e.ta
+        activeQuery = e.target.value;
+        renderGames();
+      });
+
+      // Mobile sidebar toggle
+      document.getElementById('sidebarToggle').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('open');
+      });
+
+      // Collapsible nav groups - persist state in localStorage
+      document.querySelectorAll('.collapsible').forEach(sec => {
+        const key = 'gc_nav_' + sec.dataset.section;
+        const saved = localStorage.getItem(key);
+        if (saved === 'collapsed') sec.classList.add('collapsed');
+        else if (saved === 'open') sec.classList.remove('collapsed');
+        const btn = sec.querySelector('button');
+        if (btn) btn.addEventListener('click', () => {
+          sec.classList.toggle('collapsed');
+          localStorage.setItem(key, sec.classList.contains('collapsed') ? 'collapsed' : 'open');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
