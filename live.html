@@ -9,7 +9,7 @@
   <meta property="og:title" content="Gaming Cinema Live">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="logo.png">
-<link rel="stylesheet" href="style.css?v=20260629b">
+<link rel="stylesheet" href="style.css?v=20260629c">
 </head>
 <body>
   <header class="site-header">
@@ -228,6 +228,15 @@
                 + '<label for="logoSize">Logo size <span class="hint" id="logoSizeVal">44px</span></label>'
                 + '<input type="range" id="logoSize" min="24" max="84" step="2">'
               + '</div>'
+              + '<div class="panel-row">'
+                + '<label for="qualityPref">Preferred quality <span class="hint">YouTube has final say</span></label>'
+                + '<select id="qualityPref">'
+                  + '<option value="hd2160">2160p (4K)</option>'
+                  + '<option value="hd1440">1440p</option>'
+                  + '<option value="hd1080">1080p</option>'
+                  + '<option value="default">Auto</option>'
+                + '</select>'
+              + '</div>'
             + '</div>'
             + '<div class="panel-row">'
               + '<label>Games in rotation <span class="hint" id="gamesCount"></span></label>'
@@ -287,6 +296,10 @@
         tickerBgColor = e.target.value;
         localStorage.setItem('gc_live_bgcolor', tickerBgColor);
         applyTickerColors();
+      });
+      document.getElementById('qualityPref').addEventListener('change', function (e) {
+        localStorage.setItem('gc_live_quality', e.target.value);
+        setHighQuality();
       });
       var ls = document.getElementById('logoSize');
       ls.addEventListener('input', function (e) {
@@ -443,6 +456,10 @@
       logoData = localStorage.getItem('gc_live_logo') || '';
       applyLogo();
 
+      var savedQuality = localStorage.getItem('gc_live_quality') || 'hd1080';
+      var qSel = document.getElementById('qualityPref');
+      if (qSel) qSel.value = savedQuality;
+
       renderGamePicker();
 
       if (localStorage.getItem('gc_live_panel') === 'collapsed') {
@@ -583,6 +600,19 @@
       });
     }
 
+    function setHighQuality() {
+      // YouTube setPlaybackQuality is deprecated but still respected as a hint.
+      // Try preferred quality (from localStorage), then cascade down.
+      if (!player || !player.setPlaybackQuality) return;
+      var pref = localStorage.getItem('gc_live_quality') || 'hd1080';
+      var ladder = ['hd2160', 'hd1440', 'hd1080', 'highres'];
+      // Move preferred to top of ladder
+      ladder = [pref].concat(ladder.filter(function (q) { return q !== pref; }));
+      ladder.forEach(function (q) {
+        try { player.setPlaybackQuality(q); } catch (e) {}
+      });
+    }
+
     function beginSegment() {
       segStart = Date.now();
       if (segTimeout) clearTimeout(segTimeout);
@@ -595,6 +625,7 @@
       if (apiReady && player && current) {
         player.loadVideoById({ videoId: current.e.videoId, startSeconds: current.start });
         if (muted) player.mute(); else player.unMute();
+        setTimeout(setHighQuality, 500);
       }
     }
     function advance() {
@@ -617,7 +648,15 @@
         width: '100%',
         height: '100%',
         videoId: schedule[0].e.videoId,
-        playerVars: { rel: 0, modestbranding: 1, playsinline: 1, controls: 1, fs: 0 },
+        playerVars: {
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          controls: 1,
+          fs: 0,
+          vq: 'hd1080',  // initial-load quality hint (1080p+)
+          hd: 1          // legacy HD hint
+        },
         events: {
           'onReady': function () {
             apiReady = true;
@@ -628,9 +667,15 @@
               player.loadVideoById({ videoId: current.e.videoId, startSeconds: current.start });
               if (muted) player.mute(); else player.unMute();
             }
+            setTimeout(setHighQuality, 800);
           },
           'onError': function () { if (live) advance(); },
-          'onStateChange': function () {}
+          'onStateChange': function (e) {
+            if (e.data === YT.PlayerState.PLAYING) setTimeout(setHighQuality, 300);
+          },
+          'onPlaybackQualityChange': function () {
+            setTimeout(setHighQuality, 200);
+          }
         }
       });
     };
