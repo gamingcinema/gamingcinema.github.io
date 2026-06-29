@@ -10,13 +10,14 @@
   <meta property="og:description" content="No-commentary PS5 Pro 4K HDR cinematic walkthroughs with PSSR upscaling. Full game coverage across 30+ AAA titles.">
   <meta property="og:url" content="https://gamingcinema.github.io/">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <a href="index.html">Gaming Cinema</a>
+        <a href="index.html"><img src="logo.png" alt="Gaming Cinema" class="brand-logo"></a>
         <span class="tagline">PS5 Pro &middot; 4K HDR &middot; PSSR &middot; No Commentary</span>
       </div>
       <nav class="primary">
@@ -302,28 +303,4 @@
       }
 
       document.getElementById('searchInput').addEventListener('input', e => {
-        activeQuery = e.target.value;
-        renderGames();
-      });
-
-      // Mobile sidebar toggle
-      document.getElementById('sidebarToggle').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('open');
-      });
-
-      // Collapsible nav groups - persist state in localStorage
-      document.querySelectorAll('.collapsible').forEach(sec => {
-        const key = 'gc_nav_' + sec.dataset.section;
-        const saved = localStorage.getItem(key);
-        if (saved === 'collapsed') sec.classList.add('collapsed');
-        else if (saved === 'open') sec.classList.remove('collapsed');
-        const btn = sec.querySelector('button');
-        if (btn) btn.addEventListener('click', () => {
-          sec.classList.toggle('collapsed');
-          localStorage.setItem(key, sec.classList.contains('collapsed') ? 'collapsed' : 'open');
-        });
-      });
-    });
-  </script>
-</body>
-</html>
+        activeQuery = e.ta

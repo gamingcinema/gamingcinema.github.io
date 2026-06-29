@@ -1437,3 +1437,40 @@ footer.site-footer a:hover { color: var(--accent); }
   .game-page, .series-page-content { padding: 0; }
 }
 
+
+/* ============ BRAND LOGO ============ */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brand a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.brand-logo {
+  height: 56px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 107, 0.25));
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.brand a:hover .brand-logo {
+  filter: drop-shadow(0 4px 12px rgba(212, 175, 107, 0.5));
+  transform: scale(1.03);
+}
+.brand .tagline {
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  display: block;
+}
+@media (max-width: 640px) {
+  .brand { gap: 10px; }
+  .brand-logo { height: 42px; }
+  .brand .tagline { font-size: 0.62rem; display: none; }
+}
