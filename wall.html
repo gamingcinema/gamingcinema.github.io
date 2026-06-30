@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wall Mode &mdash; Gaming Cinema</title>
-<meta name="description" content="Gaming Cinema Wall Mode — nine PS5 Pro 4K walkthroughs playing simultaneously in a 3x3 video wall, muted and always rotating.">
+<meta name="description" content="Gaming Cinema Wall Mode — multiple PS5 Pro 4K walkthroughs playing simultaneously in a 2x2, 2x3 or 3x3 video wall, muted and rotating.">
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Gaming Cinema - Wall Mode">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="logo.png">
-<link rel="stylesheet" href="style.css?v=20260629l">
+<link rel="stylesheet" href="style.css?v=20260629m">
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><div class="brand"><a href="index.html"><img src="logo.png" alt="Gaming Cinema" class="brand-logo"></a><span class="tagline">PS5 Pro &middot; 4K HDR &middot; PSSR &middot; No Commentary</span></div><nav class="primary"><a href="index.html#games">Walkthroughs</a><a href="live.html" class="nav-live">Live</a><a href="https://www.youtube.com/@4k_gaming_cinema" target="_blank" rel="noopener">YouTube</a></nav></div></header>
@@ -30,19 +30,33 @@
 (function () {
   'use strict';
 
-  var TILE_COUNT = 9;
-  var DEFAULT_ROTATE_SEC = 60;            // rotate one random tile every 60s
-  var DEFAULT_TILE_SEGMENT_SEC = 120;     // each tile starts ~120s into a random video (range)
-  var SHOW_CAPTIONS = true;
+  // Defaults shared with Store Mode (same localStorage keys for ticker/logo/colors/games)
+  var DEFAULT_TILE_COUNT = 4;       // 2x2 — most reliable under YouTube's embed limits
+  var DEFAULT_ROTATE_SEC = 60;
+  var DEFAULT_ANNOUNCE = 'Welcome to Gaming Cinema Live - fresh PS5 Pro 4K HDR walkthroughs every week. Subscribe on YouTube @4k_gaming_cinema';
+  var DEFAULT_TXT_COLOR = '#ffffff';
+  var DEFAULT_BG_COLOR = '#141414';
+  var DEFAULT_TICKER_POS = 'bottom';
+  var DEFAULT_TICKER_FONT = 16;
+  var DEFAULT_LOGO_SIZE = 44;
+  var TICKER_SPEED = 100;
+  var TICKER_BASE_HEIGHT = 42;
+  var TICKER_REPEAT_GAP_MS = 8000;
 
-  var allGames = [], pool = [], bag = [];
-  var tiles = [];     // [{ player, container, videoId, gameTitle, startSec }]
-  var players = [];   // YT.Player instances (parallel to tiles[])
-  var apiReady = false;
-  var live = false;
+  var allGames = [], pool = [], bag = [], disabledGames = [];
+  var tiles = [], players = [];
+  var apiReady = false, live = false;
+
+  var tileCount = DEFAULT_TILE_COUNT;
   var rotateMs = DEFAULT_ROTATE_SEC * 1000;
   var rotateTimer = null;
-  var disabledGames = [];
+  var showCaptions = true;
+
+  var announcements = [];
+  var tickerTimer = null, tickerIdx = 0;
+  var tickerPos = DEFAULT_TICKER_POS, tickerFont = DEFAULT_TICKER_FONT;
+  var tickerTextColor = DEFAULT_TXT_COLOR, tickerBgColor = DEFAULT_BG_COLOR;
+  var logoData = '', logoSize = DEFAULT_LOGO_SIZE;
 
   var elContent = document.getElementById('wallContent');
 
@@ -65,40 +79,37 @@
     }
     return a;
   }
-
+  function parseAnn(text) {
+    return String(text || '').split(/\r?\n/).map(function (s) { return s.trim(); })
+      .filter(function (s) { return s.length > 0; });
+  }
   function buildPool(games) {
     var p = [];
     games.forEach(function (g) {
       if (g.ageRestricted) return;
       if (disabledGames.indexOf(g.slug) >= 0) return;
       (g.videos || []).forEach(function (v) {
-        p.push({
-          videoId: v.id,
-          gameTitle: g.title,
-          gameSlug: g.slug,
-          durationSec: secsFromDur(v.duration)
-        });
+        p.push({ videoId: v.id, gameTitle: g.title, gameSlug: g.slug, durationSec: secsFromDur(v.duration) });
       });
     });
     return p;
   }
-
   function loadGameSelection() {
     try {
       var s = JSON.parse(localStorage.getItem('gc_live_disabledgames') || '[]');
       disabledGames = Array.isArray(s) ? s : [];
     } catch (e) { disabledGames = []; }
   }
-
+  function saveDisabled() {
+    try { localStorage.setItem('gc_live_disabledgames', JSON.stringify(disabledGames)); } catch (e) {}
+  }
   function drawFromBag() {
     if (bag.length === 0) bag = shuffle(pool.slice());
     return bag.pop();
   }
-
   function makePick() {
     var e = drawFromBag();
     if (!e) return null;
-    // Random start point: between 60s and (duration - 120s) when possible
     var dur = e.durationSec || 0;
     var minStart = dur > 600 ? 60 : 0;
     var maxStart = Math.max(minStart + 30, dur - 120);
@@ -107,46 +118,107 @@
     return { videoId: e.videoId, gameTitle: e.gameTitle, startSec: startSec };
   }
 
-  function renderStage() {
-    var capStyle = SHOW_CAPTIONS ? '' : 'style="display:none"';
-    var tilesHtml = '';
-    for (var i = 0; i < TILE_COUNT; i++) {
-      tilesHtml += '<div class="wall-tile" id="tile-' + i + '">'
+  function buildTilesHtml() {
+    var html = '';
+    for (var i = 0; i < tileCount; i++) {
+      html += '<div class="wall-tile" id="tile-' + i + '">'
         + '<div class="wall-player" id="player-' + i + '"></div>'
-        + '<div class="wall-caption" id="caption-' + i + '" ' + capStyle + '>&mdash;</div>'
+        + '<div class="wall-caption" id="caption-' + i + '">&mdash;</div>'
         + '</div>';
     }
+    return html;
+  }
 
+  function renderStage() {
     elContent.innerHTML =
       '<div class="live-head">'
         + '<h1>Wall Mode</h1>'
-        + '<p class="series-meta">Nine PS5 Pro 4K walkthroughs playing in a 3&times;3 grid, '
+        + '<p class="series-meta">Multiple PS5 Pro 4K walkthroughs playing simultaneously, '
         + 'muted and always rotating. Built for showrooms and lobbies. '
         + '<span id="poolCount">' + pool.length + '</span> clips in rotation.</p>'
       + '</div>'
-      + '<div class="wall-grid" id="wallGrid">' + tilesHtml + '</div>'
-      + '<div class="player-overlay wall-overlay" id="overlay">'
-        + '<div class="overlay-card">'
-          + '<h3>Wall Mode</h3>'
-          + '<p>Nine simultaneous walkthroughs in a 3&times;3 grid. Muted, always running, '
-          + 'auto-rotated. Stable internet recommended (~30 Mbps for 720p tiles).</p>'
-          + '<div class="overlay-actions">'
-            + '<button class="overlay-btn primary" id="goWallBtn" disabled>Loading&hellip;</button>'
+      + '<div class="live-stage">'
+        + '<div class="player-wrap overlayed" id="playerWrap">'
+          + '<div class="wall-grid" id="wallGrid" data-tiles="' + tileCount + '">' + buildTilesHtml() + '</div>'
+          + '<div class="live-badge"><span class="bdot"></span> WALL</div>'
+          + '<img class="live-logo" id="liveLogo" alt="" style="display:none">'
+          + '<div class="ticker pos-bottom" id="ticker" style="pointer-events:none"><div class="ticker-text" id="tickerText"></div></div>'
+          + '<div class="player-overlay" id="overlay">'
+            + '<div class="overlay-card">'
+              + '<h3>Wall Mode</h3>'
+              + '<p>Multiple simultaneous walkthroughs in a grid. Muted, always running, auto-rotated. '
+              + 'Stable internet recommended (~10-30 Mbps depending on tile count).</p>'
+              + '<div class="overlay-actions">'
+                + '<button class="overlay-btn primary" id="goWallBtn" disabled>Loading&hellip;</button>'
+              + '</div>'
+            + '</div>'
           + '</div>'
         + '</div>'
+      + '</div>'
+      + '<div class="wall-explainer">'
+        + '<h3>About Wall Mode</h3>'
+        + '<p>Wall Mode plays multiple walkthroughs simultaneously in a grid. <strong>2&times;2 (4 tiles) is the default</strong> '
+        + 'because it works most reliably with YouTube\'s embedded player. YouTube does not allow a single player to display '
+        + 'multiple videos at once — each tile must use its own iframe instance. When more than 4&ndash;6 embeds run '
+        + 'simultaneously from the same origin, YouTube\'s anti-abuse systems may throttle some tiles, lower their quality, '
+        + 'or display a "tap to play" overlay. You can switch to 6 (2&times;3) or 9 (3&times;3) tiles from the settings panel '
+        + 'below, but expect occasional pause overlays on a subset of tiles. For unattended showroom displays, '
+        + '2&times;2 is recommended.</p>'
+        + '<p><strong>Audio is always muted</strong> &mdash; modern browsers require muted state for autoplay without user '
+        + 'interaction, which is essential for unattended kiosk operation.</p>'
       + '</div>'
       + '<div class="panel" id="panel">'
         + '<button class="panel-toggle" id="panelToggle">'
           + '<span>&#9881; Wall settings</span><span class="chev">&#9662;</span>'
         + '</button>'
         + '<div class="panel-body">'
+          + '<div class="panel-row">'
+            + '<label for="annInput">Ticker announcements <span class="hint">one per line &mdash; shared with Store Mode</span></label>'
+            + '<textarea id="annInput" rows="3" placeholder="Type an announcement or ad message..."></textarea>'
+          + '</div>'
           + '<div class="panel-grid">'
             + '<div class="panel-row">'
-              + '<label for="rotateInput">Tile rotation interval (seconds) <span class="hint">how often one tile swaps to a new video</span></label>'
-              + '<input type="number" id="rotateInput" min="15" max="600" step="5" value="' + DEFAULT_ROTATE_SEC + '">'
+              + '<label for="tileCountInput">Tile count <span class="hint">2&times;2 = 4, 2&times;3 = 6, 3&times;3 = 9</span></label>'
+              + '<select id="tileCountInput">'
+                + '<option value="4">4 (2&times;2)</option>'
+                + '<option value="6">6 (2&times;3)</option>'
+                + '<option value="9">9 (3&times;3)</option>'
+              + '</select>'
             + '</div>'
             + '<div class="panel-row">'
-              + '<label for="captionsToggle">Show captions</label>'
+              + '<label for="rotateInput">Tile rotation (seconds)</label>'
+              + '<input type="number" id="rotateInput" min="15" max="600" step="5">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="tickerPos">Ticker position</label>'
+              + '<select id="tickerPos">'
+                + '<option value="bottom">Bottom</option>'
+                + '<option value="middle">Middle</option>'
+                + '<option value="top">Top</option>'
+              + '</select>'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="tickerFont">Ticker font size <span class="hint" id="tickerFontVal">16px</span></label>'
+              + '<input type="range" id="tickerFont" min="12" max="30" step="1">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="txtColor">Ticker text color</label>'
+              + '<input type="color" id="txtColor">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="bgColor">Ticker background</label>'
+              + '<input type="color" id="bgColor">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="logoInput">Company logo</label>'
+              + '<input type="file" id="logoInput" accept="image/*">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="logoSize">Logo size <span class="hint" id="logoSizeVal">44px</span></label>'
+              + '<input type="range" id="logoSize" min="24" max="84" step="2">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="captionsToggle">Show tile captions</label>'
               + '<select id="captionsToggle"><option value="1">On</option><option value="0">Off</option></select>'
             + '</div>'
           + '</div>'
@@ -160,6 +232,7 @@
           + '</div>'
           + '<div class="panel-actions">'
             + '<span class="panel-note">Settings saved in this browser only.</span>'
+            + '<button class="np-btn" id="logoRemove">Remove logo</button>'
           + '</div>'
         + '</div>'
       + '</div>';
@@ -168,7 +241,24 @@
     document.getElementById('panelToggle').addEventListener('click', function () {
       var p = document.getElementById('panel');
       p.classList.toggle('collapsed');
-      localStorage.setItem('gc_wall_panel', p.classList.contains('collapsed') ? 'collapsed' : 'open');
+      localStorage.setItem('gc_live_panel', p.classList.contains('collapsed') ? 'collapsed' : 'open');
+    });
+    document.getElementById('annInput').addEventListener('change', function (e) {
+      localStorage.setItem('gc_live_ticker', e.target.value);
+      announcements = parseAnn(e.target.value);
+      restartTicker();
+    });
+    document.getElementById('tileCountInput').addEventListener('change', function (e) {
+      var v = parseInt(e.target.value, 10);
+      if ([4, 6, 9].indexOf(v) < 0) v = 4;
+      localStorage.setItem('gc_wall_tilecount', String(v));
+      tileCount = v;
+      // Re-render grid (destroy existing players)
+      players.forEach(function (p) { try { p && p.destroy && p.destroy(); } catch (err) {} });
+      players = []; tiles = [];
+      live = false;
+      renderStage();
+      loadSettings();
     });
     document.getElementById('rotateInput').addEventListener('change', function (e) {
       var v = parseInt(e.target.value, 10);
@@ -179,11 +269,64 @@
       localStorage.setItem('gc_wall_rotate', String(v));
       if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = setInterval(rotateOneTile, rotateMs); }
     });
+    document.getElementById('tickerPos').addEventListener('change', function (e) {
+      tickerPos = e.target.value;
+      localStorage.setItem('gc_live_tickerpos', tickerPos);
+      applyTickerPos();
+    });
+    document.getElementById('tickerFont').addEventListener('input', function (e) {
+      tickerFont = parseInt(e.target.value, 10) || DEFAULT_TICKER_FONT;
+      document.getElementById('tickerFontVal').textContent = tickerFont + 'px';
+      localStorage.setItem('gc_live_tickerfont', String(tickerFont));
+      applyTickerScale();
+    });
+    document.getElementById('txtColor').addEventListener('input', function (e) {
+      tickerTextColor = e.target.value;
+      localStorage.setItem('gc_live_txtcolor', tickerTextColor);
+      applyTickerColors();
+    });
+    document.getElementById('bgColor').addEventListener('input', function (e) {
+      tickerBgColor = e.target.value;
+      localStorage.setItem('gc_live_bgcolor', tickerBgColor);
+      applyTickerColors();
+    });
+    var ls = document.getElementById('logoSize');
+    ls.addEventListener('input', function (e) {
+      document.getElementById('logoSizeVal').textContent = e.target.value + 'px';
+    });
+    ls.addEventListener('change', function (e) {
+      logoSize = parseInt(e.target.value, 10) || DEFAULT_LOGO_SIZE;
+      localStorage.setItem('gc_live_logosize', String(logoSize));
+      applyLogo();
+    });
+    document.getElementById('logoInput').addEventListener('change', function (e) {
+      var file = e.target.files && e.target.files[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Logo larger than 2 MB. Please use a smaller file.');
+        e.target.value = '';
+        return;
+      }
+      var reader = new FileReader();
+      reader.onload = function (ev) {
+        logoData = ev.target.result;
+        try { localStorage.setItem('gc_live_logo', logoData); }
+        catch (err) { alert('Could not save the logo - too large for browser storage.'); }
+        applyLogo();
+      };
+      reader.readAsDataURL(file);
+    });
+    document.getElementById('logoRemove').addEventListener('click', function () {
+      logoData = '';
+      localStorage.removeItem('gc_live_logo');
+      document.getElementById('logoInput').value = '';
+      applyLogo();
+    });
     document.getElementById('captionsToggle').addEventListener('change', function (e) {
-      SHOW_CAPTIONS = (e.target.value === '1');
-      localStorage.setItem('gc_wall_captions', SHOW_CAPTIONS ? '1' : '0');
+      showCaptions = (e.target.value === '1');
+      localStorage.setItem('gc_wall_captions', showCaptions ? '1' : '0');
       document.querySelectorAll('.wall-caption').forEach(function (c) {
-        c.style.display = SHOW_CAPTIONS ? '' : 'none';
+        c.style.display = showCaptions ? '' : 'none';
       });
     });
     document.getElementById('gamePickList').addEventListener('change', function (e) {
@@ -198,22 +341,86 @@
       }
       saveDisabled();
       pool = buildPool(allGames);
-      updateGamesCount();
       var pc = document.getElementById('poolCount');
       if (pc) pc.textContent = pool.length;
+      updateGamesCount();
     });
     document.getElementById('gamesAll').addEventListener('click', function () {
-      disabledGames = [];
-      saveDisabled();
+      disabledGames = []; saveDisabled();
       pool = buildPool(allGames);
       renderGamePicker();
       var pc = document.getElementById('poolCount');
       if (pc) pc.textContent = pool.length;
     });
+
+    if (apiReady) {
+      var b = document.getElementById('goWallBtn');
+      if (b) { b.disabled = false; b.innerHTML = '&#9654; Start Wall'; }
+    }
   }
 
-  function saveDisabled() {
-    try { localStorage.setItem('gc_live_disabledgames', JSON.stringify(disabledGames)); } catch (e) {}
+  function applyTickerPos() {
+    var t = document.getElementById('ticker');
+    if (!t) return;
+    if (tickerPos === 'top') {
+      t.style.top = '0'; t.style.bottom = 'auto'; t.style.transform = 'none';
+    } else if (tickerPos === 'middle') {
+      t.style.top = '50%'; t.style.bottom = 'auto'; t.style.transform = 'translateY(-50%)';
+    } else {
+      t.style.top = 'auto'; t.style.bottom = '0'; t.style.transform = 'none';
+    }
+  }
+  function applyTickerScale() {
+    var tx = document.getElementById('tickerText');
+    var t = document.getElementById('ticker');
+    if (!tx || !t) return;
+    tx.style.fontSize = tickerFont + 'px';
+    t.style.height = TICKER_BASE_HEIGHT + 'px';
+    t.style.lineHeight = TICKER_BASE_HEIGHT + 'px';
+  }
+  function applyTickerColors() {
+    var tx = document.getElementById('tickerText');
+    var t = document.getElementById('ticker');
+    if (tx) tx.style.color = tickerTextColor;
+    if (t) t.style.background = tickerBgColor;
+  }
+  function applyLogo() {
+    var img = document.getElementById('liveLogo');
+    if (!img) return;
+    if (logoData) {
+      img.src = logoData;
+      img.style.height = logoSize + 'px';
+      img.style.display = 'block';
+    } else {
+      img.removeAttribute('src');
+      img.style.display = 'none';
+    }
+  }
+  function restartTicker() {
+    if (tickerTimer) { clearTimeout(tickerTimer); tickerTimer = null; }
+    var t = document.getElementById('ticker');
+    if (!t) return;
+    if (!announcements.length) { t.style.display = 'none'; return; }
+    t.style.display = 'block';
+    cycleTicker(0);
+  }
+  function cycleTicker(i) {
+    var t = document.getElementById('ticker');
+    var tx = document.getElementById('tickerText');
+    if (!t || !tx || !announcements.length) return;
+    tickerIdx = i % announcements.length;
+    tx.textContent = announcements[tickerIdx];
+    var contW = t.clientWidth || 640;
+    var textW = tx.offsetWidth || 240;
+    var dur = Math.max(6, (contW + textW + 8) / TICKER_SPEED);
+    tx.style.transition = 'none';
+    tx.style.transform = 'translateX(' + contW + 'px)';
+    void tx.offsetWidth;
+    tx.style.transition = 'transform ' + dur.toFixed(2) + 's linear';
+    tx.style.transform = 'translateX(' + (-textW - 8) + 'px)';
+    tickerTimer = setTimeout(function () {
+      tickerTimer = setTimeout(function () { cycleTicker(tickerIdx + 1); }, TICKER_REPEAT_GAP_MS);
+    }, dur * 1000);
   }
 
   function renderGamePicker() {
@@ -241,15 +448,29 @@
     updateGamesCount();
   }
   function updateGamesCount() {
+    var totalNonAge = allGames.filter(function (g) { return !g.ageRestricted; }).length;
     var on = allGames.filter(function (g) {
       return !g.ageRestricted && disabledGames.indexOf(g.slug) < 0;
     }).length;
-    var totalNonAge = allGames.filter(function (g) { return !g.ageRestricted; }).length;
     var el = document.getElementById('gamesCount');
     if (el) el.textContent = on + ' of ' + totalNonAge + ' selected';
   }
 
   function loadSettings() {
+    // Tile count
+    var savedTC = localStorage.getItem('gc_wall_tilecount');
+    var tc = savedTC != null ? parseInt(savedTC, 10) : DEFAULT_TILE_COUNT;
+    if ([4, 6, 9].indexOf(tc) < 0) tc = DEFAULT_TILE_COUNT;
+    tileCount = tc;
+    document.getElementById('tileCountInput').value = tc;
+    // Reflect on grid attribute (in case the grid was already built with old count)
+    var grid = document.getElementById('wallGrid');
+    if (grid && parseInt(grid.dataset.tiles, 10) !== tc) {
+      grid.dataset.tiles = tc;
+      grid.innerHTML = buildTilesHtml();
+    }
+
+    // Rotation
     var savedRot = localStorage.getItem('gc_wall_rotate');
     var rot = savedRot != null ? parseInt(savedRot, 10) : DEFAULT_ROTATE_SEC;
     if (isNaN(rot) || rot < 15) rot = DEFAULT_ROTATE_SEC;
@@ -257,70 +478,98 @@
     rotateMs = rot * 1000;
     document.getElementById('rotateInput').value = rot;
 
+    // Ticker
+    var savedAnn = localStorage.getItem('gc_live_ticker');
+    var annText = savedAnn != null ? savedAnn : DEFAULT_ANNOUNCE;
+    document.getElementById('annInput').value = annText;
+    announcements = parseAnn(annText);
+
+    tickerPos = localStorage.getItem('gc_live_tickerpos') || DEFAULT_TICKER_POS;
+    if (['top', 'middle', 'bottom'].indexOf(tickerPos) < 0) tickerPos = DEFAULT_TICKER_POS;
+    document.getElementById('tickerPos').value = tickerPos;
+    applyTickerPos();
+
+    var savedFont = localStorage.getItem('gc_live_tickerfont');
+    tickerFont = savedFont != null ? parseInt(savedFont, 10) : DEFAULT_TICKER_FONT;
+    if (isNaN(tickerFont) || tickerFont < 8) tickerFont = DEFAULT_TICKER_FONT;
+    document.getElementById('tickerFont').value = tickerFont;
+    document.getElementById('tickerFontVal').textContent = tickerFont + 'px';
+    applyTickerScale();
+
+    tickerTextColor = localStorage.getItem('gc_live_txtcolor') || DEFAULT_TXT_COLOR;
+    tickerBgColor = localStorage.getItem('gc_live_bgcolor') || DEFAULT_BG_COLOR;
+    document.getElementById('txtColor').value = tickerTextColor;
+    document.getElementById('bgColor').value = tickerBgColor;
+    applyTickerColors();
+
+    // Logo
+    var savedSize = localStorage.getItem('gc_live_logosize');
+    logoSize = savedSize != null ? parseInt(savedSize, 10) : DEFAULT_LOGO_SIZE;
+    if (isNaN(logoSize)) logoSize = DEFAULT_LOGO_SIZE;
+    document.getElementById('logoSize').value = logoSize;
+    document.getElementById('logoSizeVal').textContent = logoSize + 'px';
+    logoData = localStorage.getItem('gc_live_logo') || '';
+    applyLogo();
+
+    // Captions
     var savedCap = localStorage.getItem('gc_wall_captions');
-    SHOW_CAPTIONS = (savedCap == null) ? true : (savedCap === '1');
-    document.getElementById('captionsToggle').value = SHOW_CAPTIONS ? '1' : '0';
+    showCaptions = (savedCap == null) ? true : (savedCap === '1');
+    document.getElementById('captionsToggle').value = showCaptions ? '1' : '0';
     document.querySelectorAll('.wall-caption').forEach(function (c) {
-      c.style.display = SHOW_CAPTIONS ? '' : 'none';
+      c.style.display = showCaptions ? '' : 'none';
     });
 
-    if (localStorage.getItem('gc_wall_panel') === 'collapsed') {
+    renderGamePicker();
+
+    if (localStorage.getItem('gc_live_panel') === 'collapsed') {
       document.getElementById('panel').classList.add('collapsed');
     }
-    renderGamePicker();
-  }
-
-  function buildTilePicks() {
-    var picks = [];
-    for (var i = 0; i < TILE_COUNT; i++) {
-      var p = makePick();
-      if (!p) break;
-      picks.push(p);
-    }
-    return picks;
+    restartTicker();
   }
 
   function startWall() {
     if (live) return;
     if (pool.length < 1) return;
     live = true;
-    document.getElementById('overlay').style.display = 'none';
+    var pw = document.getElementById('playerWrap');
+    if (pw) pw.classList.remove('overlayed');
 
-    var picks = buildTilePicks();
-    picks.forEach(function (p, i) {
-      tiles[i] = { videoId: p.videoId, gameTitle: p.gameTitle, startSec: p.startSec };
+    for (var i = 0; i < tileCount; i++) {
+      var pick = makePick();
+      if (!pick) break;
+      tiles[i] = pick;
       var cap = document.getElementById('caption-' + i);
-      if (cap) cap.textContent = p.gameTitle;
-      // Create the YT.Player for this tile
-      players[i] = new YT.Player('player-' + i, {
-        width: '100%', height: '100%',
-        videoId: p.videoId,
-        playerVars: {
-          rel: 0, modestbranding: 1, playsinline: 1,
-          controls: 0, fs: 0, autoplay: 1, mute: 1,
-          start: p.startSec, iv_load_policy: 3
-        },
-        events: {
-          'onReady': function (e) {
-            try { e.target.mute(); } catch (err) {}
-            try { e.target.playVideo(); } catch (err) {}
+      if (cap) cap.textContent = pick.gameTitle;
+      (function (idx, p) {
+        players[idx] = new YT.Player('player-' + idx, {
+          width: '100%', height: '100%',
+          videoId: p.videoId,
+          playerVars: {
+            rel: 0, modestbranding: 1, playsinline: 1,
+            controls: 0, fs: 0, autoplay: 1, mute: 1,
+            start: p.startSec, iv_load_policy: 3
           },
-          'onError': function () { rotateSpecificTile(i); },
-          'onStateChange': function (ev) {
-            if (ev.data === YT.PlayerState.ENDED) rotateSpecificTile(i);
+          events: {
+            'onReady': function (e) {
+              try { e.target.mute(); } catch (err) {}
+              try { e.target.playVideo(); } catch (err) {}
+            },
+            'onError': function () { rotateSpecificTile(idx); },
+            'onStateChange': function (ev) {
+              if (ev.data === YT.PlayerState.ENDED) rotateSpecificTile(idx);
+            }
           }
-        }
-      });
-    });
+        });
+      })(i, pick);
+    }
 
-    // Start rotation
     rotateTimer = setInterval(rotateOneTile, rotateMs);
   }
 
   function rotateSpecificTile(i) {
     var pick = makePick();
     if (!pick) return;
-    tiles[i] = { videoId: pick.videoId, gameTitle: pick.gameTitle, startSec: pick.startSec };
+    tiles[i] = pick;
     var cap = document.getElementById('caption-' + i);
     if (cap) cap.textContent = pick.gameTitle;
     if (players[i] && players[i].loadVideoById) {
@@ -328,9 +577,9 @@
       try { players[i].mute(); } catch (err) {}
     }
   }
-
   function rotateOneTile() {
-    var i = Math.floor(Math.random() * TILE_COUNT);
+    if (!tileCount) return;
+    var i = Math.floor(Math.random() * tileCount);
     rotateSpecificTile(i);
   }
 
