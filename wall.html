@@ -9,7 +9,7 @@
 <meta property="og:title" content="Gaming Cinema - Wall Mode">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="logo.png">
-<link rel="stylesheet" href="style.css?v=20260629m">
+<link rel="stylesheet" href="style.css?v=20260629n">
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><div class="brand"><a href="index.html"><img src="logo.png" alt="Gaming Cinema" class="brand-logo"></a><span class="tagline">PS5 Pro &middot; 4K HDR &middot; PSSR &middot; No Commentary</span></div><nav class="primary"><a href="index.html#games">Walkthroughs</a><a href="live.html" class="nav-live">Live</a><a href="https://www.youtube.com/@4k_gaming_cinema" target="_blank" rel="noopener">YouTube</a></nav></div></header>
@@ -31,7 +31,7 @@
   'use strict';
 
   // Defaults shared with Store Mode (same localStorage keys for ticker/logo/colors/games)
-  var DEFAULT_TILE_COUNT = 4;       // 2x2 — most reliable under YouTube's embed limits
+  var TILE_COUNT = 4;       // 2x2 — permanently locked; channel safety > grid size
   var DEFAULT_ROTATE_SEC = 60;
   var DEFAULT_ANNOUNCE = 'Welcome to Gaming Cinema Live - fresh PS5 Pro 4K HDR walkthroughs every week. Subscribe on YouTube @4k_gaming_cinema';
   var DEFAULT_TXT_COLOR = '#ffffff';
@@ -47,7 +47,7 @@
   var tiles = [], players = [];
   var apiReady = false, live = false;
 
-  var tileCount = DEFAULT_TILE_COUNT;
+  
   var rotateMs = DEFAULT_ROTATE_SEC * 1000;
   var rotateTimer = null;
   var showCaptions = true;
@@ -120,7 +120,7 @@
 
   function buildTilesHtml() {
     var html = '';
-    for (var i = 0; i < tileCount; i++) {
+    for (var i = 0; i < TILE_COUNT; i++) {
       html += '<div class="wall-tile" id="tile-' + i + '">'
         + '<div class="wall-player" id="player-' + i + '"></div>'
         + '<div class="wall-caption" id="caption-' + i + '">&mdash;</div>'
@@ -139,7 +139,7 @@
       + '</div>'
       + '<div class="live-stage">'
         + '<div class="player-wrap overlayed" id="playerWrap">'
-          + '<div class="wall-grid" id="wallGrid" data-tiles="' + tileCount + '">' + buildTilesHtml() + '</div>'
+          + '<div class="wall-grid" id="wallGrid" data-tiles="' + TILE_COUNT + '">' + buildTilesHtml() + '</div>'
           + '<div class="live-badge"><span class="bdot"></span> WALL</div>'
           + '<img class="live-logo" id="liveLogo" alt="" style="display:none">'
           + '<div class="ticker pos-bottom" id="ticker" style="pointer-events:none"><div class="ticker-text" id="tickerText"></div></div>'
@@ -157,13 +157,12 @@
       + '</div>'
       + '<div class="wall-explainer">'
         + '<h3>About Wall Mode</h3>'
-        + '<p>Wall Mode plays multiple walkthroughs simultaneously in a grid. <strong>2&times;2 (4 tiles) is the default</strong> '
-        + 'because it works most reliably with YouTube\'s embedded player. YouTube does not allow a single player to display '
-        + 'multiple videos at once — each tile must use its own iframe instance. When more than 4&ndash;6 embeds run '
-        + 'simultaneously from the same origin, YouTube\'s anti-abuse systems may throttle some tiles, lower their quality, '
-        + 'or display a "tap to play" overlay. You can switch to 6 (2&times;3) or 9 (3&times;3) tiles from the settings panel '
-        + 'below, but expect occasional pause overlays on a subset of tiles. For unattended showroom displays, '
-        + '2&times;2 is recommended.</p>'
+        + '<p>Wall Mode plays four walkthroughs simultaneously in a 2&times;2 grid. The tile count is permanently '
+        + 'capped at four to protect the Gaming Cinema YouTube channel from any anti-abuse restriction. YouTube does '
+        + 'not allow a single player to display multiple videos at once &mdash; each tile must use its own iframe instance. '
+        + 'When too many simultaneous embeds run from the same origin, YouTube\'s automated systems may throttle traffic, '
+        + 'lower quality, or flag activity as artificial &mdash; which can affect channel monetization and reach. '
+        + 'Four tiles is the safe ceiling that delivers a true video-wall feel without triggering those systems.</p>'
         + '<p><strong>Audio is always muted</strong> &mdash; modern browsers require muted state for autoplay without user '
         + 'interaction, which is essential for unattended kiosk operation.</p>'
       + '</div>'
@@ -177,14 +176,6 @@
             + '<textarea id="annInput" rows="3" placeholder="Type an announcement or ad message..."></textarea>'
           + '</div>'
           + '<div class="panel-grid">'
-            + '<div class="panel-row">'
-              + '<label for="tileCountInput">Tile count <span class="hint">2&times;2 = 4, 2&times;3 = 6, 3&times;3 = 9</span></label>'
-              + '<select id="tileCountInput">'
-                + '<option value="4">4 (2&times;2)</option>'
-                + '<option value="6">6 (2&times;3)</option>'
-                + '<option value="9">9 (3&times;3)</option>'
-              + '</select>'
-            + '</div>'
             + '<div class="panel-row">'
               + '<label for="rotateInput">Tile rotation (seconds)</label>'
               + '<input type="number" id="rotateInput" min="15" max="600" step="5">'
@@ -247,18 +238,6 @@
       localStorage.setItem('gc_live_ticker', e.target.value);
       announcements = parseAnn(e.target.value);
       restartTicker();
-    });
-    document.getElementById('tileCountInput').addEventListener('change', function (e) {
-      var v = parseInt(e.target.value, 10);
-      if ([4, 6, 9].indexOf(v) < 0) v = 4;
-      localStorage.setItem('gc_wall_tilecount', String(v));
-      tileCount = v;
-      // Re-render grid (destroy existing players)
-      players.forEach(function (p) { try { p && p.destroy && p.destroy(); } catch (err) {} });
-      players = []; tiles = [];
-      live = false;
-      renderStage();
-      loadSettings();
     });
     document.getElementById('rotateInput').addEventListener('change', function (e) {
       var v = parseInt(e.target.value, 10);
@@ -458,19 +437,7 @@
 
   function loadSettings() {
     // Tile count
-    var savedTC = localStorage.getItem('gc_wall_tilecount');
-    var tc = savedTC != null ? parseInt(savedTC, 10) : DEFAULT_TILE_COUNT;
-    if ([4, 6, 9].indexOf(tc) < 0) tc = DEFAULT_TILE_COUNT;
-    tileCount = tc;
-    document.getElementById('tileCountInput').value = tc;
-    // Reflect on grid attribute (in case the grid was already built with old count)
-    var grid = document.getElementById('wallGrid');
-    if (grid && parseInt(grid.dataset.tiles, 10) !== tc) {
-      grid.dataset.tiles = tc;
-      grid.innerHTML = buildTilesHtml();
-    }
-
-    // Rotation
+// Rotation
     var savedRot = localStorage.getItem('gc_wall_rotate');
     var rot = savedRot != null ? parseInt(savedRot, 10) : DEFAULT_ROTATE_SEC;
     if (isNaN(rot) || rot < 15) rot = DEFAULT_ROTATE_SEC;
@@ -534,7 +501,7 @@
     var pw = document.getElementById('playerWrap');
     if (pw) pw.classList.remove('overlayed');
 
-    for (var i = 0; i < tileCount; i++) {
+    for (var i = 0; i < TILE_COUNT; i++) {
       var pick = makePick();
       if (!pick) break;
       tiles[i] = pick;
@@ -578,8 +545,8 @@
     }
   }
   function rotateOneTile() {
-    if (!tileCount) return;
-    var i = Math.floor(Math.random() * tileCount);
+    if (!TILE_COUNT) return;
+    var i = Math.floor(Math.random() * TILE_COUNT);
     rotateSpecificTile(i);
   }
 
