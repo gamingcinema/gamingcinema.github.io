@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="Gaming Cinema &mdash; PS5 Pro 4K Cinematic Walkthroughs">
 <meta name="twitter:description" content="Premium PS5 Pro 4K HDR 60FPS cinematic walkthroughs with PSSR upscaling. No commentary. Resident Evil, God of War, Ghost of Y&#333;tei, Stellar Blade, Indiana Jones, Alan Wake 2, The Last of Us, Horiz">
 <meta name="twitter:image" content="https://gamingcinema.github.io/logo.png">
-<link rel="stylesheet" href="style.css?v=20260629i">
+<link rel="stylesheet" href="style.css?v=20260629k">
 <script src="youtube-api.js?v=20260629i" defer></script>
 <script type="application/ld+json">
 {
@@ -256,7 +256,7 @@
     <main>
       <section class="hero">
         <h1>Gaming Cinema Cinematic Walkthroughs</h1>
-        <p class="lead" id="heroLead">No-commentary full-game walkthroughs captured natively on PlayStation 5 Pro at 4K HDR 60FPS with PSSR upscaling. Every cutscene, every boss, every chapter &mdash; preserved as an interactive movie.</p>
+        <p class="lead">This is what AAA games look like on PlayStation 5 Pro at maximum visual fidelity &mdash; 4K HDR 60FPS with PSSR upscaling, no commentary, no skips. Every chapter, every cutscene, every boss, preserved at the platform&#39;s highest possible resolution. Each walkthrough is a complete playthrough, hand-curated from day-one releases to definitive remasters. Watch a single story like a feature film, jump into a full series with one-click playlist, or let Cinema Mode play the entire catalog back-to-back. Built for players who want to experience modern games as the interactive cinema they were always meant to be.</p>
       </section>
 
       <div class="channel-stats" id="channelStats" aria-label="Channel stats">
@@ -559,13 +559,6 @@
         document.getElementById('csViews').textContent = window.GamingCinemaYT.formatCount(s.views);
         document.getElementById('csSeries').textContent = String(Object.keys(SERIES_TO_PAGE).length);
         document.getElementById('channelStats').classList.add('loaded');
-        if (s.description) {
-          const lead = document.getElementById('heroLead');
-          if (lead) {
-            const txt = s.description.split('\n').filter(l => l.trim()).slice(0, 3).join(' — ');
-            lead.textContent = txt.length > 320 ? txt.substring(0, 317) + '...' : txt;
-          }
-        }
       } catch (e) { console.warn('Channel stats unavailable', e); }
     }
 

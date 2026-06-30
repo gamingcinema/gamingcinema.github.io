@@ -1477,7 +1477,7 @@ footer.site-footer a:hover { color: var(--accent); }
 /* Channel stats banner — premium dashboard layout below hero */
 .channel-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin: -8px 0 36px;
   background: linear-gradient(135deg, rgba(212,175,107,0.08) 0%, rgba(212,175,107,0.02) 60%, transparent 100%);
