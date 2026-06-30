@@ -51,6 +51,7 @@
         if (!c) return null;
         var s = {
           title: c.snippet.title,
+          description: c.snippet.description || '',
           thumbnail: (c.snippet.thumbnails && c.snippet.thumbnails.default && c.snippet.thumbnails.default.url) || '',
           subscribers: parseInt(c.statistics.subscriberCount, 10) || 0,
           views: parseInt(c.statistics.viewCount, 10) || 0,

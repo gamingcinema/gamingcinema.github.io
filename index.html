@@ -17,8 +17,8 @@
 <meta name="twitter:title" content="Gaming Cinema &mdash; PS5 Pro 4K Cinematic Walkthroughs">
 <meta name="twitter:description" content="Premium PS5 Pro 4K HDR 60FPS cinematic walkthroughs with PSSR upscaling. No commentary. Resident Evil, God of War, Ghost of Y&#333;tei, Stellar Blade, Indiana Jones, Alan Wake 2, The Last of Us, Horiz">
 <meta name="twitter:image" content="https://gamingcinema.github.io/logo.png">
-<link rel="stylesheet" href="style.css?v=20260629h">
-<script src="youtube-api.js?v=20260629d" defer></script>
+<link rel="stylesheet" href="style.css?v=20260629i">
+<script src="youtube-api.js?v=20260629i" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -255,14 +255,17 @@
 
     <main>
       <section class="hero">
-        <h1>PS5 Pro 4K Cinematic Walkthroughs</h1>
-        <p class="lead">No-commentary full-game walkthroughs captured natively on PlayStation 5 Pro at 4K HDR 60FPS with PSSR upscaling. Every cutscene, every boss, every chapter &mdash; preserved as an interactive movie.</p>
+        <h1>Gaming Cinema Cinematic Walkthroughs</h1>
+        <p class="lead" id="heroLead">No-commentary full-game walkthroughs captured natively on PlayStation 5 Pro at 4K HDR 60FPS with PSSR upscaling. Every cutscene, every boss, every chapter &mdash; preserved as an interactive movie.</p>
       </section>
 
       <div class="channel-stats" id="channelStats" aria-label="Channel stats">
         <div class="channel-stats-item"><span class="channel-stats-num" id="csVideos">&mdash;</span><span class="channel-stats-label">Walkthroughs</span></div>
         <div class="channel-stats-item"><span class="channel-stats-num" id="csSubs">&mdash;</span><span class="channel-stats-label">Subscribers</span></div>
         <div class="channel-stats-item"><span class="channel-stats-num" id="csViews">&mdash;</span><span class="channel-stats-label">Total Views</span></div>
+        <div class="channel-stats-item"><span class="channel-stats-num" id="csHours">&mdash;</span><span class="channel-stats-label">Total Hours</span></div>
+        <div class="channel-stats-item"><span class="channel-stats-num" id="csLikes">&mdash;</span><span class="channel-stats-label">Total Likes</span></div>
+        <div class="channel-stats-item"><span class="channel-stats-num" id="csSeries">&mdash;</span><span class="channel-stats-label">Series</span></div>
       </div>
 
       <section id="games">
@@ -494,10 +497,11 @@
         const dateStr = g.releaseDate ? formatReleaseDate(g.releaseDate) : (g.year || '');
         const submetaParts = [g.developer, dateStr, partsLabel].filter(Boolean);
 
-        // Runtime — total of all video durations
+        // Runtime — from games.json; YT API fallback fills empty ones in loadViewCounts
         const totalSec = (g.videos || []).reduce((s, v) => s + durationToSeconds(v.duration), 0);
-        const runtimeChip = totalSec > 0
-          ? `<span class="card-stat">${formatRuntime(totalSec)}</span>` : '';
+        const runtimeText = totalSec > 0 ? formatRuntime(totalSec) : '';
+        const _vidIds = (g.videos || []).map(v => v.id).join(',');
+        const runtimeChip = `<span class="card-stat card-runtime" data-vids="${_vidIds}">${runtimeText}</span>`;
 
         const ageBadge = g.ageRestricted ? '<span class="card-stat stat-age">18+</span>' : '';
         const chapterCount = g.chapters?.length || 0;
@@ -553,15 +557,30 @@
         document.getElementById('csVideos').textContent = window.GamingCinemaYT.formatCount(s.videoCount);
         document.getElementById('csSubs').textContent = window.GamingCinemaYT.formatCount(s.subscribers);
         document.getElementById('csViews').textContent = window.GamingCinemaYT.formatCount(s.views);
+        document.getElementById('csSeries').textContent = String(Object.keys(SERIES_TO_PAGE).length);
         document.getElementById('channelStats').classList.add('loaded');
+        if (s.description) {
+          const lead = document.getElementById('heroLead');
+          if (lead) {
+            const txt = s.description.split('\n').filter(l => l.trim()).slice(0, 3).join(' — ');
+            lead.textContent = txt.length > 320 ? txt.substring(0, 317) + '...' : txt;
+          }
+        }
       } catch (e) { console.warn('Channel stats unavailable', e); }
+    }
+
+    function isoToSec(iso) {
+      if (!iso) return 0;
+      const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+      if (!m) return 0;
+      return (parseInt(m[1]) || 0) * 3600 + (parseInt(m[2]) || 0) * 60 + (parseInt(m[3]) || 0);
     }
 
     async function loadViewCounts() {
       if (!window.GamingCinemaYT) return;
       const viewSpans = document.querySelectorAll('.view-count[data-vids]');
       const likeSpans = document.querySelectorAll('.like-count[data-vids]');
-      // Collect all unique IDs across all cards
+      const runtimeSpans = document.querySelectorAll('.card-runtime[data-vids]');
       const allIds = new Set();
       viewSpans.forEach(s => {
         s.dataset.vids.split(',').forEach(id => { if (id) allIds.add(id); });
@@ -569,7 +588,6 @@
       if (!allIds.size) return;
       try {
         const stats = await window.GamingCinemaYT.getVideoStats(Array.from(allIds));
-        // For each card, sum views and likes across its videos
         viewSpans.forEach(s => {
           const ids = s.dataset.vids.split(',').filter(Boolean);
           const totalViews = ids.reduce((sum, id) => sum + ((stats[id] && stats[id].views) || 0), 0);
@@ -586,6 +604,25 @@
             s.classList.add('loaded');
           }
         });
+        runtimeSpans.forEach(s => {
+          if (s.textContent) return;
+          const ids = s.dataset.vids.split(',').filter(Boolean);
+          const sec = ids.reduce((sum, id) => sum + isoToSec(stats[id] && stats[id].duration), 0);
+          if (sec > 0) {
+            s.textContent = formatRuntime(sec);
+            s.classList.add('loaded');
+          }
+        });
+        let grandTotalLikes = 0, grandTotalSec = 0;
+        Object.values(stats).forEach(v => {
+          if (!v) return;
+          grandTotalLikes += v.likes || 0;
+          grandTotalSec += isoToSec(v.duration);
+        });
+        const csLikes = document.getElementById('csLikes');
+        const csHours = document.getElementById('csHours');
+        if (csLikes) csLikes.textContent = window.GamingCinemaYT.formatCount(grandTotalLikes);
+        if (csHours) csHours.textContent = Math.floor(grandTotalSec / 3600) + 'h';
       } catch (e) { console.warn('View counts unavailable', e); }
     }
 

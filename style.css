@@ -1771,3 +1771,6 @@ footer.site-footer a:hover { color: var(--accent); }
   outline: none;
   transform: translateX(2px);
 }
+
+/* Runtime chip — hide if empty (will be filled by API) */
+.card-stat.card-runtime:empty { display: none; }
