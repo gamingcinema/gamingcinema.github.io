@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="Gaming Cinema &mdash; PS5 Pro 4K Cinematic Walkthroughs">
 <meta name="twitter:description" content="Premium PS5 Pro 4K HDR 60FPS cinematic walkthroughs with PSSR upscaling. No commentary. Resident Evil, God of War, Ghost of Y&#333;tei, Stellar Blade, Indiana Jones, Alan Wake 2, The Last of Us, Horiz">
 <meta name="twitter:image" content="https://gamingcinema.github.io/logo.png">
-<link rel="stylesheet" href="style.css?v=20260629f">
+<link rel="stylesheet" href="style.css?v=20260629h">
 <script src="youtube-api.js?v=20260629d" defer></script>
 <script type="application/ld+json">
 {
@@ -322,7 +322,31 @@
       return seriesPage ? `${seriesPage}#${g.slug}` : `${g.slug}.html`;
     }
 
-    function thumbnailUrl(game) {
+    function durationToSeconds(d) {
+      if (!d) return 0;
+      const p = String(d).split(':').map(Number);
+      if (p.length === 3) return p[0] * 3600 + p[1] * 60 + p[2];
+      if (p.length === 2) return p[0] * 60 + p[1];
+      return p[0] || 0;
+    }
+
+    function formatRuntime(sec) {
+      const h = Math.floor(sec / 3600);
+      const m = Math.round((sec % 3600) / 60);
+      if (h && m) return `${h}h ${m}m`;
+      if (h) return `${h}h`;
+      return `${m}m`;
+    }
+
+    const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function formatReleaseDate(iso) {
+      // "2024-01-19" → "Jan 19, 2024"
+      const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (!m) return iso;
+      return `${MONTH_ABBR[parseInt(m[2],10) - 1]} ${parseInt(m[3],10)}, ${m[1]}`;
+    }
+
+        function thumbnailUrl(game) {
       const firstVideoId = game.videos[0]?.id;
       return firstVideoId ? `https://i.ytimg.com/vi/${firstVideoId}/hqdefault.jpg` : '';
     }
@@ -465,25 +489,60 @@
       grid.innerHTML = filtered.map(g => {
         const thumb = thumbnailUrl(g);
         const partsLabel = g.videos.length === 1 ? 'Full Walkthrough' : `${g.videos.length} parts`;
+
+        // Submeta line: developer · full release date · parts label
+        const dateStr = g.releaseDate ? formatReleaseDate(g.releaseDate) : (g.year || '');
+        const submetaParts = [g.developer, dateStr, partsLabel].filter(Boolean);
+
+        // Runtime — total of all video durations
+        const totalSec = (g.videos || []).reduce((s, v) => s + durationToSeconds(v.duration), 0);
+        const runtimeChip = totalSec > 0
+          ? `<span class="card-stat">${formatRuntime(totalSec)}</span>` : '';
+
         const ageBadge = g.ageRestricted ? '<span class="card-stat stat-age">18+</span>' : '';
         const chapterCount = g.chapters?.length || 0;
         const chapterStat = chapterCount > 0 ? `<span class="card-stat">${chapterCount} chapters</span>` : '';
-        const viewStat = `<span class="card-stat view-count" data-vid="${g.videos[0]?.id || ''}"></span>`;
-        const tags = (g.tags || []).slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('');
+        const allVids = (g.videos || []).map(v => v.id).join(',');
+        const viewStat = `<span class="card-stat view-count" data-vids="${allVids}"></span>`;
+        const likeStat = `<span class="card-stat like-count" data-vids="${allVids}"></span>`;
+
+        // Series chip on its own row — clickable to the series page
+        const seriesRow = (g.series && SERIES_TO_PAGE[g.series])
+          ? `<div class="card-series-row"><span class="card-stat stat-series" data-series-href="${SERIES_TO_PAGE[g.series]}#${g.slug}" role="link" tabindex="0">${g.series} Series &rsaquo;</span></div>`
+          : '';
+
         return `
           <article class="game-card">
             <a href="${gameUrl(g)}" class="card-link">
               <div class="thumb" style="background-image:url('${thumb}')"></div>
               <div class="meta">
                 <h3>${g.title}</h3>
-                <div class="submeta">${g.developer} &middot; ${g.year} &middot; ${partsLabel}</div>
-                <div class="card-stats">${ageBadge}${chapterStat}${viewStat}</div>
-                <div class="tags">${tags}</div>
+                <div class="submeta">${submetaParts.join(' &middot; ')}</div>
+                <div class="card-stats">${ageBadge}${chapterStat}${runtimeChip}${viewStat}${likeStat}</div>
+                ${seriesRow}
               </div>
             </a>
           </article>
         `;
       }).join('');
+
+      // Wire up series chip clicks (intercept outer card link, navigate to series page)
+      grid.addEventListener('click', e => {
+        const chip = e.target.closest('[data-series-href]');
+        if (chip) {
+          e.preventDefault();
+          e.stopPropagation();
+          window.location.href = chip.dataset.seriesHref;
+        }
+      });
+      grid.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const chip = e.target.closest('[data-series-href]');
+        if (chip) {
+          e.preventDefault();
+          window.location.href = chip.dataset.seriesHref;
+        }
+      });
     }
 
     async function loadChannelStats() {
@@ -500,15 +559,30 @@
 
     async function loadViewCounts() {
       if (!window.GamingCinemaYT) return;
-      const spans = document.querySelectorAll('.view-count[data-vid]');
-      const ids = Array.from(spans).map(s => s.dataset.vid).filter(Boolean);
-      if (!ids.length) return;
+      const viewSpans = document.querySelectorAll('.view-count[data-vids]');
+      const likeSpans = document.querySelectorAll('.like-count[data-vids]');
+      // Collect all unique IDs across all cards
+      const allIds = new Set();
+      viewSpans.forEach(s => {
+        s.dataset.vids.split(',').forEach(id => { if (id) allIds.add(id); });
+      });
+      if (!allIds.size) return;
       try {
-        const stats = await window.GamingCinemaYT.getVideoStats(ids);
-        spans.forEach(s => {
-          const v = stats[s.dataset.vid];
-          if (v && v.views) {
-            s.textContent = window.GamingCinemaYT.formatCount(v.views) + ' views';
+        const stats = await window.GamingCinemaYT.getVideoStats(Array.from(allIds));
+        // For each card, sum views and likes across its videos
+        viewSpans.forEach(s => {
+          const ids = s.dataset.vids.split(',').filter(Boolean);
+          const totalViews = ids.reduce((sum, id) => sum + ((stats[id] && stats[id].views) || 0), 0);
+          if (totalViews > 0) {
+            s.textContent = window.GamingCinemaYT.formatCount(totalViews) + ' views';
+            s.classList.add('loaded');
+          }
+        });
+        likeSpans.forEach(s => {
+          const ids = s.dataset.vids.split(',').filter(Boolean);
+          const totalLikes = ids.reduce((sum, id) => sum + ((stats[id] && stats[id].likes) || 0), 0);
+          if (totalLikes > 0) {
+            s.textContent = window.GamingCinemaYT.formatCount(totalLikes) + ' likes';
             s.classList.add('loaded');
           }
         });

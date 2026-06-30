@@ -1736,3 +1736,38 @@ footer.site-footer a:hover { color: var(--accent); }
   .shorts-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
   .yt-playlist-btn { display: block; margin: 8px 0 0; text-align: center; }
 }
+
+/* New chip variants */
+.card-stat.stat-series {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: rgba(212, 175, 107, 0.3);
+}
+.card-stat.like-count::before {
+  content: '\2665';
+  margin-right: 4px;
+  color: var(--danger);
+  font-size: 0.7rem;
+}
+.card-stat.like-count:empty,
+.card-stat.view-count:empty {
+  display: none;
+}
+
+/* Series chip on its own row — clickable */
+.card-series-row {
+  margin: 8px 0 2px;
+}
+.card-stat.stat-series {
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.card-stat.stat-series:hover,
+.card-stat.stat-series:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  outline: none;
+  transform: translateX(2px);
+}
