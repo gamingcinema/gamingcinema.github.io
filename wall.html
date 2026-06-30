@@ -10,6 +10,7 @@
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="stylesheet" href="style.css?v=20260629p">
+<script src="youtube-api.js?v=20260629p" defer></script>
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><div class="brand"><a href="index.html"><img src="logo.png" alt="Gaming Cinema" class="brand-logo"></a><span class="tagline">PS5 Pro &middot; 4K HDR &middot; PSSR &middot; No Commentary</span></div><nav class="primary"><a href="index.html#games">Walkthroughs</a><a href="live.html" class="nav-live">Live</a><a href="https://www.youtube.com/@4k_gaming_cinema" target="_blank" rel="noopener">YouTube</a></nav></div></header>
@@ -85,6 +86,52 @@
     return String(text || '').split(/\r?\n/).map(function (s) { return s.trim(); })
       .filter(function (s) { return s.length > 0; });
   }
+  function isoToSeconds(iso) {
+    if (!iso) return 0;
+    var m = String(iso).match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!m) return 0;
+    return (parseInt(m[1]) || 0) * 3600 + (parseInt(m[2]) || 0) * 60 + (parseInt(m[3]) || 0);
+  }
+
+  function ytReady() {
+    return new Promise(function (resolve) {
+      var tries = 0;
+      var check = function () {
+        if (window.GamingCinemaYT) return resolve();
+        if (++tries > 50) return resolve(); // 5s timeout — proceed without enrich
+        setTimeout(check, 100);
+      };
+      check();
+    });
+  }
+
+  // After pool is built from games.json, call YouTube to (a) filter out non-public videos
+  // (b) backfill any missing durations so makePick can pick a real random start.
+  function enrichPool() {
+    if (!window.GamingCinemaYT || !pool.length) return Promise.resolve();
+    var ids = pool.map(function (p) { return p.videoId; });
+    return window.GamingCinemaYT.getVideoStats(ids).then(function (stats) {
+      var filtered = [];
+      pool.forEach(function (p) {
+        var s = stats[p.videoId];
+        // Privacy: if YT returned a value, only include 'public'. If unknown (old cache), include anyway.
+        var priv = s && s.privacy;
+        if (priv && priv !== 'public') return;
+        // Backfill duration if missing in games.json
+        if ((!p.durationSec || p.durationSec === 0) && s && s.duration) {
+          p.durationSec = isoToSeconds(s.duration);
+        }
+        filtered.push(p);
+      });
+      pool = filtered;
+      bag = []; // reset shuffle so the next draw uses the filtered pool
+      var pc = document.getElementById('poolCount');
+      if (pc) pc.textContent = pool.length;
+    }).catch(function (err) {
+      console.warn('enrichPool failed; proceeding with unfiltered pool', err);
+    });
+  }
+
   function buildPool(games) {
     var p = [];
     games.forEach(function (g) {
@@ -113,10 +160,18 @@
     var e = drawFromBag();
     if (!e) return null;
     var dur = e.durationSec || 0;
-    var minStart = dur > 600 ? 60 : 0;
-    var maxStart = Math.max(minStart + 30, dur - 120);
-    var span = Math.max(1, maxStart - minStart);
-    var startSec = dur > 0 ? minStart + Math.floor(Math.random() * span) : 0;
+    var startSec;
+    if (dur > 180) {
+      // Known duration: pick somewhere between 60s and (dur - 120s)
+      var minStart = dur > 600 ? 60 : 30;
+      var maxStart = Math.max(minStart + 30, dur - 120);
+      var span = Math.max(1, maxStart - minStart);
+      startSec = minStart + Math.floor(Math.random() * span);
+    } else {
+      // Unknown or very short duration: pick a sensible random in 1-30 min range.
+      // Most full walkthroughs are > 1h, so a random 60-1800s start lands safely inside.
+      startSec = 60 + Math.floor(Math.random() * 1740);
+    }
     return { videoId: e.videoId, gameTitle: e.gameTitle, startSec: startSec };
   }
 
@@ -629,6 +684,8 @@
         var tag = document.createElement('script');
         tag.src = 'https://www.youtube.com/iframe_api';
         document.head.appendChild(tag);
+        // Wait for youtube-api.js, then filter pool to public-only + backfill durations
+        ytReady().then(enrichPool);
       })
       .catch(function (err) {
         elContent.innerHTML = '<div class="series-notice">Could not load Wall Mode. Please refresh.</div>';

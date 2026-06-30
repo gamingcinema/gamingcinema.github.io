@@ -77,14 +77,15 @@
       batches.push(missing.slice(i, i + 50));
     }
     return Promise.all(batches.map(function (batch) {
-      return call('/videos', { part: 'statistics,contentDetails', id: batch.join(',') });
+      return call('/videos', { part: 'statistics,contentDetails,status', id: batch.join(',') });
     })).then(function (results) {
       results.forEach(function (data) {
         (data.items || []).forEach(function (v) {
           cached[v.id] = {
             views: parseInt(v.statistics.viewCount, 10) || 0,
             likes: parseInt(v.statistics.likeCount || 0, 10) || 0,
-            duration: v.contentDetails.duration
+            duration: v.contentDetails.duration,
+            privacy: v.status ? v.status.privacyStatus : undefined
           };
         });
       });
