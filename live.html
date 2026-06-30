@@ -9,7 +9,7 @@
   <meta property="og:title" content="Gaming Cinema Live">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="logo.png">
-<link rel="stylesheet" href="style.css?v=20260629c">
+<link rel="stylesheet" href="style.css?v=20260629k">
 </head>
 <body>
   <header class="site-header">
@@ -44,13 +44,14 @@
   (function () {
     'use strict';
 
-    var SEGMENT_MS = 5 * 60 * 1000;
     var SHOW_UPNEXT = 6;
     var SCHEDULE_AHEAD = 8;
     var TICKER_SPEED = 100;
     var TICKER_BASE_HEIGHT = 42;
+    var TICKER_REPEAT_GAP_MS = 8000; // 8s between ticker scroll cycles (hardcoded; rarely tuned)
     var DEFAULT_ANNOUNCE = 'Welcome to Gaming Cinema Live - fresh PS5 Pro 4K HDR walkthroughs every week. Subscribe on YouTube @4k_gaming_cinema';
-    var DEFAULT_GAP = 8;
+    var DEFAULT_SEGMENT_SEC = 300; // 5 minutes
+    var segmentMs = DEFAULT_SEGMENT_SEC * 1000; // live segment duration in ms (user-tunable)
     var DEFAULT_LOGO_SIZE = 44;
     var DEFAULT_TXT_COLOR = '#ffffff';
     var DEFAULT_BG_COLOR = '#141414';
@@ -64,7 +65,6 @@
     var segTimeout = null, tickInt = null, segStart = 0;
 
     var announcements = [];
-    var gapMs = DEFAULT_GAP * 1000;
     var tickerTimer = null, tickerIdx = 0;
     var tickerTextColor = DEFAULT_TXT_COLOR, tickerBgColor = DEFAULT_BG_COLOR;
     var tickerPos = DEFAULT_TICKER_POS, tickerFont = DEFAULT_TICKER_FONT;
@@ -177,7 +177,7 @@
           + '<div class="segment-bar"><div class="segment-fill" id="segFill"></div></div>'
           + '<div class="live-controls">'
             + '<div class="live-np" id="liveNp"></div>'
-            + '<span class="seg-time" id="segTime">0:00 / 5:00</span>'
+            + '<span class="seg-time" id="segTime">0:00 / ' + fmtMS(segmentMs / 1000) + '</span>'
             + '<div class="live-actions">'
               + '<button class="np-btn" id="muteBtn">' + (muted ? 'Unmute' : 'Mute') + '</button>'
               + '<button class="np-btn" id="fsBtn">Fullscreen</button>'
@@ -197,8 +197,8 @@
             + '</div>'
             + '<div class="panel-grid">'
               + '<div class="panel-row">'
-                + '<label for="gapInput">Repeat gap (seconds)</label>'
-                + '<input type="number" id="gapInput" min="0" max="600" step="1">'
+                + '<label for="gapInput">Segment duration (seconds) <span class="hint">how long each clip plays</span></label>'
+                + '<input type="number" id="gapInput" min="30" max="1800" step="30">'
               + '</div>'
               + '<div class="panel-row">'
                 + '<label for="tickerPos">Ticker position</label>'
@@ -229,7 +229,7 @@
                 + '<input type="range" id="logoSize" min="24" max="84" step="2">'
               + '</div>'
               + '<div class="panel-row">'
-                + '<label for="qualityPref">Preferred quality <span class="hint">YouTube has final say</span></label>'
+                + '<label for="qualityPref">Preferred quality <span class="hint">hint only; YouTube embeds rarely give 4K</span></label>'
                 + '<select id="qualityPref">'
                   + '<option value="hd2160">2160p (4K)</option>'
                   + '<option value="hd1440">1440p</option>'
@@ -270,11 +270,20 @@
       });
       document.getElementById('gapInput').addEventListener('change', function (e) {
         var v = parseInt(e.target.value, 10);
-        if (isNaN(v) || v < 0) v = DEFAULT_GAP;
-        if (v > 600) v = 600;
+        if (isNaN(v) || v < 30) v = DEFAULT_SEGMENT_SEC;
+        if (v > 1800) v = 1800;
         e.target.value = v;
-        gapMs = v * 1000;
+        segmentMs = v * 1000;
         localStorage.setItem('gc_live_gap', String(v));
+        // Update seg-time label if visible
+        var st = document.getElementById('segTime');
+        if (st && !live) st.textContent = '0:00 / ' + fmtMS(segmentMs / 1000);
+        // If a segment is already in progress, restart its timer with new duration
+        if (live && segTimeout) {
+          clearTimeout(segTimeout);
+          var remaining = Math.max(5000, segmentMs - (Date.now() - segStart));
+          segTimeout = setTimeout(advance, remaining);
+        }
       });
       document.getElementById('tickerPos').addEventListener('change', function (e) {
         tickerPos = e.target.value;
@@ -424,10 +433,11 @@
       announcements = parseAnn(annText);
 
       var savedGap = localStorage.getItem('gc_live_gap');
-      var gap = savedGap != null ? parseInt(savedGap, 10) : DEFAULT_GAP;
-      if (isNaN(gap) || gap < 0) gap = DEFAULT_GAP;
-      gapMs = gap * 1000;
-      document.getElementById('gapInput').value = gap;
+      var seg = savedGap != null ? parseInt(savedGap, 10) : DEFAULT_SEGMENT_SEC;
+      if (isNaN(seg) || seg < 30) seg = DEFAULT_SEGMENT_SEC;
+      if (seg > 1800) seg = 1800;
+      segmentMs = seg * 1000;
+      document.getElementById('gapInput').value = seg;
 
       tickerPos = localStorage.getItem('gc_live_tickerpos') || DEFAULT_TICKER_POS;
       if (['top', 'middle', 'bottom'].indexOf(tickerPos) < 0) tickerPos = DEFAULT_TICKER_POS;
@@ -538,7 +548,7 @@
       tx.style.transition = 'transform ' + dur.toFixed(2) + 's linear';
       tx.style.transform = 'translateX(' + (-textW - 8) + 'px)';
       tickerTimer = setTimeout(function () {
-        tickerTimer = setTimeout(function () { cycleTicker(tickerIdx + 1); }, gapMs);
+        tickerTimer = setTimeout(function () { cycleTicker(tickerIdx + 1); }, TICKER_REPEAT_GAP_MS);
       }, dur * 1000);
     }
 
@@ -563,11 +573,11 @@
     }
     function tick() {
       var el = Date.now() - segStart;
-      var pct = Math.min(100, el / SEGMENT_MS * 100);
+      var pct = Math.min(100, el / segmentMs * 100);
       var sf = document.getElementById('segFill');
       if (sf) sf.style.width = pct.toFixed(2) + '%';
       var st = document.getElementById('segTime');
-      if (st) st.textContent = fmtMS(Math.min(SEGMENT_MS, el) / 1000) + ' / 5:00';
+      if (st) st.textContent = fmtMS(Math.min(segmentMs, el) / 1000) + ' / ' + fmtMS(segmentMs / 1000);
     }
     function toggleMute() {
       muted = !muted;
@@ -617,7 +627,7 @@
       segStart = Date.now();
       if (segTimeout) clearTimeout(segTimeout);
       if (tickInt) clearInterval(tickInt);
-      segTimeout = setTimeout(advance, SEGMENT_MS);
+      segTimeout = setTimeout(advance, segmentMs);
       tickInt = setInterval(tick, 1000);
       renderNp();
       renderUpNext();
@@ -648,15 +658,19 @@
         width: '100%',
         height: '100%',
         videoId: schedule[0].e.videoId,
-        playerVars: {
-          rel: 0,
-          modestbranding: 1,
-          playsinline: 1,
-          controls: 1,
-          fs: 0,
-          vq: 'hd1080',  // initial-load quality hint (1080p+)
-          hd: 1          // legacy HD hint
-        },
+        playerVars: (function(){
+          var savedQ = localStorage.getItem('gc_live_quality') || 'hd1080';
+          if (savedQ === 'default') savedQ = 'hd1080';
+          return {
+            rel: 0,
+            modestbranding: 1,
+            playsinline: 1,
+            controls: 1,
+            fs: 0,
+            vq: savedQ,    // user-selected initial quality hint
+            hd: 1          // legacy HD hint
+          };
+        })(),
         events: {
           'onReady': function () {
             apiReady = true;
