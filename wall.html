@@ -9,7 +9,7 @@
 <meta property="og:title" content="Gaming Cinema - Wall Mode">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="logo.png">
-<link rel="stylesheet" href="style.css?v=20260629o">
+<link rel="stylesheet" href="style.css?v=20260629p">
 </head>
 <body>
 <header class="site-header"><div class="header-inner"><div class="brand"><a href="index.html"><img src="logo.png" alt="Gaming Cinema" class="brand-logo"></a><span class="tagline">PS5 Pro &middot; 4K HDR &middot; PSSR &middot; No Commentary</span></div><nav class="primary"><a href="index.html#games">Walkthroughs</a><a href="live.html" class="nav-live">Live</a><a href="https://www.youtube.com/@4k_gaming_cinema" target="_blank" rel="noopener">YouTube</a></nav></div></header>
@@ -46,6 +46,8 @@
   var allGames = [], pool = [], bag = [], disabledGames = [];
   var tiles = [], players = [];
   var apiReady = false, live = false;
+  var wallStartedAt = 0, wallTimerId = null;
+  var allMuted = true;
 
   
   var rotateMs = DEFAULT_ROTATE_SEC * 1000;
@@ -152,6 +154,14 @@
                 + '<button class="overlay-btn primary" id="goWallBtn" disabled>Loading&hellip;</button>'
               + '</div>'
             + '</div>'
+          + '</div>'
+        + '</div>'
+        + '<div class="live-controls">'
+          + '<div class="live-np"><span class="np-now">Wall</span><span class="np-game">Live multi-view</span></div>'
+          + '<span class="seg-time" id="wallTime">0:00</span>'
+          + '<div class="live-actions">'
+            + '<button class="np-btn" id="muteBtn">Unmute</button>'
+            + '<button class="np-btn primary" id="fsBtn">Fullscreen</button>'
           + '</div>'
         + '</div>'
       + '</div>'
@@ -332,6 +342,11 @@
       if (pc) pc.textContent = pool.length;
     });
 
+    document.getElementById('muteBtn').addEventListener('click', toggleMute);
+    document.getElementById('fsBtn').addEventListener('click', toggleFullscreen);
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('webkitfullscreenchange', onFsChange);
+
     if (apiReady) {
       var b = document.getElementById('goWallBtn');
       if (b) { b.disabled = false; b.innerHTML = '&#9654; Start Wall'; }
@@ -494,10 +509,52 @@
     restartTicker();
   }
 
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtElapsed(s) {
+    s = Math.max(0, Math.floor(s));
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60;
+    return h > 0 ? h + ':' + pad2(m) + ':' + pad2(x) : m + ':' + pad2(x);
+  }
+  function tickWallTime() {
+    var el = document.getElementById('wallTime');
+    if (!el || !wallStartedAt) return;
+    el.textContent = fmtElapsed((Date.now() - wallStartedAt) / 1000);
+  }
+  function toggleMute() {
+    allMuted = !allMuted;
+    players.forEach(function (p) {
+      try { if (allMuted) p && p.mute && p.mute(); else p && p.unMute && p.unMute(); } catch (err) {}
+    });
+    var b = document.getElementById('muteBtn');
+    if (b) b.textContent = allMuted ? 'Unmute' : 'Mute';
+  }
+  function isFullscreen() {
+    return !!(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+  function toggleFullscreen() {
+    var pw = document.getElementById('playerWrap');
+    if (!pw) return;
+    if (isFullscreen()) {
+      if (document.exitFullscreen) document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    } else {
+      if (pw.requestFullscreen) pw.requestFullscreen();
+      else if (pw.webkitRequestFullscreen) pw.webkitRequestFullscreen();
+    }
+  }
+  function onFsChange() {
+    var b = document.getElementById('fsBtn');
+    if (b) b.textContent = isFullscreen() ? 'Exit fullscreen' : 'Fullscreen';
+  }
+
   function startWall() {
     if (live) return;
     if (pool.length < 1) return;
     live = true;
+    wallStartedAt = Date.now();
+    if (wallTimerId) clearInterval(wallTimerId);
+    wallTimerId = setInterval(tickWallTime, 1000);
+    tickWallTime();
     var pw = document.getElementById('playerWrap');
     if (pw) pw.classList.remove('overlayed');
 
