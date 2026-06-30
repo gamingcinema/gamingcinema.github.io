@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wall Mode &mdash; Gaming Cinema</title>
+<meta name="description" content="Gaming Cinema Wall Mode — nine PS5 Pro 4K walkthroughs playing simultaneously in a 3x3 video wall, muted and always rotating.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Gaming Cinema - Wall Mode">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="stylesheet" href="style.css?v=20260629l">
+</head>
+<body>
+<header class="site-header"><div class="header-inner"><div class="brand"><a href="index.html"><img src="logo.png" alt="Gaming Cinema" class="brand-logo"></a><span class="tagline">PS5 Pro &middot; 4K HDR &middot; PSSR &middot; No Commentary</span></div><nav class="primary"><a href="index.html#games">Walkthroughs</a><a href="live.html" class="nav-live">Live</a><a href="https://www.youtube.com/@4k_gaming_cinema" target="_blank" rel="noopener">YouTube</a></nav></div></header>
+
+<div class="live-page">
+<a href="index.html" class="back-link">&larr; All walkthroughs</a>
+<div class="mode-switch">
+<a href="live.html" class="mode-tab">Store Mode</a>
+<a href="cinema.html" class="mode-tab">Cinema Mode</a>
+<a href="wall.html" class="mode-tab active">Wall Mode</a>
+</div>
+<div id="wallContent"></div>
+</div>
+
+<footer class="site-footer"><p>&copy; 2026 Gaming Cinema &middot; No-commentary PS5 Pro 4K cinematic walkthroughs &middot; <a href="https://www.youtube.com/@4k_gaming_cinema" target="_blank" rel="noopener">YouTube Channel</a></p></footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var TILE_COUNT = 9;
+  var DEFAULT_ROTATE_SEC = 60;            // rotate one random tile every 60s
+  var DEFAULT_TILE_SEGMENT_SEC = 120;     // each tile starts ~120s into a random video (range)
+  var SHOW_CAPTIONS = true;
+
+  var allGames = [], pool = [], bag = [];
+  var tiles = [];     // [{ player, container, videoId, gameTitle, startSec }]
+  var players = [];   // YT.Player instances (parallel to tiles[])
+  var apiReady = false;
+  var live = false;
+  var rotateMs = DEFAULT_ROTATE_SEC * 1000;
+  var rotateTimer = null;
+  var disabledGames = [];
+
+  var elContent = document.getElementById('wallContent');
+
+  function secsFromDur(d) {
+    if (!d) return 0;
+    var p = String(d).split(':').map(Number);
+    if (p.length === 3) return p[0] * 3600 + p[1] * 60 + p[2];
+    if (p.length === 2) return p[0] * 60 + p[1];
+    return p[0] || 0;
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function buildPool(games) {
+    var p = [];
+    games.forEach(function (g) {
+      if (g.ageRestricted) return;
+      if (disabledGames.indexOf(g.slug) >= 0) return;
+      (g.videos || []).forEach(function (v) {
+        p.push({
+          videoId: v.id,
+          gameTitle: g.title,
+          gameSlug: g.slug,
+          durationSec: secsFromDur(v.duration)
+        });
+      });
+    });
+    return p;
+  }
+
+  function loadGameSelection() {
+    try {
+      var s = JSON.parse(localStorage.getItem('gc_live_disabledgames') || '[]');
+      disabledGames = Array.isArray(s) ? s : [];
+    } catch (e) { disabledGames = []; }
+  }
+
+  function drawFromBag() {
+    if (bag.length === 0) bag = shuffle(pool.slice());
+    return bag.pop();
+  }
+
+  function makePick() {
+    var e = drawFromBag();
+    if (!e) return null;
+    // Random start point: between 60s and (duration - 120s) when possible
+    var dur = e.durationSec || 0;
+    var minStart = dur > 600 ? 60 : 0;
+    var maxStart = Math.max(minStart + 30, dur - 120);
+    var span = Math.max(1, maxStart - minStart);
+    var startSec = dur > 0 ? minStart + Math.floor(Math.random() * span) : 0;
+    return { videoId: e.videoId, gameTitle: e.gameTitle, startSec: startSec };
+  }
+
+  function renderStage() {
+    var capStyle = SHOW_CAPTIONS ? '' : 'style="display:none"';
+    var tilesHtml = '';
+    for (var i = 0; i < TILE_COUNT; i++) {
+      tilesHtml += '<div class="wall-tile" id="tile-' + i + '">'
+        + '<div class="wall-player" id="player-' + i + '"></div>'
+        + '<div class="wall-caption" id="caption-' + i + '" ' + capStyle + '>&mdash;</div>'
+        + '</div>';
+    }
+
+    elContent.innerHTML =
+      '<div class="live-head">'
+        + '<h1>Wall Mode</h1>'
+        + '<p class="series-meta">Nine PS5 Pro 4K walkthroughs playing in a 3&times;3 grid, '
+        + 'muted and always rotating. Built for showrooms and lobbies. '
+        + '<span id="poolCount">' + pool.length + '</span> clips in rotation.</p>'
+      + '</div>'
+      + '<div class="wall-grid" id="wallGrid">' + tilesHtml + '</div>'
+      + '<div class="player-overlay wall-overlay" id="overlay">'
+        + '<div class="overlay-card">'
+          + '<h3>Wall Mode</h3>'
+          + '<p>Nine simultaneous walkthroughs in a 3&times;3 grid. Muted, always running, '
+          + 'auto-rotated. Stable internet recommended (~30 Mbps for 720p tiles).</p>'
+          + '<div class="overlay-actions">'
+            + '<button class="overlay-btn primary" id="goWallBtn" disabled>Loading&hellip;</button>'
+          + '</div>'
+        + '</div>'
+      + '</div>'
+      + '<div class="panel" id="panel">'
+        + '<button class="panel-toggle" id="panelToggle">'
+          + '<span>&#9881; Wall settings</span><span class="chev">&#9662;</span>'
+        + '</button>'
+        + '<div class="panel-body">'
+          + '<div class="panel-grid">'
+            + '<div class="panel-row">'
+              + '<label for="rotateInput">Tile rotation interval (seconds) <span class="hint">how often one tile swaps to a new video</span></label>'
+              + '<input type="number" id="rotateInput" min="15" max="600" step="5" value="' + DEFAULT_ROTATE_SEC + '">'
+            + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="captionsToggle">Show captions</label>'
+              + '<select id="captionsToggle"><option value="1">On</option><option value="0">Off</option></select>'
+            + '</div>'
+          + '</div>'
+          + '<div class="panel-row">'
+            + '<label>Games in rotation <span class="hint" id="gamesCount"></span></label>'
+            + '<div class="game-pick-bar">'
+              + '<button class="np-btn" id="gamesAll">Select all</button>'
+              + '<span class="panel-note">Shared with Store Mode. Uncheck games to exclude from rotation.</span>'
+            + '</div>'
+            + '<div class="game-pick-list" id="gamePickList"></div>'
+          + '</div>'
+          + '<div class="panel-actions">'
+            + '<span class="panel-note">Settings saved in this browser only.</span>'
+          + '</div>'
+        + '</div>'
+      + '</div>';
+
+    document.getElementById('goWallBtn').addEventListener('click', startWall);
+    document.getElementById('panelToggle').addEventListener('click', function () {
+      var p = document.getElementById('panel');
+      p.classList.toggle('collapsed');
+      localStorage.setItem('gc_wall_panel', p.classList.contains('collapsed') ? 'collapsed' : 'open');
+    });
+    document.getElementById('rotateInput').addEventListener('change', function (e) {
+      var v = parseInt(e.target.value, 10);
+      if (isNaN(v) || v < 15) v = DEFAULT_ROTATE_SEC;
+      if (v > 600) v = 600;
+      e.target.value = v;
+      rotateMs = v * 1000;
+      localStorage.setItem('gc_wall_rotate', String(v));
+      if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = setInterval(rotateOneTile, rotateMs); }
+    });
+    document.getElementById('captionsToggle').addEventListener('change', function (e) {
+      SHOW_CAPTIONS = (e.target.value === '1');
+      localStorage.setItem('gc_wall_captions', SHOW_CAPTIONS ? '1' : '0');
+      document.querySelectorAll('.wall-caption').forEach(function (c) {
+        c.style.display = SHOW_CAPTIONS ? '' : 'none';
+      });
+    });
+    document.getElementById('gamePickList').addEventListener('change', function (e) {
+      var cb = e.target;
+      if (!cb || cb.type !== 'checkbox') return;
+      var slug = cb.getAttribute('data-slug');
+      if (cb.checked) {
+        var idx = disabledGames.indexOf(slug);
+        if (idx >= 0) disabledGames.splice(idx, 1);
+      } else {
+        if (disabledGames.indexOf(slug) < 0) disabledGames.push(slug);
+      }
+      saveDisabled();
+      pool = buildPool(allGames);
+      updateGamesCount();
+      var pc = document.getElementById('poolCount');
+      if (pc) pc.textContent = pool.length;
+    });
+    document.getElementById('gamesAll').addEventListener('click', function () {
+      disabledGames = [];
+      saveDisabled();
+      pool = buildPool(allGames);
+      renderGamePicker();
+      var pc = document.getElementById('poolCount');
+      if (pc) pc.textContent = pool.length;
+    });
+  }
+
+  function saveDisabled() {
+    try { localStorage.setItem('gc_live_disabledgames', JSON.stringify(disabledGames)); } catch (e) {}
+  }
+
+  function renderGamePicker() {
+    var list = document.getElementById('gamePickList');
+    if (!list) return;
+    var byYear = {};
+    var gameList = allGames.filter(function (g) { return !g.ageRestricted; });
+    gameList.forEach(function (g) {
+      var y = g.year || 0;
+      (byYear[y] = byYear[y] || []).push(g);
+    });
+    var years = Object.keys(byYear).map(Number).sort(function (a, b) { return b - a; });
+    var html = '';
+    years.forEach(function (y) {
+      html += '<div class="game-pick-year">' + (y ? y : 'Other') + '</div>';
+      byYear[y].sort(function (a, b) { return a.title.localeCompare(b.title); });
+      byYear[y].forEach(function (g) {
+        var on = disabledGames.indexOf(g.slug) < 0;
+        html += '<label class="game-pick-item">'
+          + '<input type="checkbox" data-slug="' + g.slug + '"' + (on ? ' checked' : '') + '>'
+          + '<span>' + esc(g.title) + '</span></label>';
+      });
+    });
+    list.innerHTML = html;
+    updateGamesCount();
+  }
+  function updateGamesCount() {
+    var on = allGames.filter(function (g) {
+      return !g.ageRestricted && disabledGames.indexOf(g.slug) < 0;
+    }).length;
+    var totalNonAge = allGames.filter(function (g) { return !g.ageRestricted; }).length;
+    var el = document.getElementById('gamesCount');
+    if (el) el.textContent = on + ' of ' + totalNonAge + ' selected';
+  }
+
+  function loadSettings() {
+    var savedRot = localStorage.getItem('gc_wall_rotate');
+    var rot = savedRot != null ? parseInt(savedRot, 10) : DEFAULT_ROTATE_SEC;
+    if (isNaN(rot) || rot < 15) rot = DEFAULT_ROTATE_SEC;
+    if (rot > 600) rot = 600;
+    rotateMs = rot * 1000;
+    document.getElementById('rotateInput').value = rot;
+
+    var savedCap = localStorage.getItem('gc_wall_captions');
+    SHOW_CAPTIONS = (savedCap == null) ? true : (savedCap === '1');
+    document.getElementById('captionsToggle').value = SHOW_CAPTIONS ? '1' : '0';
+    document.querySelectorAll('.wall-caption').forEach(function (c) {
+      c.style.display = SHOW_CAPTIONS ? '' : 'none';
+    });
+
+    if (localStorage.getItem('gc_wall_panel') === 'collapsed') {
+      document.getElementById('panel').classList.add('collapsed');
+    }
+    renderGamePicker();
+  }
+
+  function buildTilePicks() {
+    var picks = [];
+    for (var i = 0; i < TILE_COUNT; i++) {
+      var p = makePick();
+      if (!p) break;
+      picks.push(p);
+    }
+    return picks;
+  }
+
+  function startWall() {
+    if (live) return;
+    if (pool.length < 1) return;
+    live = true;
+    document.getElementById('overlay').style.display = 'none';
+
+    var picks = buildTilePicks();
+    picks.forEach(function (p, i) {
+      tiles[i] = { videoId: p.videoId, gameTitle: p.gameTitle, startSec: p.startSec };
+      var cap = document.getElementById('caption-' + i);
+      if (cap) cap.textContent = p.gameTitle;
+      // Create the YT.Player for this tile
+      players[i] = new YT.Player('player-' + i, {
+        width: '100%', height: '100%',
+        videoId: p.videoId,
+        playerVars: {
+          rel: 0, modestbranding: 1, playsinline: 1,
+          controls: 0, fs: 0, autoplay: 1, mute: 1,
+          start: p.startSec, iv_load_policy: 3
+        },
+        events: {
+          'onReady': function (e) {
+            try { e.target.mute(); } catch (err) {}
+            try { e.target.playVideo(); } catch (err) {}
+          },
+          'onError': function () { rotateSpecificTile(i); },
+          'onStateChange': function (ev) {
+            if (ev.data === YT.PlayerState.ENDED) rotateSpecificTile(i);
+          }
+        }
+      });
+    });
+
+    // Start rotation
+    rotateTimer = setInterval(rotateOneTile, rotateMs);
+  }
+
+  function rotateSpecificTile(i) {
+    var pick = makePick();
+    if (!pick) return;
+    tiles[i] = { videoId: pick.videoId, gameTitle: pick.gameTitle, startSec: pick.startSec };
+    var cap = document.getElementById('caption-' + i);
+    if (cap) cap.textContent = pick.gameTitle;
+    if (players[i] && players[i].loadVideoById) {
+      players[i].loadVideoById({ videoId: pick.videoId, startSeconds: pick.startSec });
+      try { players[i].mute(); } catch (err) {}
+    }
+  }
+
+  function rotateOneTile() {
+    var i = Math.floor(Math.random() * TILE_COUNT);
+    rotateSpecificTile(i);
+  }
+
+  window.onYouTubeIframeAPIReady = function () {
+    apiReady = true;
+    var b = document.getElementById('goWallBtn');
+    if (b) { b.disabled = false; b.innerHTML = '&#9654; Start Wall'; }
+  };
+
+  function init() {
+    fetch('games.json')
+      .then(function (r) { return r.json(); })
+      .then(function (games) {
+        allGames = games;
+        loadGameSelection();
+        pool = buildPool(games);
+        if (!pool.length) {
+          elContent.innerHTML = '<div class="series-notice">No playable videos are available right now.</div>';
+          return;
+        }
+        renderStage();
+        loadSettings();
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(tag);
+      })
+      .catch(function (err) {
+        elContent.innerHTML = '<div class="series-notice">Could not load Wall Mode. Please refresh.</div>';
+        console.error(err);
+      });
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
