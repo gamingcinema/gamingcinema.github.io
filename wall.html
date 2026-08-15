@@ -33,7 +33,7 @@
 
   // Defaults shared with Store Mode (same localStorage keys for ticker/logo/colors/games)
   var TILE_COUNT = 4;       // 2x2 — permanently locked; channel safety > grid size
-  var DEFAULT_ROTATE_SEC = 60;
+  var DEFAULT_ROTATE_SEC = 900;  // 15 minutes — all 4 tiles swap together at this interval
   var DEFAULT_ANNOUNCE = 'Welcome to Gaming Cinema Live - fresh PS5 Pro 4K HDR walkthroughs every week. Subscribe on YouTube @4k_gaming_cinema';
   var DEFAULT_TXT_COLOR = '#ffffff';
   var DEFAULT_BG_COLOR = '#141414';
@@ -54,6 +54,7 @@
   var rotateMs = DEFAULT_ROTATE_SEC * 1000;
   var rotateTimer = null;
   var showCaptions = true;
+  var captionsPos = 'bottom';
 
   var announcements = [];
   var tickerTimer = null, tickerIdx = 0;
@@ -243,7 +244,7 @@
           + '<div class="panel-grid">'
             + '<div class="panel-row">'
               + '<label for="rotateInput">Tile rotation (seconds)</label>'
-              + '<input type="number" id="rotateInput" min="15" max="600" step="5">'
+              + '<input type="number" id="rotateInput" min="30" max="1800" step="15">'
             + '</div>'
             + '<div class="panel-row">'
               + '<label for="tickerPos">Ticker position</label>'
@@ -277,6 +278,13 @@
               + '<label for="captionsToggle">Show tile captions</label>'
               + '<select id="captionsToggle"><option value="1">On</option><option value="0">Off</option></select>'
             + '</div>'
+            + '<div class="panel-row">'
+              + '<label for="captionsPos">Caption position</label>'
+              + '<select id="captionsPos">'
+                + '<option value="bottom">Bottom (centered)</option>'
+                + '<option value="top">Top (centered)</option>'
+              + '</select>'
+            + '</div>'
           + '</div>'
           + '<div class="panel-row">'
             + '<label>Games in rotation <span class="hint" id="gamesCount"></span></label>'
@@ -307,11 +315,11 @@
     document.getElementById('rotateInput').addEventListener('change', function (e) {
       var v = parseInt(e.target.value, 10);
       if (isNaN(v) || v < 15) v = DEFAULT_ROTATE_SEC;
-      if (v > 600) v = 600;
+      if (v > 1800) v = 1800;
       e.target.value = v;
       rotateMs = v * 1000;
       localStorage.setItem('gc_wall_rotate', String(v));
-      if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = setInterval(rotateOneTile, rotateMs); }
+      if (rotateTimer) { clearInterval(rotateTimer); rotateTimer = setInterval(rotateAllTiles, rotateMs); }
     });
     document.getElementById('tickerPos').addEventListener('change', function (e) {
       tickerPos = e.target.value;
@@ -372,6 +380,11 @@
       document.querySelectorAll('.wall-caption').forEach(function (c) {
         c.style.display = showCaptions ? '' : 'none';
       });
+    });
+    document.getElementById('captionsPos').addEventListener('change', function (e) {
+      captionsPos = (e.target.value === 'top') ? 'top' : 'bottom';
+      localStorage.setItem('gc_wall_caption_pos', captionsPos);
+      applyCaptionPos();
     });
     document.getElementById('gamePickList').addEventListener('change', function (e) {
       var cb = e.target;
@@ -505,13 +518,20 @@
     if (el) el.textContent = on + ' of ' + totalNonAge + ' selected';
   }
 
+  function applyCaptionPos() {
+    document.querySelectorAll('.wall-caption').forEach(function (c) {
+      c.classList.remove('pos-top', 'pos-bottom');
+      c.classList.add('pos-' + captionsPos);
+    });
+  }
+
   function loadSettings() {
     // Tile count
 // Rotation
     var savedRot = localStorage.getItem('gc_wall_rotate');
     var rot = savedRot != null ? parseInt(savedRot, 10) : DEFAULT_ROTATE_SEC;
     if (isNaN(rot) || rot < 15) rot = DEFAULT_ROTATE_SEC;
-    if (rot > 600) rot = 600;
+    if (rot > 1800) rot = 1800;
     rotateMs = rot * 1000;
     document.getElementById('rotateInput').value = rot;
 
@@ -555,6 +575,10 @@
     document.querySelectorAll('.wall-caption').forEach(function (c) {
       c.style.display = showCaptions ? '' : 'none';
     });
+    var savedCapPos = localStorage.getItem('gc_wall_caption_pos');
+    captionsPos = (savedCapPos === 'top') ? 'top' : 'bottom';
+    document.getElementById('captionsPos').value = captionsPos;
+    applyCaptionPos();
 
     renderGamePicker();
 
@@ -642,7 +666,7 @@
       })(i, pick);
     }
 
-    rotateTimer = setInterval(rotateOneTile, rotateMs);
+    rotateTimer = setInterval(rotateAllTiles, rotateMs);
   }
 
   function rotateSpecificTile(i) {
@@ -653,13 +677,15 @@
     if (cap) cap.textContent = pick.gameTitle;
     if (players[i] && players[i].loadVideoById) {
       players[i].loadVideoById({ videoId: pick.videoId, startSeconds: pick.startSec });
-      try { players[i].mute(); } catch (err) {}
+      try { if (allMuted) players[i].mute(); } catch (err) {}
     }
   }
-  function rotateOneTile() {
+  // Rotate ALL tiles together when the rotation interval fires
+  function rotateAllTiles() {
     if (!TILE_COUNT) return;
-    var i = Math.floor(Math.random() * TILE_COUNT);
-    rotateSpecificTile(i);
+    for (var i = 0; i < TILE_COUNT; i++) {
+      rotateSpecificTile(i);
+    }
   }
 
   window.onYouTubeIframeAPIReady = function () {
