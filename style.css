@@ -288,9 +288,9 @@ main {
   color: var(--text-strong);
 }
 .hero .lead {
-  font-size: 1.02rem;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
   color: var(--text-muted);
-  max-width: 720px;
+  max-width: 100%;
   margin: 0;
   line-height: 1.65;
 }
@@ -1920,4 +1920,21 @@ footer.site-footer a:hover { color: var(--accent); }
   width: 100% !important;
   height: 100% !important;
   border: 0 !important;
+}
+
+/* ============ WALL CAPTION POSITION VARIANTS ============ */
+.wall-caption {
+  text-align: center;  /* always centered horizontally */
+}
+.wall-caption.pos-bottom {
+  top: auto;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
+  padding: 18px 10px 8px;
+}
+.wall-caption.pos-top {
+  top: 0;
+  bottom: auto;
+  background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.85));
+  padding: 8px 10px 18px;
 }
