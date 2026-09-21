@@ -574,14 +574,9 @@
     "ageRestricted": false,
     "videos": [
       {
-        "label": "Part I",
-        "id": "F-KaoHbR2RE",
-        "duration": "10:09:54"
-      },
-      {
-        "label": "Part II",
-        "id": "02KBd40xRpA",
-        "duration": "10:10:22"
+        "label": "Full Walkthrough",
+        "id": "qgjBEELVpco",
+        "duration": ""
       }
     ],
     "guide": "Ghost of Tsushima is Sucker Punch Productions' open-world samurai epic set in 1274 during the first Mongol invasion of Japan. Jin Sakai, the last of his clan, must abandon the samurai code to wage guerrilla war against the invaders as the legendary Ghost. The walkthrough captures the full campaign across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary, including the Iki Island expansion content.",
@@ -660,14 +655,9 @@
     "ageRestricted": false,
     "videos": [
       {
-        "label": "Part I",
-        "id": "munZDXA1Fts",
-        "duration": "8:43:30"
-      },
-      {
-        "label": "Part II",
-        "id": "TZ4a_feuXno",
-        "duration": "8:43:05"
+        "label": "Full Walkthrough",
+        "id": "sfkBbAVkyqg",
+        "duration": ""
       }
     ],
     "guide": "Ghost of Yotei is Sucker Punch's follow-up to Ghost of Tsushima, set centuries later in 1603 Hokkaido around the Mount Yotei region. Players take on the protagonist Atsu, a wandering swordswoman seeking vengeance against the Yotei Six who killed her family. The walkthrough captures the full main campaign across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary. The cinematic playthrough preserves Sucker Punch's signature wind-guided traversal and standoff combat.",
@@ -919,14 +909,9 @@
     "ageRestricted": false,
     "videos": [
       {
-        "label": "Part I",
-        "id": "NTUiVC1ZijE",
-        "duration": "9:42:42"
-      },
-      {
-        "label": "Part II",
-        "id": "Qty9sjJwrOU",
-        "duration": "9:42:42"
+        "label": "Full Walkthrough",
+        "id": "gTJ4SaR8WvU",
+        "duration": ""
       }
     ],
     "guide": "Marvel's Guardians of the Galaxy is Eidos-Montréal's narrative-driven action-adventure following Peter Quill leading his team — Gamora, Drax, Rocket, and Groot — across the cosmic Marvel universe. The walkthrough captures the full main campaign across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary. The cinematic playthrough preserves the team huddle dialogue trees and licensed 80s soundtrack callouts.",
@@ -3057,5 +3042,69 @@
     ],
     "story": "007 First Light is IO Interactive's 2026 reinvention of the James Bond mythos as a full origin story, rebuilding the character from the ground up before the codename, before the license, before the cynicism. The campaign opens on a twenty-six-year-old James Bond — recently promoted Royal Navy Commander, lately recruited by MI6 — wrapping his final assessment at the agency's Malta training academy. He is brilliant, headstrong, undisciplined, and almost immediately at odds with M, the agency's director, whose patience for promising recruits is famously short. The campaign's framing question is established in its first hour: how does a young naval officer with a temper and a death wish become the operative the world will eventually know as 007?\n\nBond's first field operation pulls him into the orbit of an elderly intelligence figure named Sir Nicholas, an MI6 legend whose private network appears to have been compromised by a defector — Damien Webb, a former 00 agent presumed dead, now running a global influence operation from the shadows. The campaign carries Bond across ten missions and a prologue, traversing Malta, Slovakia, the Aleph corporate complex, Vietnam, the Icelandic highlands, a stylish London museum, an executive office tower, and a luxury Alpine spa. IO Interactive applies its signature creative-mission design — refined across three Hitman trilogies — to every location: multiple infiltration routes, environmental disguises, the franchise's hallmark 'opportunities' system, sandbox-style stealth puzzles, and the studio's first sustained foray into hand-to-hand combat and set-piece action sequences alongside its trademark systems-driven assassination design.\n\nThe middle act builds the campaign's most acclaimed identity work. Bond, a recruit who insists he can do this his own way, is forced to learn that espionage is a profession of compromise — sources who have to be sacrificed, civilians caught in the crossfire, lies told to people who trusted him, and missions that cost more than they pay back. The campaign repeatedly puts young Bond in moral situations the franchise's canon Bond would handle with weary professionalism, and the player feels the young Bond's discomfort with the work he is being asked to do. Supporting characters — the franchise's signature M and Moneypenny, alongside new IO Interactive originals — push the campaign's central thematic argument: that becoming 007 is not a promotion but a moral commitment.\n\nThe climactic sequence pulls Bond into Damien Webb's central operation: a coordinated multi-front intelligence attack designed to discredit MI6 and replace its leadership with Webb's own loyalists. The final mission stages Bond's confrontation with Webb and Sir Nicholas — who, in the campaign's most acclaimed twist, has been the operation's silent architect all along, Webb serving as his disposable enforcer. The fight is staged across the Alpine spa's interior with the campaign's hardest sandbox combat encounters. Bond kills Sir Nicholas under direct orders from M. The kill is the first of his career — a deliberate, sanctioned execution rather than a battlefield casualty — and the campaign refuses to soften its weight.\n\nThe closing sequence stages Bond's promotion. M assigns him the codename — 007 — and the campaign's final image is Bond, older now, walking out of MI6's headquarters with the moral commitments that will define every future entry already in place. The campaign refuses to pretend that becoming 007 is a redemption arc; the closing minutes argue, instead, that it is the deliberate acceptance of a profession that will cost the character everything he has not yet learned to value. IO Interactive's broader 007 trilogy has been confirmed; the campaign's closing mid-credits sting points directly toward the second installment's central conflict. As an origin story First Light is the most thematically committed Bond adaptation in any medium since Casino Royale, and as a stealth-action campaign it is IO Interactive's most ambitious project to date.",
     "releaseDate": "2026-03-27"
+  },
+  {
+    "slug": "marvels-wolverine",
+    "title": "Marvel's Wolverine",
+    "year": 2026,
+    "developer": "Insomniac Games",
+    "publisher": "Sony Interactive Entertainment",
+    "series": null,
+    "genre": [
+      "Action-Adventure",
+      "Superhero"
+    ],
+    "tags": [
+      "Insomniac Games",
+      "Sony",
+      "Marvel",
+      "Logan",
+      "Wolverine",
+      "X-Men",
+      "PlayStation Exclusive"
+    ],
+    "ageRestricted": true,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "CBMcFRGky5Q",
+        "duration": ""
+      }
+    ],
+    "guide": "Marvel's Wolverine is Insomniac Games' 2026 Mature-rated single-player action-adventure and the studio's first collaboration with Marvel Games outside its acclaimed Spider-Man universe. The campaign follows Logan — the mutant known as Wolverine — through a self-contained story built around the character's signature themes: unbreakable adamantium claws, a healing factor that refuses to let him die, a fractured memory of a past he cannot fully recover, and the moral weight of the violence that follows him wherever he goes. The walkthrough captures the full campaign on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary.",
+    "story": "Marvel's Wolverine is Insomniac Games' 2026 PlayStation-exclusive single-player action-adventure, the studio's first Mature-rated project and its first Marvel collaboration outside the acclaimed Spider-Man universe. The campaign centers on <strong>Logan</strong> — codename Wolverine — the mutant whose central mythology has been developed across five decades of Marvel comics and adapted repeatedly across film, television, and animation. Logan's core identity is defined by a small set of foundational elements that any Wolverine story has to reckon with: retractable claws that were originally bone but have been surgically laced with the indestructible metal alloy <strong>Adamantium</strong> as part of the Weapon X program that fractured his memory; a healing factor so aggressive that he has effectively lived across a century of history without aging; unresolved trauma from a life he can only partially remember; and a persistent tension between the animal violence that keeps him alive and the moral commitments — most often to found family, most often to young women he has taken responsibility for — that keep him human.\n\nInsomniac Games approaches the character with the studio's signature strengths in transferable, moment-to-moment traversal and combat systems refined across the Spider-Man franchise, now adapted for a ground-level protagonist whose combat vocabulary is close-quarters brutality rather than aerial acrobatics. The campaign's combat is committed to the character's identity: Logan's claws are always deployed, blood is always on them, and the healing factor is rendered as a survivable mid-fight mechanic rather than an off-screen reset. The Mature rating reflects the studio's commitment to depicting the actual physical cost of a Wolverine story — for Logan, for the people he protects, and for the people he goes through to reach them.\n\nThe campaign's tonal reference points align with the character's most acclaimed comic and film treatments — the moral gravity of <em>Old Man Logan</em>, the character-first restraint of <em>Logan</em> (2017), the found-family dynamic that has anchored his best X-Men appearances. Insomniac has committed to a self-contained story rather than a shared universe crossover — Logan's campaign is his own, framed around his own history rather than as a setup for a broader franchise consolidation.\n\nThe full plot beats of the campaign are best experienced through the walkthrough itself. Gaming Cinema's PS5 Pro capture preserves the studio's signature attention to environmental detail, the campaign's Mature-rated action set-pieces, and the character work that has made Insomniac's Marvel adaptations the most acclaimed in modern gaming. The walkthrough is presented no-commentary, cinematic style, in continuous playthrough form — every combat encounter, every cutscene, every quiet character moment preserved at the platform's highest possible visual fidelity.\n\nFor viewers approaching the character for the first time: Wolverine's central appeal is the collision between the violence he's capable of and the tenderness he sometimes chooses. The best Wolverine stories are the ones where the healing factor is beside the point — where what he can survive is less interesting than what he decides to protect. Insomniac's campaign is built on that foundation, and the walkthrough captures it in full.",
+    "releaseDate": "2026-09-01"
+  },
+  {
+    "slug": "onimusha-way-of-the-sword",
+    "title": "Onimusha: Way of the Sword",
+    "year": 2026,
+    "developer": "Capcom",
+    "publisher": "Capcom",
+    "series": "Onimusha",
+    "genre": [
+      "Action-Adventure",
+      "Souls-like"
+    ],
+    "tags": [
+      "Capcom",
+      "Feudal Japan",
+      "Miyamoto Musashi",
+      "Samurai",
+      "Demons",
+      "Katana",
+      "Oni Gauntlet"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "rcuF5AOC0V0",
+        "duration": ""
+      }
+    ],
+    "guide": "Onimusha: Way of the Sword is Capcom's 2026 revival of the dormant Onimusha franchise — a full return to the studio's signature blend of feudal-Japan katana combat and demonic-invasion horror. The campaign is set in early Edo-period Japan and stars a young Miyamoto Musashi, the historical swordsman whose name is synonymous with the Japanese martial tradition. Capcom's revival rebuilds the franchise's core loop — the Oni Gauntlet's soul-absorbing sword techniques, the tightly designed exploration-and-puzzle progression, and the deliberate boss encounters — with modern technical fidelity and the studio's most cinematic direction to date. The walkthrough captures the full main campaign on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary.",
+    "story": "Onimusha: Way of the Sword is Capcom's 2026 revival of the <strong>Onimusha</strong> franchise, the studio's foundational feudal-Japan action-adventure series that ran from 2001 through 2006 across four mainline entries. The franchise's signature premise is straightforward and durable: a lone swordsman inherits the <strong>Oni Gauntlet</strong>, a demon-forged weapon that absorbs the souls of slain enemies, and uses it to fight back an invasion of shape-shifting demons across a stylized feudal Japan. The original entries starred figures drawn from Japanese historical tradition — Samanosuke Akechi, Jubei Yagyu, Soki — refashioned as demon hunters carrying the weight of their historical eras' actual political conflicts against a coordinated supernatural threat.\n\nThe revival's protagonist is <strong>Miyamoto Musashi</strong>, arguably the most famous swordsman in Japanese history and the author of <em>The Book of Five Rings</em>, the martial-philosophical text that has shaped Japanese sword tradition since its 1645 composition. The historical Musashi lived from 1584 to 1645, fought his first duel at thirteen, undertook the <em>musha shugyo</em> warrior pilgrimage across his early adulthood, and is credited with sixty-one undefeated duels across his lifetime. Capcom's campaign is set in the early Edo period — the years immediately following the 1603 establishment of the Tokugawa shogunate — and dwells on the young Musashi's formative years, the period during which he developed the two-sword <em>Niten Ichi-ryu</em> style that would define his tradition.\n\nThe campaign frames Musashi's warrior pilgrimage against the franchise's signature demonic-invasion premise. The <strong>Genma</strong> — the franchise's shape-shifting demon faction — have infiltrated the political vacuum of the post-Sengoku transition, exploiting the collapse of the daimyo warfare system to establish operational footholds across Japan's temples, castles, and mountain passes. Musashi's musha shugyo pulls him repeatedly into contact with Genma operations, and the campaign frames his acquisition of the <strong>Oni Gauntlet</strong> as the historical moment his swordsmanship crossed from technical mastery into legend.\n\nCapcom's revival rebuilds the franchise's core loop with modern technical fidelity and the studio's most cinematic direction to date. The Oni Gauntlet's soul-absorbing combat is preserved as the campaign's central mechanical identity — every slain Genma yields a soul that Musashi can channel into weapon upgrades, magical abilities, and the campaign's signature transformation sequences. The exploration structure follows the franchise's traditional deliberate-progression design, with each region requiring the acquisition of specific soul-based abilities to unlock its subsequent zones. The boss encounters are designed as sustained combat set-pieces staged at the campaign's most acclaimed environmental locations, with the franchise's signature enemy design refined for the modern console generation.\n\nThe walkthrough captures the full main campaign in continuous cinematic form. Gaming Cinema's PS5 Pro capture preserves the studio's signature attention to feudal-Japan environmental detail — the rain-soaked mountain passes, the lantern-lit shrine complexes, the ceremonial castle interiors — alongside the campaign's soul-driven combat, its deliberate exploration loop, and the boss confrontations that anchor the franchise's mechanical identity. The walkthrough is presented no-commentary, in unbroken playthrough form, at the platform's highest possible visual fidelity. For viewers approaching the franchise for the first time: Onimusha's central appeal is the collision between the technical precision of traditional Japanese sword combat and the supernatural spectacle of the Genma invasion. Capcom's revival honors both.",
+    "releaseDate": "2026-08-01"
   }
 ]
