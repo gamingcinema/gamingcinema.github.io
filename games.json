@@ -211,7 +211,7 @@
     "year": 2019,
     "developer": "Remedy Entertainment",
     "publisher": "505 Games",
-    "series": null,
+    "series": "Control",
     "genre": [
       "Action-Adventure",
       "Shooter"
@@ -1707,7 +1707,7 @@
     "year": 2024,
     "developer": "Bloober Team",
     "publisher": "Konami",
-    "series": null,
+    "series": "Silent Hill",
     "genre": [
       "Survival Horror"
     ],
@@ -1802,7 +1802,7 @@
     "videos": [
       {
         "label": "Full Walkthrough",
-        "id": "w7gSRWoQGWA",
+        "id": "64Xjz-YBgTY",
         "duration": ""
       }
     ],
@@ -2044,14 +2044,9 @@
     "ageRestricted": false,
     "videos": [
       {
-        "label": "Part 1",
-        "id": "w9ocnvea1vM",
-        "duration": "8:19:20"
-      },
-      {
-        "label": "Part 2",
-        "id": "09SYmc3E_jM",
-        "duration": "8:19:20"
+        "label": "Full Walkthrough",
+        "id": "8ec854UQcHg",
+        "duration": ""
       }
     ],
     "guide": "Star Wars Jedi: Fallen Order is Respawn Entertainment's 2019 Soulslike action-adventure set in the dark times after Order 66. Padawan survivor Cal Kestis attempts to rebuild the Jedi Order while hunted by Imperial Inquisitors. The walkthrough captures the full main campaign across two parts on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary. The cinematic playthrough emphasizes the Metroidvania-style world design.",
@@ -3106,5 +3101,169 @@
     "guide": "Onimusha: Way of the Sword is Capcom's 2026 revival of the dormant Onimusha franchise — a full return to the studio's signature blend of feudal-Japan katana combat and demonic-invasion horror. The campaign is set in early Edo-period Japan and stars a young Miyamoto Musashi, the historical swordsman whose name is synonymous with the Japanese martial tradition. Capcom's revival rebuilds the franchise's core loop — the Oni Gauntlet's soul-absorbing sword techniques, the tightly designed exploration-and-puzzle progression, and the deliberate boss encounters — with modern technical fidelity and the studio's most cinematic direction to date. The walkthrough captures the full main campaign on PS5 Pro at 4K HDR 60FPS with PSSR upscaling, no commentary.",
     "story": "Onimusha: Way of the Sword is Capcom's 2026 revival of the <strong>Onimusha</strong> franchise, the studio's foundational feudal-Japan action-adventure series that ran from 2001 through 2006 across four mainline entries. The franchise's signature premise is straightforward and durable: a lone swordsman inherits the <strong>Oni Gauntlet</strong>, a demon-forged weapon that absorbs the souls of slain enemies, and uses it to fight back an invasion of shape-shifting demons across a stylized feudal Japan. The original entries starred figures drawn from Japanese historical tradition — Samanosuke Akechi, Jubei Yagyu, Soki — refashioned as demon hunters carrying the weight of their historical eras' actual political conflicts against a coordinated supernatural threat.\n\nThe revival's protagonist is <strong>Miyamoto Musashi</strong>, arguably the most famous swordsman in Japanese history and the author of <em>The Book of Five Rings</em>, the martial-philosophical text that has shaped Japanese sword tradition since its 1645 composition. The historical Musashi lived from 1584 to 1645, fought his first duel at thirteen, undertook the <em>musha shugyo</em> warrior pilgrimage across his early adulthood, and is credited with sixty-one undefeated duels across his lifetime. Capcom's campaign is set in the early Edo period — the years immediately following the 1603 establishment of the Tokugawa shogunate — and dwells on the young Musashi's formative years, the period during which he developed the two-sword <em>Niten Ichi-ryu</em> style that would define his tradition.\n\nThe campaign frames Musashi's warrior pilgrimage against the franchise's signature demonic-invasion premise. The <strong>Genma</strong> — the franchise's shape-shifting demon faction — have infiltrated the political vacuum of the post-Sengoku transition, exploiting the collapse of the daimyo warfare system to establish operational footholds across Japan's temples, castles, and mountain passes. Musashi's musha shugyo pulls him repeatedly into contact with Genma operations, and the campaign frames his acquisition of the <strong>Oni Gauntlet</strong> as the historical moment his swordsmanship crossed from technical mastery into legend.\n\nCapcom's revival rebuilds the franchise's core loop with modern technical fidelity and the studio's most cinematic direction to date. The Oni Gauntlet's soul-absorbing combat is preserved as the campaign's central mechanical identity — every slain Genma yields a soul that Musashi can channel into weapon upgrades, magical abilities, and the campaign's signature transformation sequences. The exploration structure follows the franchise's traditional deliberate-progression design, with each region requiring the acquisition of specific soul-based abilities to unlock its subsequent zones. The boss encounters are designed as sustained combat set-pieces staged at the campaign's most acclaimed environmental locations, with the franchise's signature enemy design refined for the modern console generation.\n\nThe walkthrough captures the full main campaign in continuous cinematic form. Gaming Cinema's PS5 Pro capture preserves the studio's signature attention to feudal-Japan environmental detail — the rain-soaked mountain passes, the lantern-lit shrine complexes, the ceremonial castle interiors — alongside the campaign's soul-driven combat, its deliberate exploration loop, and the boss confrontations that anchor the franchise's mechanical identity. The walkthrough is presented no-commentary, in unbroken playthrough form, at the platform's highest possible visual fidelity. For viewers approaching the franchise for the first time: Onimusha's central appeal is the collision between the technical precision of traditional Japanese sword combat and the supernatural spectacle of the Genma invasion. Capcom's revival honors both.",
     "releaseDate": "2026-08-01"
+  },
+  {
+    "slug": "mortal-shell-ii",
+    "title": "Mortal Shell II",
+    "year": 2026,
+    "developer": "Cold Symmetry",
+    "publisher": "Playstack",
+    "series": "Mortal Shell",
+    "genre": [
+      "Action RPG",
+      "Soulslike"
+    ],
+    "tags": [
+      "Cold Symmetry",
+      "Playstack",
+      "Dark Fantasy",
+      "Shells",
+      "Harbinger",
+      "Open World",
+      "Soulslike"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "CCtwI6TPFhk",
+        "duration": ""
+      }
+    ],
+    "guide": "Mortal Shell II is Cold Symmetry's 2026 dark-fantasy action RPG, a standalone sequel to the 2020 cult soulslike Mortal Shell that can be played without any knowledge of the original. You control the Harbinger, a being prophesied to reclaim the Undermether's stolen Ova from the grotesque creatures that guard them, and you do it by possessing the preserved bodies of fallen warriors — the Shells — each with its own combat style, talents and upgrade path. This walkthrough follows the full campaign across the game's interconnected open world, from the first awakened Shell to the end of the story. Gaming Cinema's PS5 Pro capture is presented without commentary, so the faster, more aggressive combat, the deeper weapon upgrades, the dungeon crawling and the world's twisted landscapes play out exactly as they unfold. Use it as a route through the story, a reference for how each Shell fights, or a calm way to watch the whole campaign start to finish in uninterrupted 4K.",
+    "story": "Mortal Shell II is Cold Symmetry's 2026 follow-up to its 2020 breakout <strong>Mortal Shell</strong>, published by Playstack for PlayStation 5, Xbox Series X|S and PC. It is a standalone sequel — the studio states that newcomers can start here — and it widens the original's compact, tightly authored world into an interconnected open map of ravaged regions, hidden structures and landmarks, with more than sixty dungeons to uncover. The tone remains what the franchise has always been: bleak, ritualistic dark fantasy, where every statue, ruin and corpse feels like a fragment of a civilization that has already ended.\n\nYou play the <strong>Harbinger</strong>, a being prophesied to reclaim the <strong>Ova</strong> — the unborn eggs of the blessed Undermether — which have been stolen and are now ruthlessly guarded by grotesque creatures. The campaign frames that quest as a rebellion against the false gods who rule the shattered land, and the story is delivered the way the series prefers: sparingly, through environments, recovered memories and the lingering will of the dead rather than lengthy exposition.\n\nThe signature mechanic is <strong>Shell possession</strong>. Scattered across the world are the dormant forms of forgotten warriors; once found, each can be awakened and inhabited, and the Harbinger gains that warrior's innate strengths and abilities. Cold Symmetry lists eight playable Shells, each with its own combat style, and the connection with a Shell deepens over time, unlocking new talents, upgrades and memories that reveal its past. Combat is faster and less forgiving than in the original, built around deeper weapon design with extensive upgrade options and an emphasis on free exploration.\n\nThe original Mortal Shell, released in 2020, built its identity on a handful of ideas: a lean, interlinked world called Fallgrim, a roster of Shells rather than conventional character classes, and the ability to <em>harden</em> — briefly turning to stone in the middle of a fight to survive a blow. Cold Symmetry describes the sequel as significantly expanding on that foundation, with faster and unforgiving combat, deeper weapon design with extensive upgrade options, and an emphasis on free exploration. The result keeps the demanding, ritual feel of its predecessor while offering far more room to decide where to go next and how to fight when you get there.\n\nThe walkthrough captures the complete campaign in continuous cinematic form. Gaming Cinema's PS5 Pro capture preserves the twisted landscapes, the dungeon crawls beneath them and the boss encounters that gate progress, presented without commentary at the platform's highest visual fidelity. For viewers new to the series: the appeal of Mortal Shell is the tension between patience and aggression — learning an enemy, choosing the right Shell for it, and committing to the strike. Mortal Shell II keeps that loop and gives it a far larger world to play out in.",
+    "releaseDate": "2026-08-20"
+  },
+  {
+    "slug": "metal-gear-solid-4-guns-of-the-patriots",
+    "title": "Metal Gear Solid 4: Guns of the Patriots",
+    "year": 2008,
+    "developer": "Kojima Productions",
+    "publisher": "Konami Digital Entertainment",
+    "series": "Metal Gear Solid",
+    "genre": [
+      "Action-Adventure"
+    ],
+    "tags": [
+      "Kojima Productions",
+      "Konami",
+      "Solid Snake",
+      "Old Snake",
+      "Stealth",
+      "Liquid Ocelot",
+      "Otacon",
+      "Master Collection Vol. 2"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "a6iICB8hdyE",
+        "duration": ""
+      }
+    ],
+    "guide": "Metal Gear Solid 4: Guns of the Patriots is Hideo Kojima's 2008 finale to the Solid Snake saga, long locked to PlayStation 3 and brought to PS5 in 2026 through Metal Gear Solid: Master Collection Vol. 2, with improved resolution and frame rates. Set in a near-future world where war has become an industry run by private military companies and an AI-driven system known as the Patriots, the game follows an aged Solid Snake — Old Snake — on a last mission to stop Liquid Ocelot. This walkthrough covers the entire campaign from start to finish across its war-torn locations, including the stealth sections, the boss encounters and the game's famously long cinematic scenes. Presented without commentary on PS5 Pro, it is a way to experience the story as one continuous film, revisit the Octocamo and Mk. II gameplay, or finally see a PlayStation 3 landmark that stayed unplayable anywhere else for nearly two decades.",
+    "story": "Metal Gear Solid 4: Guns of the Patriots is the 2008 PlayStation 3 entry that Hideo Kojima and his team positioned as the end of Solid Snake's story. In 2026 it finally reached modern hardware as part of <em>Metal Gear Solid: Master Collection Vol. 2</em> on PS5, alongside <em>Peace Walker</em> and <em>Ghost Babel</em> — the first time the game had been ported anywhere since its original release. The PS5 version offers improved internal resolution, higher maximum frame rates and customizable button controls, but the game itself remains the same dense, cinematic stealth-action experience.\n\nThe setting is a near-future world in which war has become an economy. Private military companies fight on behalf of states and corporations, and an AI-controlled network known as the <strong>Patriots</strong> regulates soldiers through nanomachine technology. Solid Snake, whose body has aged far beyond his years, is drawn back for one final mission: to find and stop <strong>Liquid Ocelot</strong>, the figure at the center of this system. The story follows him — with <strong>Otacon</strong> in support and <strong>Raiden</strong> returning as a cyborg ninja — across conflict zones in the Middle East, South America and Eastern Europe, before returning to the places and themes the series has been building toward for two decades.\n\nGameplay builds on the series' tactical espionage foundation but makes the battlefield more open and reactive. Snake adapts to his surroundings with the <strong>Octocamo</strong> suit, which changes texture to match what he lies on or against, and operates a small robotic drone, the <strong>Metal Gear Mk. II</strong>, for scouting and support. Weapons are acquired and customized through <strong>Drebin's shop</strong>, and the game tracks Snake's stress and morale through the <strong>Psyche</strong> system. Every area can be approached silently or with direct firepower, and the large, thematic boss encounters are the campaign's highlights.\n\nThe game sits at the end of a timeline that stretches back to the original 1987 <em>Metal Gear</em> and runs through <em>Metal Gear Solid</em> (1998), <em>Sons of Liberty</em> (2001) and <em>Snake Eater</em> (2004). MGS4 was designed as the culmination of those stories, which is why so much of its runtime is given to long cutscenes and conversations that pay off threads dating back decades. The PS5 collection leans into that history: both MGS4 and Peace Walker ship with digital screenplay books and master-book databases, and players with save data from the first Master Collection receive bonus items such as the Gold Camouflage in MGS4.\n\nThe walkthrough presents the whole campaign in one continuous, no-commentary capture on PS5 Pro, preserving the game's famously extended cutscenes and codec conversations alongside its infiltration sections. For viewers new to Metal Gear: MGS4 leans heavily on the history of earlier games, but its themes — the commodification of war, the burden of legacy, what it means for a soldier to end his own story — are strong enough that it works as a standalone viewing experience. For long-time fans, it is a chance to watch Snake's final mission on modern hardware.",
+    "releaseDate": "2026-08-27"
+  },
+  {
+    "slug": "silent-hill-townfall",
+    "title": "Silent Hill: Townfall",
+    "year": 2026,
+    "developer": "Screen Burn Interactive",
+    "publisher": "Konami Digital Entertainment & Annapurna Interactive",
+    "series": "Silent Hill",
+    "genre": [
+      "Survival Horror"
+    ],
+    "tags": [
+      "Screen Burn Interactive",
+      "Annapurna Interactive",
+      "Konami",
+      "Silent Hill",
+      "Simon Ordell",
+      "St. Amelia",
+      "Scotland",
+      "First-Person",
+      "CRTV"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "d7w7UIDzWWQ",
+        "duration": ""
+      }
+    ],
+    "guide": "Silent Hill: Townfall is the 2026 first-person psychological horror entry in Konami's long-running series, developed by Screen Burn Interactive — the Scottish studio formerly known as No Code, creators of Stories Untold and Observation — and co-published with Annapurna Interactive. Set in Scotland in 1996, it follows Simon Ordell, called back to the island of St. Amelia to put things right, only to find a town lying quiet beneath heavy fog, seemingly abandoned but not at rest. With a limited set of weapons and tools, including the CRTV, a pocket television that tunes into unstable signals, you explore, evade and fight to uncover how Simon's past is tied to the place and its people. This walkthrough follows the complete journey in a continuous, no-commentary 4K capture on PS5 Pro. Watch it for the full story, for the atmosphere of a fog-bound Scottish island, or to see how Screen Burn reinterprets Silent Hill's dread through a first-person lens.",
+    "story": "Silent Hill: Townfall is a full-length, self-contained psychological horror game released on September 24, 2026 for PlayStation 5, Steam and the Epic Games Store, co-published by Konami and Annapurna Interactive. It was developed by <strong>Screen Burn Interactive</strong>, the Scottish team formerly known as No Code, whose earlier work includes <em>Stories Untold</em> and the BAFTA-winning <em>Observation</em>. First announced in 2022, it is played entirely in first person.\n\nThe story begins in <strong>1996</strong> on the island of <strong>St. Amelia</strong> in Scotland. Simon Ordell has been called back to put things right. He arrives with little more than an IV bag and a medical wristband bearing his name, and heads toward a town lying quiet beneath a heavy fog — seemingly abandoned, but not at rest. Voices from a pocket television he picks up along the way are his only leads. As he ventures deeper, fragments of a past rise to the surface, and the mystery is built around his connection to the town and its inhabitants.\n\nTownfall's design leans on vulnerability. Exploration and evasion drive much of the tension, combat is frenetic but limited by a restricted set of weapons and tools, and narrative-driven puzzles slowly uncover a truth that refuses to stay submerged. The signature device is the <strong>CRTV</strong>, a pocket television that tunes into unstable signals to reveal clues — a mechanic that fits the series' long tradition of using sound, static and broken media as horror language.\n\nTownfall arrives in a period of renewed activity for the franchise. Konami has said it intends to release a new Silent Hill game roughly every year: Bloober Team's <em>Silent Hill 2</em> remake launched in October 2024 and <em>Silent Hill f</em> followed in September 2025. Townfall takes a different approach from both. It is neither a remake nor a story set in 1960s Japan, but an original tale set in 1996 Scotland, built by a studio best known for atmospheric, narrative-led games. The Silent Hill 2 Remake walkthrough is also available on this site for viewers who want to explore the series further.\n\nThe walkthrough captures the full campaign in continuous cinematic form, presented without commentary on PS5 Pro. It preserves the fog-heavy streets, the interior spaces, the creature encounters and the quiet moments between them exactly as they play. For viewers coming to Silent Hill for the first time: Townfall is designed as a self-contained story, so no knowledge of earlier games is required — only a willingness to sit in the unease and let the town reveal itself.",
+    "releaseDate": "2026-09-24"
+  },
+  {
+    "slug": "control-resonant",
+    "title": "Control Resonant",
+    "year": 2026,
+    "developer": "Remedy Entertainment",
+    "publisher": "Remedy Entertainment",
+    "series": "Control",
+    "genre": [
+      "Action-Adventure",
+      "Action RPG"
+    ],
+    "tags": [
+      "Remedy Entertainment",
+      "Control",
+      "Dylan Faden",
+      "Jesse Faden",
+      "Federal Bureau of Control",
+      "Hiss",
+      "Manhattan",
+      "Paranatural"
+    ],
+    "ageRestricted": false,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "sJZVEQYVacQ",
+        "duration": ""
+      }
+    ],
+    "guide": "Control Resonant is Remedy Entertainment's 2026 supernatural action-adventure, the direct sequel to Control, self-published for PlayStation 5, Xbox Series X|S and PC. This time the protagonist is Dylan Faden, brother of Federal Bureau of Control Director Jesse Faden and the figure the first game presented as an antagonist. Freed from years of confinement inside the Oldest House, Dylan is sent into a Manhattan warped by a paranatural crisis, with Jesse missing and the Hiss spreading beyond the Bureau's containment. Armed with a shape-shifting weapon that morphs between hammer, scythe and dual blades, he fights through impossible architecture and shifting realities. This walkthrough follows the entire campaign in a continuous, no-commentary 4K capture on PS5 Pro — ideal for following the story, studying the combat, or experiencing Remedy's Manhattan from start to finish.",
+    "story": "Control Resonant is Remedy Entertainment's direct sequel to the 2019 supernatural hit <strong>Control</strong>, and by the studio's own description its most expansive game to date. Released on September 24, 2026 for PlayStation 5, Xbox Series X|S and PC, it is self-published by Remedy and sits within the studio's connected universe alongside <em>Alan Wake</em>.\n\nThe campaign swaps protagonists. Instead of Jesse Faden, the player controls <strong>Dylan Faden</strong>, her younger brother, whom the original game presented as an antagonist. As a child Dylan was taken by the Federal Bureau of Control and raised inside an institution that tried to dictate his life, a story that ended in tragedy and left him contained for years. Jesse stopped him and cleansed him of the force he carried, but he fell into a coma; he now wakes in an unfamiliar world with Jesse missing. The Bureau deploys him at the peak of a crisis: the Hiss has broken containment and overrun Manhattan, and Dylan must find his sister and bring the fight to it.\n\nDylan is joined by a new Bureau ally, <strong>Zoe de Vera</strong>, alongside returning favorites <strong>Simon Arish</strong> and <strong>Emily Pope</strong>, with Dr. Casper Darling also returning, and is played by Sean Durrie. Combat leans more heavily on melee than the first game: Dylan wields a shape-shifting weapon that can become a hammer, a scythe or dual blades in an instant. The setting moves the series' architecture-as-antagonist approach out of the Oldest House and into a warped Manhattan of impossible geometry, shifting realities and monstrous entities born from a new kind of resonance.\n\nThe first <em>Control</em> (2019) followed Jesse Faden as she took charge of the Federal Bureau of Control and fought the Hiss inside the Oldest House, a shifting brutalist headquarters in New York, using the supernatural Service Weapon and telekinetic powers. It became a cornerstone of Remedy's connected universe, which links Control with the <em>Alan Wake</em> games — and the expansion content of Alan Wake 2 carried a direct teaser for this sequel. Resonant carries that thread forward while moving the action out of a single building and into an entire city.\n\nThe walkthrough captures the full campaign in continuous cinematic form, presented without commentary on PS5 Pro. Gaming Cinema's capture preserves the brutalist spaces, the reality-bending set pieces, the boss encounters and the story beats exactly as they play. Viewers who want to catch up on the first game can find the Control Ultimate Edition walkthrough on this channel.",
+    "releaseDate": "2026-09-24"
+  },
+  {
+    "slug": "clive-barkers-hellraiser-revival",
+    "title": "Clive Barker's Hellraiser: Revival",
+    "year": 2026,
+    "developer": "Boss Team Games",
+    "publisher": "Saber Interactive",
+    "series": "Hellraiser",
+    "genre": [
+      "Survival Horror",
+      "Shooter"
+    ],
+    "tags": [
+      "Boss Team Games",
+      "Saber Interactive",
+      "Clive Barker",
+      "Pinhead",
+      "Cenobites",
+      "Genesis Configuration",
+      "The Labyrinth",
+      "First-Person",
+      "Mature"
+    ],
+    "ageRestricted": true,
+    "videos": [
+      {
+        "label": "Full Walkthrough",
+        "id": "AXkeDx-lKw4",
+        "duration": ""
+      }
+    ],
+    "guide": "Clive Barker's Hellraiser: Revival is a first-person survival horror action game developed by Boss Team Games and published by Saber Interactive, released on October 8, 2026 for PlayStation 5, Xbox Series X|S and PC. Set in the Hellraiser universe with story input from creator Clive Barker and Doug Bradley returning as the voice of Pinhead, it follows Aidan, whose girlfriend Sunny has been taken by Pinhead and the Cenobites. Using the powers of a mysterious puzzle box called the Genesis Configuration, Aidan fights through Hell's armies of devians, cultists and priests across the multi-level maze of the Labyrinth. This walkthrough follows the full campaign in a continuous, no-commentary capture on PS5 Pro. It contains extreme violence and gore and is intended for mature audiences — a complete way to experience the story and the puzzle-driven combat without playing it yourself.",
+    "story": "Clive Barker's Hellraiser: Revival is a single-player, first-person survival horror action game released on October 8, 2026 for PlayStation 5, Xbox Series X|S and PC. It was developed by <strong>Boss Team Games</strong> and published by <strong>Saber Interactive</strong>, the studio behind <em>World War Z</em> and <em>Warhammer 40,000: Space Marine 2</em>. Franchise creator <strong>Clive Barker</strong> was consulted on the story from the early days of development, and <strong>Doug Bradley</strong>, who played Pinhead in the first eight Hellraiser films, returns to voice the character.\n\nYou play <strong>Aidan</strong>, whose girlfriend <strong>Sunny</strong> has been taken by Pinhead and the Cenobites. In an all-new story set in the Hellraiser universe, Aidan unwittingly kickstarts Pinhead's ritual to unleash the ultimate torment on the world, and descends into the otherworldly hellscape of the <strong>Labyrinth</strong> to bring her back. Everything he does from that point on is shaped by the strange puzzle box he carries.\n\nThat box is the <strong>Genesis Configuration</strong>, and its supernatural powers sit alongside conventional melee and ranged weapons. Combat is up close and decidedly gory, pitting Aidan against Hell's army of devians, cultists and priests, while puzzle-solving and exploration carry him through the vast, multi-level maze of the Labyrinth as he tries to stop the Cenobites from carrying out their plan. The game is openly built for mature audiences: it earned its ESRB rating without cuts, and the team pushes violence, sexual content and adult themes as far as the franchise's source material suggests.\n\nThe Hellraiser mythology began with Clive Barker's 1986 novella <em>The Hellbound Heart</em>, which Barker adapted and directed as the 1987 film <em>Hellraiser</em>. Its central object, the puzzle box that summons the Cenobites — the extra-dimensional beings led by the figure fans call Pinhead — became one of horror's most recognizable props, and Revival builds its story around a new box, the Genesis Configuration. The franchise has always treated the Cenobites as explorers of experience at its extremes rather than simple demons, and that tone carries into the game's themes of desire, sacrifice and consequence.\n\nThe walkthrough captures the full campaign in continuous cinematic form, presented without commentary on PS5 Pro. It contains graphic violence, gore and disturbing imagery throughout and is intended for adult viewers only. For viewers new to the franchise: Revival is a standalone story, and its appeal lies in the Hellraiser mythology — pleasure and pain as two sides of the same door, and a box that opens onto something far worse than the person who opened it ever expected.",
+    "releaseDate": "2026-10-08"
   }
 ]

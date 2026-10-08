@@ -459,7 +459,9 @@
       if (activeFilter.type === 'newest') {
         filtered.sort((a, b) => b._idx - a._idx);
       } else {
-        filtered.sort((a, b) => (b.year - a.year) || a.title.localeCompare(b.title));
+        // Sort by the release date shown on the card (falls back to year if a date is missing)
+        const sortKey = g => g.releaseDate || ((g.year || 0) + '-01-01');
+        filtered.sort((a, b) => sortKey(b).localeCompare(sortKey(a)) || a.title.localeCompare(b.title));
       }
 
       count.textContent = `${filtered.length} game${filtered.length === 1 ? '' : 's'}`;
